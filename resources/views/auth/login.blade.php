@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<!--<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card card-default">
@@ -65,5 +65,65 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
+
+<form method="POST" action="{{ route('login') }}">
+	@csrf
+
+	<section class="form-gradient">
+
+	    <!--Form with header-->
+	    <div class="card">
+
+	        <!--Header-->
+	        <div class="header pt-3 peach-gradient">
+
+	            <div class="row d-flex justify-content-center">
+	                <h3 class="white-text mb-3 pt-3 font-weight-bold">Se connecter</h3>
+	            </div>
+
+	        </div>
+	        <!--Header-->
+
+	        <div class="card-body mx-4 mt-4">
+
+	            <!--Body-->
+	            <div class="md-form">
+	                <input type="text" id="Form-email3" class="form-control">
+	                <label for="Form-email3">Adresse mail</label>
+	            </div>
+
+	            <div class="md-form pb-1 pb-md-3">
+	                <input type="password" id="Form-pass3" class="form-control">
+	                <label for="Form-pass3">Mot de passe</label>
+	                <p class="font-small grey-text d-flex justify-content-end">Forgot <a href="#" class="dark-grey-text ml-1 font-weight-bold"> Password?</a></p>
+	            </div>
+
+
+	            <!--Grid row-->
+	            <div class="row d-flex align-items-center mb-4">
+
+	                <!--Grid column-->
+	                <div class="col-md-1 col-md-5 d-flex align-items-start">
+	                    <div class="text-center">
+	                        <button type="button" class="btn btn-grey btn-rounded z-depth-1a">Log in</button>
+	                    </div>
+	                </div>
+	                <!--Grid column-->
+
+	                <!--Grid column-->
+	                <div class="col-md-7">
+	                    <p class="font-small grey-text d-flex justify-content-end mt-3">Don't have an account? <a href="#" class="dark-grey-text ml-1 font-weight-bold"> Sign up</a></p>
+	                </div>
+	                <!--Grid column-->
+
+	            </div>
+	            <!--Grid row-->
+	        </div>
+
+	    </div>
+	    <!--/Form with header-->
+
+	</section>
+</form>
 @endsection
