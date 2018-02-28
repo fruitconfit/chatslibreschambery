@@ -15,7 +15,7 @@ class AccountController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('newPassword');
+        $this->middleware('auth')->except('newPassword','newPasswordPage');
     }
 
     /**
@@ -48,34 +48,47 @@ class AccountController extends Controller
         return view('welcome');
     }
 
+    public function newPasswordPage(){
+        return view('auth.passwords.email');
+    }
+
     public function newPassword(){
         return view('welcome');
 
+        // A tester !
 
-        // Destinataire
-        $to .= $email;
-        $from_name = 'Les chats libres de Chambery';
-        $from_mail = 'chatslibresdechambery@gmail.com';
-        // Sujet
-        $subject = 'Nouveau mot de passe';
-        // Nouveau mot de passe
-        $newPassword = $this->generatePassword(10);
-        // message
-        $message = "
-            Pour assurer la sécurité de vos informations, nous vous avons assigné un nouveau mot de passe aléatoire.\n 
-            Votre nouveau mot de passe est : ".$newPassword."\n
-            Nous vous conseillons de réinitialiser votre mot de passe immédiatement après vous être connecté.\n
-            \n
-            Cordialement,\n
-            \n
-            Les chats libres de Chambéry
-                ";
-    
-        // En-tête additionnel
-        $headers .= "From: ".$from_name." <".$from_mail."> \r\n";
-    
-        // Envoi
-        mail($to, $subject, $message, $headers);
+        $user = User::where('email',$email) -> first();
+        if($user !== null){
+
+            // Destinataire
+            $to .= $request->input('email');
+            $from_name = 'Les chats libres de Chambery';
+            $from_mail = 'chatslibresdechambery@gmail.com';
+            // Sujet
+            $subject = 'Nouveau mot de passe';
+            // Nouveau mot de passe
+            $newPassword = $this->generatePassword(10);
+            // message
+            $message = "
+                Pour assurer la sécurité de vos informations, nous vous avons assigné un nouveau mot de passe aléatoire.\n 
+                Votre nouveau mot de passe est : ".$newPassword."\n
+                Nous vous conseillons de réinitialiser votre mot de passe immédiatement après vous être connecté.\n
+                \n
+                Cordialement,\n
+                \n
+                Les chats libres de Chambéry
+                    ";
+        
+            // En-tête additionnel
+            $headers .= "From: ".$from_name." <".$from_mail."> \r\n";
+        
+            // Envoi
+            $result = mail($to, $subject, $message, $headers);
+        }
+        if($result == true){
+            $user->password = bcrypt($newPassword);
+            $user->save();
+        }
         return view('welcome');
     }
 

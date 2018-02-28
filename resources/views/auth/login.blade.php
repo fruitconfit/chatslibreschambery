@@ -42,7 +42,7 @@
                     </span>
                 @endif
 	                <label for="Form-pass3">Mot de passe</label>
-	                <p class="font-small grey-text d-flex justify-content-end">Forgot <a href="{{ route('newPassword') }}" class="dark-grey-text ml-1 font-weight-bold"> Password?</a></p>
+	                <p class="font-small grey-text d-flex justify-content-end">Forgot <a href="{{ route('newPasswordPage') }}" class="dark-grey-text ml-1 font-weight-bold"> Password?</a></p>
 	            </div>
 
 
