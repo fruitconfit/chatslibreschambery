@@ -43,4 +43,9 @@ class AccountController extends Controller
         }
         return view('account');
     }
+
+    public function logout(){
+        Auth::logout();
+        return view('welcome');
+    }
 }
