@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/account', 'AccountController@index')->name('account');
 Route::get('/account', 'AccountController@modify')->name('accountModify');
 Route::get('/logout', 'AccountController@logout')->name('logout');
+Route::get('/reset', 'AccountController@newPassword')->name('newPassword');
 Route::get('/admin/groups', 'AdminController@groups')->name('groups');
 Route::get('/admin/groups/delete/{id}', 'AdminController@deleteRole')->name('deleteRole');
 Route::get('/admin/groups/manage', 'AdminController@manageGroups')->name('manageGroups');

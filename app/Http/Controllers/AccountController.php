@@ -15,7 +15,7 @@ class AccountController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('newPassword');
     }
 
     /**
@@ -47,4 +47,45 @@ class AccountController extends Controller
         Auth::logout();
         return view('welcome');
     }
+
+    public function newPassword(){
+        return view('welcome');
+
+
+        // Destinataire
+        $to .= $email;
+        $from_name = 'Les chats libres de Chambery';
+        $from_mail = 'chatslibresdechambery@gmail.com';
+        // Sujet
+        $subject = 'Nouveau mot de passe';
+        // Nouveau mot de passe
+        $newPassword = $this->generatePassword(10);
+        // message
+        $message = "
+            Pour assurer la sécurité de vos informations, nous vous avons assigné un nouveau mot de passe aléatoire.\n 
+            Votre nouveau mot de passe est : ".$newPassword."\n
+            Nous vous conseillons de réinitialiser votre mot de passe immédiatement après vous être connecté.\n
+            \n
+            Cordialement,\n
+            \n
+            Les chats libres de Chambéry
+                ";
+    
+        // En-tête additionnel
+        $headers .= "From: ".$from_name." <".$from_mail."> \r\n";
+    
+        // Envoi
+        mail($to, $subject, $message, $headers);
+        return view('welcome');
+    }
+
+    private function generatePassword($nbChar){
+        $password = "";
+		for($i = 0; $i <= $nbChar; $i++)
+		{
+			$random = rand(97,122);
+			$password .= chr($random);
+		}
+		return $password;
+	}
 }
