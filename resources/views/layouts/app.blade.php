@@ -73,11 +73,11 @@
                         <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-lock"></i> MODULE ADMIN<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><a href="#" class="waves-effect">Gérer utilisateurs</a>
+                                    <li><a href="{{ route('users') }}" class="waves-effect">Gérer utilisateurs</a>
                                     </li>
                                     <li><a href="#" class="waves-effect">Ajouter groupe</a>
                                     </li>
-                                    <li><a href="#" class="waves-effect">Gérer groupes</a>
+                                    <li><a href="{{ route('groups') }}" class="waves-effect">Gérer groupes</a>
                                     </li>
                                 </ul>
                             </div>
@@ -137,7 +137,7 @@
                     <a class="nav-link"><i class="fa fa-comments-o"></i> <span class="clearfix d-none d-sm-inline-block">Support</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./account"><i class="fa fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Account</span></a>
+                    <a class="nav-link" href="{{ route('accountModify') }}"><i class="fa fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Account</span></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
