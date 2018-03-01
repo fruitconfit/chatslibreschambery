@@ -39,6 +39,7 @@ class AccountController extends Controller
                 $user->password = bcrypt($request->input('password'));
             }
             $user->save();
+            Auth::login($user);
         }
         return view('account');
     }
