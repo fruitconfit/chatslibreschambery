@@ -75,9 +75,9 @@
                                 <ul>
                                     <li><a href="{{ route('users') }}" class="waves-effect">Gérer utilisateurs</a>
                                     </li>
-                                    <li><a href="#" class="waves-effect">Ajouter groupe</a>
+                                    <li><a href="#" class="waves-effect">Ajouter role</a>
                                     </li>
-                                    <li><a href="{{ route('groups') }}" class="waves-effect">Gérer groupes</a>
+                                    <li><a href="{{ route('groups') }}" class="waves-effect">Gérer roles</a>
                                     </li>
                                 </ul>
                             </div>
@@ -141,7 +141,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
+                        Menu
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                         @if (null !== Auth::user())
