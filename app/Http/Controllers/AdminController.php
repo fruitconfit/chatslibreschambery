@@ -30,17 +30,29 @@ class AdminController extends Controller
         return view('admin.groups',['roles'=>$this->getAllRole()]);
     }
 
-    
+    public function viewRole()
+    {
+      return view('admin.groups',['roles'=> $this->getAllRole()]);
+    }
+
     public function addRole(Request $request)
     {
+      $message = '';
+      if($request->input('name')!==null)
+      {
         $roles = $this->getAllRole();
-        foreach($roles as $role){
-            if($role->name == $request->input('name')){
-                return view('admin.groups',['roles'=>$roles]);
+        foreach($roles as $role)
+        {
+            if($role->name == $request->input('name'))
+            {
+              $message = 'le role existe déjà';
+                return view('admin.addRole',['message'=>$message]);
             }
         }
         $role = Role::create(['name' => $request->input('name')]);
-        return view('admin.groups',['roles'=> $this->getAllRole()]);
+        $message = 'Le role a bien été ajouté';
+      }
+        return view('admin.addRole',['message'=>$message]);
     }
 
     public function deleteRole($id)
