@@ -14,7 +14,7 @@
     @csrf
     <div class="form-group row">
         {{ Form::select('nameAdd', $roles, null) }}
-            <button type="submit" value="Submit">
+            <button type="submit" class="btn btn-primary" value="Submit">
                 Ajouter ce role
             </button>
     </div>
@@ -23,13 +23,13 @@
     @csrf
     <div class="form-group row">
         {{ Form::select('nameDelete', $roles, null) }}
-            <button type="submit" value="Submit">
+            <button type="submit" class="btn btn-primary" value="Submit">
                 Supprimer ce role
             </button>
     </div>
 </form>
 @if ($user->email !== Auth::user()->email)
-    </br><a href="{{ route('deleteUser',['id'=>$user->id]) }}">Supprimer</a></li>
+    <a href="{{ route('deleteUser',['id'=>$user->id]) }}">Supprimer l'utilisateur</a></br></li>
 @endif
 @endforeach
 </ul>
