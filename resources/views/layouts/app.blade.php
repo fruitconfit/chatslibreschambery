@@ -75,7 +75,7 @@
                                 <ul>
                                     <li><a href="{{ route('users') }}" class="waves-effect">Gérer utilisateurs</a>
                                     </li>
-                                    <li><a href="#" class="waves-effect">Ajouter role</a>
+                                    <li><a href="{{route('addRole')}}" class="waves-effect">Ajouter role</a>
                                     </li>
                                     <li><a href="{{ route('groups') }}" class="waves-effect">Gérer roles</a>
                                     </li>
@@ -156,7 +156,7 @@
         <!-- /.Navbar -->
     </header>
     <!--/.Double navigation-->
-    
+
     <!--Main Layout-->
     <main>
         <div class="container-fluid mt-5">
@@ -169,7 +169,7 @@
     <!-- JQuery -->
     <script type="text/javascript" src="{{ asset('js/compiled.min.js') }}"></script>
     <script>
-        
+
         // SideNav Initialization
         $(".button-collapse").sideNav();
 

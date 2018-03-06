@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<<<<<<< HEAD
-<form method="GET" action="{{ url('/discount/') }}"">
+<form method="GET" action="{{ route('addRole') }}">
     @csrf
 
     <div class="form-group row">
@@ -27,11 +26,7 @@
         </div>
     </div>
 </form>
-=======
->>>>>>> b2bba27c74d91ea9c3f865c520465c2c78de90b9
-<ul>
-@foreach($roles as $role)
-<li>{{ $role->name }}&nbsp;<a href="{{ route('manageGroups') }}">Permission</a>&nbsp;<a href="{{ route('deleteRole',['id'=>$role->id]) }}">Supprimer</a></li>
-@endforeach
-</ul>
+<div>
+  {{$message}}
+</div>
 @endsection
