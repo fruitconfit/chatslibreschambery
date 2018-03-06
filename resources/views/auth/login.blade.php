@@ -30,7 +30,7 @@
                         <strong>{{ $errors->first('email') }}</strong>
                     </span>
                 @endif
-	                <label for="Form-email3">Adresse mail</label>
+	                <label for="Form-email3">Adresse email</label>
 	            </div>
 
 	            <div class="md-form pb-1 pb-md-3">
@@ -42,7 +42,7 @@
                     </span>
                 @endif
 	                <label for="Form-pass3">Mot de passe</label>
-	                <p class="font-small grey-text d-flex justify-content-end">Forgot <a href="{{ route('newPasswordPage') }}" class="dark-grey-text ml-1 font-weight-bold"> Password?</a></p>
+	                <p class="font-small grey-text d-flex justify-content-end"><a href="{{ route('newPasswordPage') }}" class="dark-grey-text ml-1 font-weight-bold">Mot de passe oublié ?</a></p>
 	            </div>
 
 
@@ -52,14 +52,14 @@
 	                <!--Grid column-->
 	                <div class="col-md-1 col-md-5 d-flex align-items-start">
 	                    <div class="text-center">
-	                        <button type="submit" class="btn btn-grey btn-rounded z-depth-1a">Log in</button>
+	                        <button type="submit" class="btn btn-grey btn-rounded z-depth-1a">Se connecter</button>
 	                    </div>
 	                </div>
 	                <!--Grid column-->
 
 	                <!--Grid column-->
 	                <div class="col-md-7">
-	                    <p class="font-small grey-text d-flex justify-content-end mt-3">Don't have an account? <a href="{{ route('register') }}" class="dark-grey-text ml-1 font-weight-bold"> Sign up</a></p>
+	                    <p class="font-small grey-text d-flex justify-content-end mt-3">Vous n'avez pas de compte ? <a href="{{ route('register') }}" class="dark-grey-text ml-1 font-weight-bold">Inscrivez-vous</a></p>
 	                </div>
 	                <!--Grid column-->
 
