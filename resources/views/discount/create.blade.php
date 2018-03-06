@@ -17,7 +17,7 @@
 
             <br>
             <select name="typeDiscount" class="form-control">
-                <option value="typeDiscount1" selected>Don bénévol</option>
+                <option value="typeDiscount1" selected>Don bénévole</option>
                 <option value="typeDiscount2">Subvention</option>
            </select>
 

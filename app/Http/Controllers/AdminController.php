@@ -37,21 +37,18 @@ class AdminController extends Controller
 
     public function addRole(Request $request)
     {
-      $message = '';
-      if($request->input('name')!==null)
-      {
-        $roles = $this->getAllRole();
-        foreach($roles as $role)
-        {
-            if($role->name == $request->input('name'))
-            {
-              $message = 'le role existe déjà';
-                return view('admin.addRole',['message'=>$message]);
+        $message = '';
+        if($request->input('name')!==null){
+            $roles = $this->getAllRole();
+            foreach($roles as $role){
+                if($role->name == $request->input('name')){
+                    $message = 'le role existe déjà';
+                    return view('admin.addRole',['message'=>$message]);
+                }
             }
+            $role = Role::create(['name' => $request->input('name')]);
+            $message = 'Le role a bien été ajouté';
         }
-        $role = Role::create(['name' => $request->input('name')]);
-        $message = 'Le role a bien été ajouté';
-      }
         return view('admin.addRole',['message'=>$message]);
     }
 

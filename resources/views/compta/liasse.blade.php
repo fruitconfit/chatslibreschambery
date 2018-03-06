@@ -35,7 +35,6 @@
                                 <input id="creditate" type="date" value="@if ($liasse->creditate != NULL){{$liasse->creditate}}@endif" name="creditate">
                             </div>
                         </div>
-
                         <div class="form-group row col-md-12">Les champs signalés d'un (*) sont obligatoires.</div>
 
                         <!-- valider le formulaire -->
@@ -43,9 +42,19 @@
                             <label for="submit" class="col-md-4 col-form-label text-md-right">Liste de remise </label>
                             
                             <button type="submit" class="btn btn-primary" value="Submit">Enregistrer</button>
-                            <!-- <button type="impress" class="btn btn-primary" value="Impress">Imprimer</button> -->
+                            <button type="impress" class="btn btn-primary" value="Impress">Imprimer #</button>
+                            <div class="col-md-12">{{$message}}</div>
                         </div>
                     </form>
+                </div>
+            </div>
+            <div class="card card-default">
+                <div class="card-header">Gérer les remises de la liasse</div>
+
+                <div class="card-body">
+                    <div class="form-group row col-md-12">Nombre de remises dans cette liasse : </div>
+                    <div class="form-group row col-md-12">Total en € : </div>
+                    <button type="submit" class="btn btn-primary" value="Submit">Ajouter une remise #</button>
                 </div>
             </div>
         </div>

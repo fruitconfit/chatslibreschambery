@@ -29,6 +29,7 @@ class ComptaController extends Controller
 
     public function manageLiasse(Request $request, $id)
     {
+        $message = '';
         $liasse = Liasse::find($id);
         if ($liasse != NULL){
             //modification de la liasse
@@ -43,7 +44,7 @@ class ComptaController extends Controller
             }
             $liasse->save();
             $liasse = Liasse::find($id);
-            return view('compta.liasse',['liasse'=>$liasse]);
+            $message = 'La liasse a bien été modifiée.';
         } elseif ($request->input('creationDate') != NULL) {
             //on ajoute la liasse
             $liasse = new Liasse();
@@ -58,12 +59,12 @@ class ComptaController extends Controller
             }
             $liasse->save();
             $liasse = Liasse::find($liasse->id);
-            return view('compta.liasse',['liasse'=>$liasse]);
+            $message = 'La liasse a bien été ajoutée.';
         } else {
             //affichage de la page standard
             $liasse = new Liasse();
             $liasse->id = 0;
-            return view('compta.liasse',['liasse'=>$liasse]);
         }
+        return view('compta.liasse',['liasse'=>$liasse],['message'=>$message]);
     }
 }
