@@ -14,7 +14,7 @@ public function create(){
     	return view ('discount.create');
     }
 
-
+//issou
     public function store(DiscountFormRequest $request){
     	$champs = [];
     	$champs["typeDiscount"]=$request->get("typeDiscount");
