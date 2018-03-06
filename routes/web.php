@@ -29,5 +29,6 @@ Route::get('/admin/groups/manage', 'AdminController@manageGroups')->name('manage
 Route::get('/admin/users', 'AdminController@manageUsers')->name('users');
 Route::get('/admin/users/delete/{id}', 'AdminController@deleteUser')->name('deleteUser');
 Route::get('/admin/role/add', 'AdminController@addRole')->name('addRole');
+Route::get('/admin/role/view', 'AdminController@viewRole')->name('viewRole');
 Route::get('/admin/users/add/role/{id}', 'AdminController@addRoleToUser')->name('addRoleToUser');
 Route::get('/admin/users/delete/role/{id}', 'AdminController@deleteRoleToUser')->name('deleteRoleToUser');
