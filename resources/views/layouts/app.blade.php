@@ -85,7 +85,7 @@
                         <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-eur"></i> MODULE COMPTA<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><a href="#" class="waves-effect">Gestion des remises</a>
+                                    <li><a href="{{ url('/discount/add') }}" class="waves-effect">Ajout des remises</a>
                                     </li>
                                     <li><a href="#" class="waves-effect">Consulter le bilan</a>
                                     </li>

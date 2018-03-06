@@ -31,3 +31,7 @@ Route::get('/admin/users/delete/{id}', 'AdminController@deleteUser')->name('dele
 Route::get('/admin/role/add', 'AdminController@addRole')->name('addRole');
 Route::get('/admin/users/add/role/{id}', 'AdminController@addRoleToUser')->name('addRoleToUser');
 Route::get('/admin/users/delete/role/{id}', 'AdminController@deleteRoleToUser')->name('deleteRoleToUser');
+
+
+Route::get('/discount/create','DiscountController@create')->name('discount.create');
+Route::post('/discout/create','DiscountController@store')->name('discount.store');

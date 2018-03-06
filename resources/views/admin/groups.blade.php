@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<form method="GET" action="{{ route('addRole') }}">
+<form method="GET" action="{{ url('/discount/') }}"">
     @csrf
 
     <div class="form-group row">
