@@ -87,7 +87,7 @@
                                 <ul>
                                     <li><a href="{{ route('manageLiasse',0) }}" class="waves-effect">Gestion des remises</a>
 									</li>
-                                    <li><a href="{{ url('/discount/add') }}" class="waves-effect">Ajout des remises</a>
+                                    <li><a href="{{ route('discount.create') }}" class="waves-effect">Ajout des remises</a>
                                     </li>
                                     <li><a href="#" class="waves-effect">Consulter le bilan</a>
                                     </li>
