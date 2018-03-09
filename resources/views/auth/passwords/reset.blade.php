@@ -3,9 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card card-default">
-                <div class="card-header">Réinitialiser le mot de passe</div>
+                <div class="card-header">Réinitialisation mot de passe</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('password.request') }}">
