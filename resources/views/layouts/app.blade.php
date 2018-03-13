@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'M.I.A.O.U') }}</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -85,7 +85,9 @@
                         <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-eur"></i> MODULE COMPTA<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><a href="#" class="waves-effect">Gestion des remises</a>
+                                    <li><a href="{{ route('manageLiasse',0) }}" class="waves-effect">Gestion des remises</a>
+									</li>
+                                    <li><a href="{{ route('discount.create') }}" class="waves-effect">Ajout des remises</a>
                                     </li>
                                     <li><a href="#" class="waves-effect">Consulter le bilan</a>
                                     </li>
@@ -134,23 +136,25 @@
                     <a class="nav-link"><i class="fa fa-envelope"></i> <span class="clearfix d-none d-sm-inline-block">Contact</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"><i class="fa fa-comments-o"></i> <span class="clearfix d-none d-sm-inline-block">Support</span></a>
+                    <a class="nav-link"><i class="fa fa-comments-o"></i> <span class="clearfix d-none d-sm-inline-block">Aide</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('accountModify') }}"><i class="fa fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Account</span></a>
+                    <a class="nav-link" href="{{ route('accountModify') }}"><i class="fa fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Compte</span></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Menu
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        @if (null !== Auth::user())
-                            <a class="dropdown-item" href="{{ route('logout')}}">Logout</a>
-                        @endif
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="#">Une autre action action</a>
+                        <a class="dropdown-item" href="#">Encore une autre</a>
                     </div>
                 </li>
+                @if (null !== Auth::user())
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('logout')}}"><i class="fa fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Se déconnecter</span></a>
+                    </li>
+                @endif
             </ul>
         </nav>
         <!-- /.Navbar -->
