@@ -43,7 +43,7 @@ class AccountController extends Controller
             }
             $user->save();
             Auth::login($user);
-            $message = 'Vos informations ont été modifiées';
+            $messageValida = 'Vos informations ont été modifiées';
         }
         return view('account',['messageValida'=>$messageValida]);
     }

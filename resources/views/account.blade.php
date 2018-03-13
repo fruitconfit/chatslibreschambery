@@ -69,6 +69,9 @@
                             </div>
                         </div>
                     </form>
+                    <div>
+                      {{$messageValida}}
+                    </div>
                 </div>
             </div>
         </div>
