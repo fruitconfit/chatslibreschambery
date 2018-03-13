@@ -67,6 +67,7 @@
                                     Modifier
                                 </button>
                             </div>
+                            <div class="col-md-12">{{$message}}</div>
                         </div>
                     </form>
                 </div>

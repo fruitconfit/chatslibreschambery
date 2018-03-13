@@ -5,10 +5,16 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card card-default">
-                <div class="card-header">Ajouter une liasse</div>
+                <div class="card-header">
+                @if ($liasse->id == 0)
+                    Ajouter une liasse
+                @elseif ($liasse->id > 0)
+                    Modifier la liasse
+                @endif
+                </div>
 
                 <div class="card-body">
-                    <form method="GET" action="{{ route('manageLiasse',$liasse->id) }}">
+                    <form method="GET" action="{{ route('modifyLiasse',$liasse->id) }}">
                         @csrf
                         <!-- date de création -->
                         <div class="form-group row">
@@ -52,9 +58,48 @@
                 <div class="card-header">Gérer les remises de la liasse</div>
 
                 <div class="card-body">
-                    <div class="form-group row col-md-12">Nombre de remises dans cette liasse : </div>
-                    <div class="form-group row col-md-12">Total en € : </div>
-                    <button type="submit" class="btn btn-primary" value="Submit">Ajouter une remise #</button>
+                    <div class="form-group row col-md-12">Nombre de remises dans cette liasse : {{ DB::table('discounts')->count(DB::raw('DISTINCT id')) }}</div>
+                    <div class="form-group row col-md-12">Total en € : {{ DB::table('discounts')->sum(DB::raw('DISTINCT priceDiscount')) }}</div>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Type de remise</th>
+                                            <th>Banque</th>
+                                            <th>Emetteur</th>
+                                            <th>Date de la remise</th>
+                                            <th>Montant</th>
+                                            <th>Type de recette</th>
+                                            <th>Chat concerné</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($discounts as $discount)
+                                        <tr>
+                                            <td>{{ $discount->id }}</td>
+                                            <td>{{ $discount->typeDiscount }}</td>
+                                            <td>{{ $discount->nameBank }}</td>
+                                            <td>{{ $discount->nameSender }}</td>
+                                            <td>{{ $discount->dateDiscount }}</td>
+                                            <td>{{ $discount->priceDiscount }}</td>
+                                            <td>{{ $discount->recipeType }}</td>
+                                            <td>{{ $discount->cat }}</td>
+                                            <td><a href="{{ route('discount.create') }}" class="waves-effect">Modifier</a></td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form action="{{ route('discount.create') }}">
+                        <input type="submit" class="btn btn-primary" value="Ajouter une remise" />
+                    </form>
                 </div>
             </div>
         </div>

@@ -15,7 +15,11 @@
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
-                                            <th>{{ $user->name }}</th>
+                                            <th>{{ $user->name }} 
+                                            @if ($user->email !== Auth::user()->email)
+                                                <a href="{{ route('deleteUser',['id'=>$user->id]) }}">(Supprimer)</a></br></br>
+                                            @endif
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -48,9 +52,6 @@
                                 </form>
                             </div>
                         </div>
-                        @if ($user->email !== Auth::user()->email)
-                            <a href="{{ route('deleteUser',['id'=>$user->id]) }}">Supprimer l'utilisateur</a></br>
-                        @endif
                     </div>
                      @endforeach
                 </div>

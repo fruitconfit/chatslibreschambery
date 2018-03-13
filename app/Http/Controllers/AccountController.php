@@ -30,7 +30,9 @@ class AccountController extends Controller
 
     public function modify(Request $request)
     {
+        $message = '';
         if(null !== $request->input('email')){
+            $message = 'Vos informations ont bien été enregistrées.';
             $id = Auth::user()->id;
             $user = User::find($id);
             $user->name = $request->input('name');
@@ -41,7 +43,7 @@ class AccountController extends Controller
             $user->save();
             Auth::login($user);
         }
-        return view('account');
+        return view('account',['message'=>$message]);
     }
 
     public function logout(){

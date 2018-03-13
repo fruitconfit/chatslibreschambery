@@ -23,7 +23,13 @@ class CreateDiscountsTable extends Migration
             $table->string('recipeType');
             $table->string('cat');
             $table->text('description');
+            $table->integer('id_liasse')->unsigned();
             $table->timestamps();
+
+            $table->foreign('id_liasse')
+                ->references('id')
+                ->on($tableNames['liasses'])
+                ->onDelete('cascade');
         });
     }
 

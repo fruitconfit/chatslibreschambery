@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Liasse;
+use App\Discount;
 
 class ComptaController extends Controller
 {
@@ -27,7 +29,7 @@ class ComptaController extends Controller
         return view('compta.liasse');
     }
 
-    public function manageLiasse(Request $request, $id)
+    public function modifyLiasse(Request $request, $id)
     {
         $message = '';
         $liasse = Liasse::find($id);
@@ -65,6 +67,31 @@ class ComptaController extends Controller
             $liasse = new Liasse();
             $liasse->id = 0;
         }
-        return view('compta.liasse',['liasse'=>$liasse],['message'=>$message]);
+        return view('compta.liasse',['liasse'=>$liasse,'discounts'=>$this->getAllDiscounts(),'message'=>$message]);
+    }
+
+    public function manageLiasse(Request $request)
+    {
+        return view('compta.listLiasse',['liasses'=>$this->getAllLiasses()]);
+    }
+
+    private function getAllLiasses(){
+        $liasses = DB::table('liasses')->get();
+        $listLiasses = array();
+        foreach($liasses as $liasse){
+            $liasseTemp = Liasse::find($liasse->id);
+            array_push($listLiasses, $liasseTemp);
+        }
+        return $listLiasses;
+    }
+
+    private function getAllDiscounts(){
+        $discounts = DB::table('discounts')->get();
+        $listDiscounts = array();
+        foreach($discounts as $discount){
+            $discountTemp = Discount::find($discount->id);
+            array_push($listDiscounts, $discountTemp);
+        }
+        return $listDiscounts;
     }
 }
