@@ -30,18 +30,22 @@ class AccountController extends Controller
 
     public function modify(Request $request)
     {
-        if(null !== $request->input('email')){
+      $messageValida = '';
+        if(null !== $request->input('email'))
+        {
             $id = Auth::user()->id;
             $user = User::find($id);
             $user->name = $request->input('name');
             $user->email = $request->input('email');
-            if($request->input('password') != ''){
+            if($request->input('password') != '')
+            {
                 $user->password = bcrypt($request->input('password'));
             }
             $user->save();
             Auth::login($user);
+            $message = 'Vos informations ont été modifiées';
         }
-        return view('account');
+        return view('account',['messageValida'=>$messageValida]);
     }
 
     public function logout(){
@@ -71,7 +75,7 @@ class AccountController extends Controller
             $newPassword = $this->generatePassword(10);
             // message
             $message = "
-                Pour assurer la sécurité de vos informations, nous vous avons assigné un nouveau mot de passe aléatoire.\n 
+                Pour assurer la sécurité de vos informations, nous vous avons assigné un nouveau mot de passe aléatoire.\n
                 Votre nouveau mot de passe est : ".$newPassword."\n
                 Nous vous conseillons de réinitialiser votre mot de passe immédiatement après vous être connecté.\n
                 \n
@@ -79,10 +83,10 @@ class AccountController extends Controller
                 \n
                 Les chats libres de Chambéry
                     ";
-        
+
             // En-tête additionnel
             $headers .= "From: ".$from_name." <".$from_mail."> \r\n";
-        
+
             // Envoi
             $result = mail($to, $subject, $message, $headers);
         }
