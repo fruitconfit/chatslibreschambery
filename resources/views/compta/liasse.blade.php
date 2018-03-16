@@ -45,8 +45,6 @@
 
                         <!-- valider le formulaire -->
                         <div class="form-group row mb-0">
-                            <label for="submit" class="col-md-4 col-form-label text-md-right">Liste de remise </label>
-                            
                             <button type="submit" class="btn btn-primary" value="Submit">Enregistrer</button>
                             <button type="impress" class="btn btn-primary" value="Impress">Imprimer #</button>
                             <div class="col-md-12">{{$message}}</div>
