@@ -1,59 +1,88 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# Les chats libres de Chambéry - MIAOU
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Installation local Windows: 
+- Installer WAMP (PHP: 7.1.9)
+    - En cas de probléme ne pas oublier d'installer les VC (http://forum.wampserver.com/read.php?1,137154)
+- Installer Composer
+- Installer git bash
+- Ouvrir git bash et se déplacer dans le répertoire /wamp/www/
+    - `cd /wamp/www/`
+    - ou `cd /wamp64/www/`
+- Clonner le projet
+    - `git clone https://github.com/AlexandrePiot/chatslibreschambery.git`
+- Télécharger les librairies pour le projet
+    - `composer install`
+- Créer le fichier de conf
+    - `touch .env`
+- Copier le fichier de config existant (.env.example) dans le fichier de config nouvellement créé.
+- Changer les configurations pour l'accés à la base de données.
+- Lancer WAMP 
+    - WAMP est correctement lancer quand l'icone carré avec un 'W' en bas à droite est verte
+- Vérifier que PHP est en version 7.1.9
+    - Clique gauche sur l'icone verte de WAMP en bas à droite
+    - Déplacer le curseur sur PHP -> Version
+    - Si la version actuel n'est pas 7.1.9 cliquer sur 7.1.9
+- Créer une base de données avec le nom choisis dans la configuration dans PHPMyAdmin.
+- Mettre à jour la base de données: 
+    - Dans GitBash à l'endroit du projet faire la commande `php artisan migrate`
+- Le projet est installé et démarré vous pouvez y accéder sur `localhost/chatslibreschambery/public/` dans votre navigateur favori
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+ ## Mettre à jour le projet:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+ - Récupérer les derniers changement
+    - `git pull` dans le projet
+- Mettre à jour les dépendances ( librairies )
+    - `composer install`
+- Mettre à jour la base de donnée
+    - `php artisan migrate:refresh` 
+    - /!\ Cette commande supprime actuellement toute les données dans la base /!\
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
+## Faire un commit
 
-## Learning Laravel
+- Modifier du code
+- Voir l'ensemble des fichiers modifiés
+    - `git status`
+    - Les fichiers en rouge sont les fichiers non 'commiter'
+    - Les fichier en vert sont les fichiers 'commiter'
+- Ajouter un fichier a 'commiter'
+    - `git add nom_de_mon_fichier`
+- Vérifier que le fichier est bien a 'commiter'
+    - `git status`
+    - Le fichier est en vert
+- Ajouter un si de suite tout les fichiers qui doivent être commité 
+    - Ne pas commité .env.example si vous l'avez supprimé
+- Une fois tout les fichiers souhaités en vert, donner un nom CLAIR et consis à ce commit
+    - `git commit -m'nom clair de mon commit'`
+- Envoyer le commit à Github
+    - `git push`
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
+ ## Ajouter une fonctionnalité:
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Pulse Storm](http://www.pulsestorm.net/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Créer une nouvelle branche :
+ - Sur la branch Master : `git pull`
+ - Créer une nouvelle branche :
+    - `git checkout -b ma_nouvelle_branche`
+    - -b comme bouvelle branche
+- Faire son code ...
+### Ramener la fonctionalité sur le master :
+- Se déplacer sur master 
+    - `git checkout master`
+- Récupérer les derniers changements 
+    - `git pull`
+- Se déplacer sur ma_nouvelle_branche
+    - `git checkout ma_nouvelle_branche`
+- Ramener le nouveau code de master dans ma branche
+    - `git merge master`
+    - /!\ Attention aux conflits !!! /!\
+- Verifier que tout marche
+- Se déplacer sur master 
+    - `git checkout master`
+- Récupérer les derniers changements 
+    - `git pull`
+    - Si aucun changement ramener ma branche sur master
+    - `git merge ma_nouvelle_branche`
+    - Il ne doit pas y avoir de conflit
+- Vérifier que tout marche
+- Envoyer le code sur Github
+    - `git push`
