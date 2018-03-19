@@ -27,8 +27,8 @@
 
             <br>
             <select name="typeDiscount" class="form-control">
-                <option value="typeDiscount1" selected>Don bénévole</option>
-                <option value="typeDiscount2">Subvention</option>
+                <option value="Don bénévole" selected>Don bénévole</option>
+                <option value="Subvention">Subvention</option>
            </select>
 
             <br>
@@ -53,15 +53,15 @@
             <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Type de recette</label>
             <br>
             <select name="recipeType" class="form-control">
-                <option value="typeDiscount1" selected>Recette1</option>
-                <option value="typeDiscount2">Recette2</option>
+                <option value="recette1" selected>Recette1</option>
+                <option value="recette2">Recette2</option>
            </select>
             <br>
             <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Chat concerné</label>
             <br>
             <select name="cat" class="form-control">
-                <option value="typeDiscount1" selected>Chat1</option>
-                <option value="typeDiscount2">Chat2</option>
+                <option value="chat1" selected>Chat1</option>
+                <option value="chat2">Chat2</option>
            </select>
             <br>
 

@@ -29,8 +29,8 @@
 
             <br>
             <select name="typeDiscount" class="form-control">
-                <option value="typeDiscount1" @if ($discount->typeDiscount == 'typeDiscount1') selected @endif >Don bénévole</option>
-                <option value="typeDiscount2" @if ($discount->typeDiscount == 'typeDiscount2') selected @endif >Subvention</option>
+                <option value="Don bénévole" @if ($discount->typeDiscount == 'Don bénévole') selected @endif >Don bénévole</option>
+                <option value="Subvention" @if ($discount->typeDiscount == 'Subvention') selected @endif >Subvention</option>
            </select>
 
             <br>
