@@ -86,7 +86,7 @@
                                             <td>{{ $discount->priceDiscount }}</td>
                                             <td>{{ $discount->recipeType }}</td>
                                             <td>{{ $discount->cat }}</td>
-                                            <td><a href="{{ url('discount/edit/'.$discount->id) }}" class="waves-effect">Modifier</a></td>
+                                            <td><a href="{{ route('discount.create') }}" class="waves-effect">Modifier</a></td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -95,9 +95,12 @@
                         </div>
                     </div>
 
-                    <form action="{{ route('discount.create') }}">
-                        <input type="submit" class="btn btn-primary" value="Ajouter une remise" />
-                    </form>
+                    @if ($liasse->id > 0)
+                        <form action="{{ route('discount.create') }}">
+                            <input type="submit" class="btn btn-primary" value="Ajouter une remise" />
+                        </form>
+                    @endif
+                    
                 </div>
             </div>
         </div>

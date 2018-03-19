@@ -50,6 +50,8 @@
                                 <label for="defaultFormCardNameEx" class="font-weight-light">Date de la remise</label>
                                 <input type="date" name="dateDiscount" class="form-control" value="{{ $discount->dateDiscount }}">
                                 
+                                <br>
+                                
                                 <label for="defaultFormCardNameEx" class="font-weight-light">Montant de la remise</label>
                                 <input type="text" name="priceDiscount" class="form-control" value="{{ $discount->priceDiscount }}">
                                 
