@@ -55,15 +55,15 @@
             <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Type de recette</label>
             <br>
             <select name="recipeType" class="form-control">
-                <option value="typeDiscount1"  @if ($discount->recipeType == 'typeDiscount1') selected @endif >Recette1</option>
-                <option value="typeDiscount2"  @if ($discount->recipeType == 'typeDiscount2') selected @endif >Recette2</option>
+                <option value="recette1"  @if ($discount->recipeType == 'recette1') selected @endif >Recette1</option>
+                <option value="recette2"  @if ($discount->recipeType == 'recette2') selected @endif >Recette2</option>
            </select>
             <br>
             <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Chat concerné</label>
             <br>
             <select name="cat" class="form-control">
-                <option value="typeDiscount1"  @if ($discount->cat == 'typeDiscount1') selected @endif >Chat1</option>
-                <option value="typeDiscount2" @if ($discount->cat == 'typeDiscount2') selected @endif >Chat2</option>
+                <option value="chat1"  @if ($discount->cat == 'chat1') selected @endif >Chat1</option>
+                <option value="chat2" @if ($discount->cat == 'chat2') selected @endif >Chat2</option>
            </select>
             <br>
 
