@@ -28,7 +28,7 @@ class CreateDiscountsTable extends Migration
 
             $table->foreign('id_liasse')
                 ->references('id')
-                ->on($tableNames['liasses'])
+                ->on('liasses')
                 ->onDelete('cascade');
         });
     }

@@ -10,7 +10,7 @@ class DiscountController extends Controller
 {
     //
 
-public function create(){
+    public function create(){
     	return view ('discount.create');
     }
 
@@ -30,4 +30,23 @@ public function create(){
 
     	return redirect()->route('discount.create');
     }
+
+
+    public function update(DiscountFormRequest $request) {
+    	$discount = Discount::findOrFail($request->get('id'));
+    	
+        $discount->typeDiscount = $request->get('typeDiscount');
+        $discount->nameBank = $request->get("nameBank");
+        $discount->nameSender = $request->get("nameSender");
+        $discount->dateDiscount = $request->get("dateDiscount");
+        $discount->priceDiscount = $request->get("priceDiscount");
+        $discount->recipeType = $request->get("recipeType");
+        $discount->cat = $request->get("cat");
+        $discount->description = $request->get("description");
+
+        $discount->save();
+
+        return redirect()->route('manageLiasse');
+    }
+
 }

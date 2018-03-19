@@ -35,4 +35,8 @@ Route::get('/admin/users/delete/role/{id}', 'AdminController@deleteRoleToUser')-
 Route::get('/compta/listLiasse', 'ComptaController@manageLiasse')->name('manageLiasse');
 Route::get('/compta/liasse/{id}', 'ComptaController@modifyLiasse')->name('modifyLiasse');
 Route::get('/discount/create','DiscountController@create')->name('discount.create');
-Route::post('/discout/create','DiscountController@store')->name('discount.store');
+Route::post('/discount/create','DiscountController@store')->name('discount.store');
+Route::get('/discount/edit/{id}', function($id){
+	return view('discount.edit')->with('discount', App\Discount::findOrFail($id));
+});
+Route::post('/discount/edit', 'DiscountController@update')->name('discount.update');
