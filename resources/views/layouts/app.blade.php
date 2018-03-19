@@ -87,8 +87,6 @@
                                 <ul>
                                     <li><a href="{{ route('manageLiasse') }}" class="waves-effect">Gestion des liasses</a>
 									</li>
-                                    <li><a href="{{ route('discount.create') }}" class="waves-effect">Ajout des remises</a>
-                                    </li>
                                     <li><a href="#" class="waves-effect">Consulter le bilan</a>
                                     </li>
                                     <li><a href="#" class="waves-effect">Consulter détail factures</a>
