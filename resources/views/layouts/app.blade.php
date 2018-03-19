@@ -167,9 +167,10 @@
     </main>
     <!--Main Layout-->
 
-    <!-- SCRIPTS -->
     <!-- JQuery -->
     <script type="text/javascript" src="{{ asset('js/compiled.min.js') }}"></script>
+    <!-- SCRIPTS -->
+    <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
     <script>
 
         // SideNav Initialization
