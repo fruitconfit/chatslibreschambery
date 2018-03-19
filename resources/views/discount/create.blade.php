@@ -27,7 +27,6 @@
                             <option value="Don" selected>Don bénévole</option>
                             <option value="Subvention">Subvention</option>
                     </select>
-
                         <br>
                         <!-- Default input name -->
                         <label for="defaultFormCardNameEx" class="font-weight-light">Nom de la banque</label>
@@ -61,12 +60,9 @@
                             <option value="Chat2">Chat2</option>
                     </select>
                         <br>
-
                         <label for="defaultFormCardNameEx" class="font-weight-light">Informations supplémentaires</label>
                         <textarea name="description" class="form-control" style="height:100px"></textarea>
                         
-
-
                         <div class="text-center py-4 mt-3">
                             <button class="btn btn-primary"  type="submit">Ajouter la remise<i class="fa fa-paper-plane-o ml-2"></i></button>
                         </div>
