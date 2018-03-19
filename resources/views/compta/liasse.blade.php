@@ -13,7 +13,7 @@
                 @endif
                 </div>
 
-                <div class="card-body">
+                <div class="card-body mx-4 mt-4">
                     <form method="GET" action="{{ route('modifyLiasse',$liasse->id) }}">
                         @csrf
                         <!-- date de création -->
