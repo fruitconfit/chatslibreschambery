@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class Discount extends Model
 {
-       protected $fillable = [
+    protected $fillable = [
         'typeDiscount', 
         'nameBank', 
         'nameSender',
