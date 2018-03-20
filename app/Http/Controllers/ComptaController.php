@@ -97,4 +97,11 @@ class ComptaController extends Controller
         }
         return $listDiscounts;
     }
+
+    public function createFacture()
+    {
+      //fonction de création de factures
+      //Théo 20/03/2018
+      return view ('compta.facture');
+    }
 }

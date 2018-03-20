@@ -40,3 +40,4 @@ Route::get('/discount/edit/{id}', function($id){
 	return view('discount.edit')->with('discount', App\Discount::findOrFail($id));
 });
 Route::post('/discount/edit', 'DiscountController@update')->name('discount.update');
+Route::post('/compta/facture', 'ComptaController@createFacture')->name('facture.create');
