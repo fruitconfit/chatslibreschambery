@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('css/compiled.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.16/af-2.2.2/b-1.5.1/b-colvis-1.5.1/b-html5-1.5.1/b-print-1.5.1/r-2.2.1/sl-1.2.5/datatables.min.css"/>
 
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
 
@@ -91,9 +92,9 @@
                                     </li>
                                     <li class="d-none"><a href="#" class="waves-effect">Consulter détail factures</a>
                                     </li>
-                                    <li class="d-none"><a href="#" class="waves-effect">Ajouter facture</a>
+                                    <li><a href="{{ route('invoices.create') }}" class="waves-effect">Ajouter facture</a>
                                     </li>
-                                    <li class="d-none"><a href="#" class="waves-effect">Gérer factures</a>
+                                    <li><a href="{{ route('invoices.index') }}" class="waves-effect">Gérer factures</a>
                                     </li>
                                     <li class="d-none"><a href="#" class="waves-effect">Gestion contact fournisseurs</a>
                                     </li>
@@ -169,13 +170,18 @@
 
     <!-- JQuery -->
     <script type="text/javascript" src="{{ asset('js/compiled.min.js') }}"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.16/af-2.2.2/b-1.5.1/b-colvis-1.5.1/b-html5-1.5.1/b-print-1.5.1/r-2.2.1/sl-1.2.5/datatables.min.js"></script>
     <!-- SCRIPTS -->
     <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
     <script>
-
         // SideNav Initialization
         $(".button-collapse").sideNav();
 
+        @if (session('success'))
+            toastr.success('{{ session('success') }}');
+        @endif
     </script>
+
+    @yield('script')
 </body>
 </html>
