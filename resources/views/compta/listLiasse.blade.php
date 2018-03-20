@@ -10,6 +10,7 @@
                 <div class="card-body">
                     <div class="form-group row col-md-12">Nombre de liasses : {{ DB::table('liasses')->count(DB::raw('DISTINCT id')) }}</div>
 
+
                     <div class="container">
                         <div class="row">
                             <div class="col-sm">

@@ -20,6 +20,8 @@
                 <div class="card-body"> 
                     <form method="POST" action="{{ route('discount.store') }}">
                     @csrf
+                    <input type="number" name="id_liasse" value="{{$id_liasse}}" class="d-none">
+
                         <label for="defaultFormCardNameEx" class="font-weight-light">Type de remise</label>
 
                         <br>

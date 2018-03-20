@@ -82,7 +82,7 @@
                     M.I.A.O.U
                 </div>
                 <div class="text-muted mr-auto">
-                    <p><strong>M</strong>odules d'<strong>I</strong>nformation, d'<strong>A</strong>dministration et d'<strong>O</strong>rganisation <strong>U</strong>nifiés (M.I.A.O.U)</p>
+                    <p><strong>M</strong>odules d'<strong>I</strong>nformation, d'<strong>A</strong>dministration et d'<strong>O</strong>rganisation <strong>U</strong>nifiés</p>
                 </div>
             </div>
         </div>

@@ -5,7 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card card-default">
+
                 <div class="card-header">Gérer les rôles</div>
+
                 <div class="card-body col-md-6 offset-md-3">
                     <table class="table table-striped table-bordered">
                         <thead class="font-weight-bold">
@@ -24,13 +26,13 @@
                         </tbody>
                     </table>
                 </div>
-                    <form action="{{ route('addRole') }}">
-                        <div class="card-body row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <input type="submit" class="btn btn-primary" value="Ajouter un role" />
-                            </div>
+                <form action="{{ route('addRole') }}">
+                    <div class="card-body row mb-0">
+                        <div class="col-md-6 offset-md-4">
+                            <input type="submit" class="btn btn-primary" value="Ajouter un role" />
                         </div>
-                    </form>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

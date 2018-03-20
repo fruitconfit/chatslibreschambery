@@ -30,12 +30,18 @@ class ComptaController extends Controller
         return view('compta.liasse');
     }
 
+    // Par Anaïs le ...
+    // Retrouve la liasse par son id (si elle existe)
+    //  L'ajoute si elle n'existe pas et que les champs ne sont pas remplis
+    //  La modifie si des champs ont été remplis ou modifiés
+    //  Sinon on affiche la page d'ajout d'une nouvelle liasse
     public function modifyLiasse(Request $request, $id)
     {
         $message = '';
         $liasse = Liasse::find($id);
+
+        // Modification de la liasse
         if ($liasse != NULL){
-            //modification de la liasse
             if ( $request->input('creationDate') != NULL){
                 $liasse->creationDate = $request->input('creationDate');
                 $message = 'La liasse a bien été modifiée.';
@@ -50,8 +56,9 @@ class ComptaController extends Controller
             }
             $liasse->save();
             $liasse = Liasse::find($id);
+
+        // Ajout de la liasse
         } elseif ($request->input('creationDate') != NULL) {
-            //on ajoute la liasse
             $liasse = new Liasse();
             if ( $request->input('creationDate') != NULL){
                 $liasse->creationDate = $request->input('creationDate');
@@ -65,36 +72,25 @@ class ComptaController extends Controller
             $liasse->save();
             $liasse = Liasse::find($liasse->id);
             $message = 'La liasse a bien été ajoutée.';
+            
+        // Affiche la page de création de liasse
         } else {
-            //affichage de la page standard
             $liasse = new Liasse();
             $liasse->id = 0;
         }
-        return view('compta.liasse',['liasse'=>$liasse,'discounts'=>$this->getAllDiscounts(),'message'=>$message]);
+        return view('compta.liasse',
+            ['liasse'=>$liasse,
+            'discounts'=>Liasse::getAllDiscountByLiasseId($liasse->id),
+            'total_price'=>Liasse::liasseTotalPrice($liasse->id),
+            'nb_discount'=>Liasse::liasseTotalDiscount($liasse->id),
+            'message'=>$message]);
     }
 
+    // Par Anaïs le ...
+    // Affiche la liste de toutes les liasses
     public function manageLiasse(Request $request)
     {
-        return view('compta.listLiasse',['liasses'=>$this->getAllLiasses()]);
+        return view('compta.listLiasse',['liasses'=>Liasse::getAllLiasses()]);
     }
 
-    private function getAllLiasses(){
-        $liasses = DB::table('liasses')->get();
-        $listLiasses = array();
-        foreach($liasses as $liasse){
-            $liasseTemp = Liasse::find($liasse->id);
-            array_push($listLiasses, $liasseTemp);
-        }
-        return $listLiasses;
-    }
-
-    private function getAllDiscounts(){
-        $discounts = DB::table('discounts')->get();
-        $listDiscounts = array();
-        foreach($discounts as $discount){
-            $discountTemp = Discount::find($discount->id);
-            array_push($listDiscounts, $discountTemp);
-        }
-        return $listDiscounts;
-    }
 }
