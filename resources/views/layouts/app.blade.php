@@ -87,6 +87,8 @@
                                 <ul>
                                     <li><a href="{{ route('manageLiasse') }}" class="waves-effect">Gestion des liasses</a>
 									</li>
+                                    <li><a href="{{ route('manageFournisseur') }}" class="waves-effect">Gestion des fournisseurs</a>
+                                    </li>
                                     <li class="d-none"><a href="#" class="waves-effect">Consulter le bilan</a>
                                     </li>
                                     <li class="d-none"><a href="#" class="waves-effect">Consulter détail factures</a>
@@ -94,8 +96,6 @@
                                     <li class="d-none"><a href="#" class="waves-effect">Ajouter facture</a>
                                     </li>
                                     <li class="d-none"><a href="#" class="waves-effect">Gérer factures</a>
-                                    </li>
-                                    <li class="d-none"><a href="#" class="waves-effect">Gestion contact fournisseurs</a>
                                     </li>
                                 </ul>
                             </div>
