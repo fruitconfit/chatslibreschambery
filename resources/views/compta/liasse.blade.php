@@ -20,7 +20,7 @@
                         <div class="form-group row">
                             <label for="creationDate" class="col-md-4 col-form-label text-md-right">Créée le (*) </label>
                             <div class="col-md-6">
-                                <input id="creationDate" type="date" value="@if ($liasse->creationDate != NULL){{$liasse->creationDate}}@endif" name="creationDate" required>
+                                <input id="creationDate" type="date" value="@if ($liasse->creationDate != NULL){{$liasse->creationDate}} @endif" name="creationDate" required>
                             </div>
                         </div>
 
@@ -45,9 +45,11 @@
 
                         <!-- valider le formulaire -->
                         <div class="form-group row mb-0">
-                            <button type="submit" class="btn btn-primary" value="Submit">Enregistrer</button>
-                            <button type="impress" class="btn btn-primary" value="Impress">Imprimer #</button>
-                            <div class="col-md-12">{{$message}}</div>
+                            <div class="col-md-6 offset-md-3">
+                                <button type="submit" class="btn btn-primary" value="Submit">Enregistrer</button>
+                                <button type="impress" class="btn btn-primary" value="Impress">Imprimer #</button>
+                                <div class="col-md-12">{{$message}}</div>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -57,15 +59,15 @@
 
                 <div class="card-body">
                     <div class="form-group row col-md-12">Nombre de remises dans cette liasse : {{ DB::table('discounts')->count(DB::raw('DISTINCT id')) }}</div>
-                    <div class="form-group row col-md-12">Total en € : {{ DB::table('discounts')->sum(DB::raw('DISTINCT priceDiscount')) }}</div>
+                    <div class="form-group row col-md-12">Total : {{ DB::table('discounts')->sum(DB::raw('DISTINCT priceDiscount')) }} €</div>
 
                     <div class="container">
                         <div class="row">
                             <div class="col-sm">
                                 <table class="table table-striped table-bordered table-hover">
-                                    <thead>
+                                    <thead class="font-weight-bold">
                                         <tr>
-                                            <th>ID</th>
+                                            <th>Ref</th>
                                             <th>Type de remise</th>
                                             <th>Banque</th>
                                             <th>Emetteur</th>
@@ -86,7 +88,7 @@
                                             <td>{{ $discount->priceDiscount }}</td>
                                             <td>{{ $discount->recipeType }}</td>
                                             <td>{{ $discount->cat }}</td>
-                                            <td><a href="{{ route('discount.create') }}" class="waves-effect">Modifier</a></td>
+                                            <td class="text-center"><a href="{{ url('discount/edit/'.$discount->id) }}" class="waves-effect"><i class="fa fa-edit"></i></a></td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -97,7 +99,11 @@
 
                     @if ($liasse->id > 0)
                         <form action="{{ route('discount.create') }}">
-                            <input type="submit" class="btn btn-primary" value="Ajouter une remise" />
+                            <div class="form-group row mb-0">
+                                <div class="col-md-6 offset-md-4">
+                                    <input type="submit" class="btn btn-primary" value="Ajouter une remise" />
+                                </div>
+                            </div>
                         </form>
                     @endif
                     

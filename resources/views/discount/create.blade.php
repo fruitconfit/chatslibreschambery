@@ -65,9 +65,11 @@
                         <label for="defaultFormCardNameEx" class="font-weight-light">Informations supplémentaires</label>
                         <textarea name="description" class="form-control" style="height:100px"></textarea>
                         
-                        <div class="text-center py-4 mt-3">
-                            <button class="btn btn-primary"  type="submit">Ajouter la remise<i class="fa fa-paper-plane-o ml-2"></i></button>
-                        </div>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button class="btn btn-primary" type="submit">Ajouter la remise</button>
+                            </div>
+                        </div
                     </form>
                 </div><!-- Card -->
             </div>

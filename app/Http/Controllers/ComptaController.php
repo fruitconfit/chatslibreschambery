@@ -38,16 +38,18 @@ class ComptaController extends Controller
             //modification de la liasse
             if ( $request->input('creationDate') != NULL){
                 $liasse->creationDate = $request->input('creationDate');
+                $message = 'La liasse a bien été modifiée.';
             }
             if ($request->input('transmission') != NULL){
                 $liasse->transmission = $request->input('transmission');
+                $message = 'La liasse a bien été modifiée.';
             }
             if ($request->input('creditate') != NULL){
                 $liasse->creditate = $request->input('creditate');
+                $message = 'La liasse a bien été modifiée.';
             }
             $liasse->save();
             $liasse = Liasse::find($id);
-            $message = 'La liasse a bien été modifiée.';
         } elseif ($request->input('creationDate') != NULL) {
             //on ajoute la liasse
             $liasse = new Liasse();

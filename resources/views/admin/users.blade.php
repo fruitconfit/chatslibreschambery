@@ -13,11 +13,11 @@
                         <div class="row">
                             <div class="col-sm">
                                 <table class="table table-striped table-bordered table-hover">
-                                    <thead>
+                                    <thead class="font-weight-bold">
                                         <tr>
                                             <th>{{ $user->name }} 
                                             @if ($user->email !== Auth::user()->email)
-                                                <a onclick="displayCheckDelete({{$user->id}})">(Supprimer)</a>
+                                                <a onclick="displayCheckDelete({{$user->id}})">(Supprimer l'utilisateur)</a>
                                             @endif
                                             </th>
                                         </tr>

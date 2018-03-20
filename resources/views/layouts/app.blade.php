@@ -59,7 +59,7 @@
                 </li>
                 <!--/Social-->
                 <!--Search Form-->
-                <li>
+                <li class="d-none">
                     <form class="search-form" role="search">
                         <div class="form-group waves-light">
                             <input type="text" class="form-control" placeholder="Rechercher">
@@ -68,16 +68,16 @@
                 </li>
                 <!--/.Search Form-->
                 <!-- Side navigation links -->
-                <li>
+                <li @if (null == Auth::user()) class="d-none" @endif>
                     <ul class="collapsible collapsible-accordion">
                         <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-lock"></i> MODULE ADMIN<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><a href="{{ route('users') }}" class="waves-effect">Gérer utilisateurs</a>
+                                    <li><a href="{{ route('users') }}" class="waves-effect">Gestion des utilisateurs</a>
                                     </li>
-                                    <li><a href="{{route('addRole')}}" class="waves-effect">Ajouter role</a>
+                                    <li class="d-none"><a href="{{route('addRole')}}" class="waves-effect">Ajout de role</a>
                                     </li>
-                                    <li><a href="{{ route('groups') }}" class="waves-effect">Gérer roles</a>
+                                    <li><a href="{{ route('groups') }}" class="waves-effect">Gestion des roles</a>
                                     </li>
                                 </ul>
                             </div>
@@ -87,20 +87,20 @@
                                 <ul>
                                     <li><a href="{{ route('manageLiasse') }}" class="waves-effect">Gestion des liasses</a>
 									</li>
-                                    <li><a href="#" class="waves-effect">Consulter le bilan</a>
+                                    <li class="d-none"><a href="#" class="waves-effect">Consulter le bilan</a>
                                     </li>
-                                    <li><a href="#" class="waves-effect">Consulter détail factures</a>
+                                    <li class="d-none"><a href="#" class="waves-effect">Consulter détail factures</a>
                                     </li>
-                                    <li><a href="#" class="waves-effect">Ajouter facture</a>
+                                    <li class="d-none"><a href="#" class="waves-effect">Ajouter facture</a>
                                     </li>
-                                    <li><a href="#" class="waves-effect">Gérer factures</a>
+                                    <li class="d-none"><a href="#" class="waves-effect">Gérer factures</a>
                                     </li>
-                                    <li><a href="#" class="waves-effect">Gestion contact fournisseurs</a>
+                                    <li class="d-none"><a href="#" class="waves-effect">Gestion contact fournisseurs</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
-                        <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-envelope-open"></i> MODULE COUPONS<i class="fa fa-angle-down rotate-icon"></i></a>
+                        <li class="d-none"><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-envelope-open"></i> MODULE COUPONS<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
                                     <li><a href="#" class="waves-effect">Editer coupon</a>
@@ -130,16 +130,16 @@
                 <p><strong>M</strong>odules d'<strong>I</strong>nformation, d'<strong>A</strong>dministration et d'<strong>O</strong>rganisation <strong>U</strong>nifiés (M.I.A.O.U)</p>
             </div>
             <ul class="nav navbar-nav nav-flex-icons ml-auto">
-                <li class="nav-item">
+                <li class="d-none nav-item">
                     <a class="nav-link"><i class="fa fa-envelope"></i> <span class="clearfix d-none d-sm-inline-block">Contact</span></a>
                 </li>
-                <li class="nav-item">
+                <li class="d-none nav-item">
                     <a class="nav-link"><i class="fa fa-comments-o"></i> <span class="clearfix d-none d-sm-inline-block">Aide</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('accountModify') }}"><i class="fa fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Compte</span></a>
+                    <a class="nav-link" href="{{ route('accountModify') }}"><i class="fa fa-cog"></i> <span class="clearfix d-none d-sm-inline-block">Compte</span></a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="d-none nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Menu
                     </a>
