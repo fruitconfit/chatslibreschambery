@@ -110,6 +110,8 @@ class InvoiceController extends Controller
      */
     public function destroy(Invoice $invoice)
     {
-        //
+        $invoice->delete();
+        \Session::flash('success', 'La facture a bien été supprimée!');
+        return redirect()->route('invoices.index');
     }
 }

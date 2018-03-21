@@ -81,5 +81,13 @@
     </div>
  
 </form>
+
+<form method="POST" action="{{ url('/invoices/'.$invoice->id) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer cette facture ?');">
+    @csrf
+
+    {{ method_field('DELETE') }}
+
+    <button type="submit" class="btn btn-danger btn-md" id="deleteBtn">Supprimer la facture</button>
+</form>
                       
 @endsection
