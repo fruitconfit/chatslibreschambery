@@ -72,7 +72,7 @@
                             
                             <!-- commentaire -->
                             <label for="comment" class="font-weight-light">Commentaire</label>
-                            <textarea name="comment" class="form-control" style="height:100px" required>@if ($fournisseur->comment != NULL){{$fournisseur->comment}}@endif</textarea>
+                            <textarea name="comment" class="form-control" style="height:100px">@if ($fournisseur->comment != NULL){{$fournisseur->comment}}@endif</textarea>
 
                             <!-- valider le formulaire -->
                             <div class="form-group row mb-0">

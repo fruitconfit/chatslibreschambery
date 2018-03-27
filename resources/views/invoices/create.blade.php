@@ -30,10 +30,11 @@
         <div class="col-sm-10">
             <select id="fournisseur" name="provider_id" class="form-control" required>
             	<option value="">-</option>
-            	<option value="1">Issou</option>
-            	<option value="2">Risitas</option>
+                @foreach($fournisseurs as $fournisseur)
+            	    <option value="{{ $fournisseur->id }}">{{ $fournisseur->nickname }}</option>
+                @endforeach
             </select>
-            <a href="#" class="btn btn-info btn-md">Nouveau fournisseur</a>
+            <a href="{{ route('modifyFournisseur',0) }}" class="btn btn-info btn-md">Nouveau fournisseur</a>
         </div>
     </div>
 
