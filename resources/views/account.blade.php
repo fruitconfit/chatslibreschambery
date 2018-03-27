@@ -62,16 +62,14 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6 offset-md-3">
                                 <button type="submit" class="btn btn-primary" value="Submit">
                                     Modifier
                                 </button>
                             </div>
+                            <div class="col-md-12">{{$message}}</div>
                         </div>
                     </form>
-                    <div>
-                      {{$messageValida}}
-                    </div>
                 </div>
             </div>
         </div>

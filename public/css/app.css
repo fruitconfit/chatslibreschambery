@@ -24,3 +24,7 @@
 select{
   display: unset !important;
 }
+
+.verif-delete{
+  display:none;
+}

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\DiscountFormRequest;
+use Illuminate\Support\Facades\DB;
 use App\Liasse;
+use App\Discount;
 
 class ComptaController extends Controller
 {
@@ -27,26 +30,35 @@ class ComptaController extends Controller
         return view('compta.liasse');
     }
 
-    public function manageLiasse(Request $request, $id)
+    // Par Anaïs le ...
+    // Retrouve la liasse par son id (si elle existe)
+    //  L'ajoute si elle n'existe pas et que les champs ne sont pas remplis
+    //  La modifie si des champs ont été remplis ou modifiés
+    //  Sinon on affiche la page d'ajout d'une nouvelle liasse
+    public function modifyLiasse(Request $request, $id)
     {
         $message = '';
         $liasse = Liasse::find($id);
+
+        // Modification de la liasse
         if ($liasse != NULL){
-            //modification de la liasse
             if ( $request->input('creationDate') != NULL){
                 $liasse->creationDate = $request->input('creationDate');
+                $message = 'La liasse a bien été modifiée.';
             }
             if ($request->input('transmission') != NULL){
                 $liasse->transmission = $request->input('transmission');
+                $message = 'La liasse a bien été modifiée.';
             }
             if ($request->input('creditate') != NULL){
                 $liasse->creditate = $request->input('creditate');
+                $message = 'La liasse a bien été modifiée.';
             }
             $liasse->save();
             $liasse = Liasse::find($id);
-            $message = 'La liasse a bien été modifiée.';
+
+        // Ajout de la liasse
         } elseif ($request->input('creationDate') != NULL) {
-            //on ajoute la liasse
             $liasse = new Liasse();
             if ( $request->input('creationDate') != NULL){
                 $liasse->creationDate = $request->input('creationDate');
@@ -60,11 +72,25 @@ class ComptaController extends Controller
             $liasse->save();
             $liasse = Liasse::find($liasse->id);
             $message = 'La liasse a bien été ajoutée.';
+            
+        // Affiche la page de création de liasse
         } else {
-            //affichage de la page standard
             $liasse = new Liasse();
             $liasse->id = 0;
         }
-        return view('compta.liasse',['liasse'=>$liasse],['message'=>$message]);
+        return view('compta.liasse',
+            ['liasse'=>$liasse,
+            'discounts'=>Liasse::getAllDiscountByLiasseId($liasse->id),
+            'total_price'=>Liasse::liasseTotalPrice($liasse->id),
+            'nb_discount'=>Liasse::liasseTotalDiscount($liasse->id),
+            'message'=>$message]);
     }
+
+    // Par Anaïs le ...
+    // Affiche la liste de toutes les liasses
+    public function manageLiasse(Request $request)
+    {
+        return view('compta.listLiasse',['liasses'=>Liasse::getAllLiasses()]);
+    }
+
 }
