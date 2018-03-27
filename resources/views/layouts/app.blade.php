@@ -90,13 +90,13 @@
 									</li>
                                     <li><a href="{{ route('manageFournisseur') }}" class="waves-effect">Gestion des fournisseurs</a>
                                     </li>
+                                    <li><a href="{{ route('invoices.index') }}" class="waves-effect">Gérer factures</a>
+                                    </li>
+                                    <li><a href="{{ route('manageDons') }}" class="waves-effect">Consulter les dons</a>
+                                    </li>
                                     <li class="d-none"><a href="#" class="waves-effect">Consulter le bilan</a>
                                     </li>
                                     <li class="d-none"><a href="#" class="waves-effect">Consulter détail factures</a>
-                                    </li>
-                                    <li><a href="{{ route('invoices.create') }}" class="waves-effect">Ajouter facture</a>
-                                    </li>
-                                    <li><a href="{{ route('invoices.index') }}" class="waves-effect">Gérer factures</a>
                                     </li>
                                 </ul>
                             </div>

@@ -30,8 +30,8 @@ class DiscountFormRequest extends FormRequest
             'dateDiscount' => 'required',
             'priceDiscount' => 'required',
             'recipeType' => 'required',
-            'cat' => 'required',
-            'description' => 'required'
+            'cat',
+            'description'
             //
         ];
     }

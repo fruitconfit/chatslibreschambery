@@ -49,5 +49,6 @@ Route::middleware('auth')->group(function(){
 	Route::get('/compta/listFournisseur', 'ComptaController@manageFournisseur')->name('manageFournisseur');
 	// Invoices
 	Route::resource('invoices', 'InvoiceController');
-	
+	// Dons
+	Route::get('/compta/listDon', 'ComptaController@manageDons')->name('manageDons');
 });

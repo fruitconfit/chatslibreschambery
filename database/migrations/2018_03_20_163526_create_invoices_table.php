@@ -24,7 +24,7 @@ class CreateInvoicesTable extends Migration
             $table->text('commentaire')->nullable();
             $table->timestamps();
 
-            $table->foreign('provider_id')->references('id')->on('miaou_providers');
+            $table->foreign('provider_id')->references('id')->on('fournisseurs');
         });
     }
 

@@ -44,7 +44,11 @@
                       @foreach ($invoices as $invoice)
                       <tr>
                         <td>{{ date('d/m/Y', strtotime($invoice->date_ajout)) }}</td>
-                        <td>{{ $invoice->provider_id }}</td>
+                        @foreach($fournisseurs as $fournisseur)
+                          @if (($invoice->provider_id) == ($fournisseur->id))
+                            <td>{{ $fournisseur->nickname }}</td>
+                          @endif
+                        @endforeach
                         <td>{{ $invoice->numero_facture }}</td>
                         <td>{{ date('d/m/Y', strtotime($invoice->date_facture)) }}</td>
                         <td>{{ $invoice->montant }}</td>

@@ -197,4 +197,11 @@ class ComptaController extends Controller
         return view('compta.listFournisseur',['fournisseurs'=>Fournisseur::getAllFournisseur()]);
     }
 
+
+    // Par Anaïs le 27/03/2018
+    // Affiche la liste de tous les dons
+    public function manageDons(Request $request)
+    {
+        return view('compta.listDon',['dons'=>Discount::getAllDons()]);
+    }
 }
