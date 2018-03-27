@@ -81,13 +81,8 @@
                 <div class="title m-b-md">
                     M.I.A.O.U
                 </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div class="text-muted mr-auto">
+                    <p><strong>M</strong>odules d'<strong>I</strong>nformation, d'<strong>A</strong>dministration et d'<strong>O</strong>rganisation <strong>U</strong>nifiés</p>
                 </div>
             </div>
         </div>

@@ -5,16 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\DiscountFormRequest;
 use App\Discount;
+use App\Liasse;
 
 class DiscountController extends Controller
 {
-    //
 
-    public function create(){
-    	return view ('discount.create');
+    public function create(Request $request,$id){
+    	return view ('discount.create',['id_liasse' => $id]);
     }
 
-//issou
     public function store(DiscountFormRequest $request){
     	$champs = [];
     	$champs["typeDiscount"]=$request->get("typeDiscount");
@@ -25,10 +24,11 @@ class DiscountController extends Controller
     	$champs["recipeType"]=$request->get("recipeType");
     	$champs["cat"]=$request->get("cat");
     	$champs["description"]=$request->get("description");
+        $champs["id_liasse"]=$request->get("id_liasse");
 
     	Discount::create($request->except('_token'));
 
-    	return redirect()->route('discount.create');
+    	return redirect()->route('discount.create', $request->get('id_liasse'));
     }
 
 

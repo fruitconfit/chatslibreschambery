@@ -10,13 +10,14 @@
                 <div class="card-body">
                     <div class="form-group row col-md-12">Nombre de liasses : {{ DB::table('liasses')->count(DB::raw('DISTINCT id')) }}</div>
 
+
                     <div class="container">
                         <div class="row">
                             <div class="col-sm">
-                                <table class="table table-striped table-bordered table-hover">
-                                    <thead>
+                                <table class="table table-striped table-bordered">
+                                    <thead class="font-weight-bold">
                                         <tr>
-                                            <th>ID de la liasse</th>
+                                            <th>Ref de la liasse</th>
                                             <th>Crée le</th>
                                             <th>Transmise le</th>
                                             <th>Créditée le</th>
@@ -29,7 +30,7 @@
                                             <td>{{ $liasse->creationDate }}</td>
                                             <td>{{ $liasse->transmission }}</td>
                                             <td>{{ $liasse->creditate }}</td>
-                                            <td><a href="{{ route('modifyLiasse',$liasse->id) }}" class="waves-effect">Modifier</a></td>
+                                            <td class="text-center"><a href="{{ route('modifyLiasse',$liasse->id) }}" class="waves-effect"><i class="fa fa-edit"></i></a></td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -38,9 +39,13 @@
                         </div>
                     </div>
 
-                    <form action="{{ route('modifyLiasse',0) }}">
-                        <input type="submit" class="btn btn-primary" value="Ajouter une liasse" />
-                    </form>
+                    <div class="form-group row mb-0">
+                        <div class="col-md-6 offset-md-4">
+                            <form action="{{ route('modifyLiasse',0) }}">
+                                <input type="submit" class="btn btn-primary" value="Ajouter une liasse" />
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
