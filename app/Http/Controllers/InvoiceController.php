@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Invoice;
 use Illuminate\Http\Request;
+use App\Fournisseur;
 
 class InvoiceController extends Controller
 {
@@ -15,7 +16,7 @@ class InvoiceController extends Controller
     public function index()
     {
         $invoices = Invoice::all();
-        return view('invoices.index')->with('invoices', $invoices);
+        return view('invoices.index',['fournisseurs'=>Fournisseur::getAllFournisseur()])->with('invoices', $invoices);
     }
 
     /**
@@ -25,7 +26,7 @@ class InvoiceController extends Controller
      */
     public function create()
     {
-        return view('invoices.create');
+        return view('invoices.create',['fournisseurs'=>Fournisseur::getAllFournisseur()]);
     }
 
     /**
@@ -69,7 +70,7 @@ class InvoiceController extends Controller
      */
     public function edit(Invoice $invoice)
     {
-        return view('invoices.edit')->with('invoice', $invoice);
+        return view('invoices.edit',['fournisseurs'=>Fournisseur::getAllFournisseur()])->with('invoice', $invoice);
     }
 
     /**

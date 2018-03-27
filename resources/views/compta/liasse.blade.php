@@ -71,12 +71,12 @@
                                     <thead class="font-weight-bold">
                                         <tr>
                                             <th>Ref</th>
-                                            <th>Type de remise</th>
-                                            <th>Banque</th>
                                             <th>Emetteur</th>
-                                            <th>Date de la remise</th>
+                                            <th>Faite le</th>
+                                            <th>Type de remise</th>
                                             <th>Montant</th>
-                                            <th>Type de recette</th>
+                                            <th>Recette</th>
+                                            <th>Banque</th>
                                             <th>Chat concerné</th>
                                         </tr>
                                     </thead>
@@ -84,12 +84,12 @@
                                         @foreach($discounts as $discount)
                                             <tr>
                                                 <td>{{ $discount->id }}</td>
-                                                <td>{{ $discount->typeDiscount }}</td>
-                                                <td>{{ $discount->nameBank }}</td>
                                                 <td>{{ $discount->nameSender }}</td>
                                                 <td>{{ $discount->dateDiscount }}</td>
-                                                <td>{{ $discount->priceDiscount }} €</td>
+                                                <td>{{ $discount->typeDiscount }}</td>
+                                                <td>{{ $discount->priceDiscount }}€</td>
                                                 <td>{{ $discount->recipeType }}</td>
+                                                <td>{{ $discount->nameBank }}</td>
                                                 <td>{{ $discount->cat }}</td>
                                                 <td class="text-center"><a href="{{ url('discount/edit/'.$discount->id) }}" class="waves-effect"><i class="fa fa-edit"></i></a></td>
                                             </tr>

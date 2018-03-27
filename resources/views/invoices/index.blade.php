@@ -82,8 +82,9 @@
         <div class="col-sm-10">
             <select name="providerType" class="form-control">
               <option value="">Par type de fournisseur</option>
-              <option value="1">La chancla</option>
-              <option value="2">LaChance</option>
+              @foreach($fournisseurs as $fournisseur)
+            	    <option value="{{ $fournisseur->id }}">{{ $fournisseur->type }}</option>
+              @endforeach
             </select>
         </div>
   </div>
@@ -92,8 +93,9 @@
         <div class="col-sm-10">
             <select name="provider" class="form-control">
               <option value="">Par fournisseur</option>
-              <option value="1">Issou</option>
-              <option value="2">Risitas</option>
+              @foreach($fournisseurs as $fournisseur)
+            	    <option value="{{ $fournisseur->id }}">{{ $fournisseur->nickname }}</option>
+              @endforeach
             </select>
         </div>
     </div>

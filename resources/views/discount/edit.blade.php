@@ -26,9 +26,18 @@
                             <!-- Default form subscription -->
                             <form>
                                 <input type="hidden" name="id" value="{{ $discount->id }}">
+
+                                <label for="defaultFormCardNameEx" class="font-weight-light">Nom de l'émetteur</label>
+                                <input type="text" name="nameSender" class="form-control" value="{{ $discount->nameSender }}">
+
+                                <br>
+
+                                <label for="defaultFormCardNameEx" class="font-weight-light">Date de la remise</label>
+                                <input type="date" name="dateDiscount" class="form-control" value="{{ $discount->dateDiscount }}">
+
+                                <br>
                                 
                                 <label for="defaultFormCardNameEx" class="font-weight-light">Type de remise</label>
-
                                 <br>
                                 <select name="typeDiscount" class="form-control">
                                     <option value="Don" @if ($discount->typeDiscount == 'Don bénévole') selected @endif >Don bénévole</option>
@@ -36,38 +45,32 @@
                                 </select>
 
                                 <br>
-                                <!-- Default input name -->
+                                
+                                <label for="defaultFormCardNameEx" class="font-weight-light">Montant de la remise</label>
+                                <input type="text" name="priceDiscount" class="form-control" value="{{ $discount->priceDiscount }}">
+                                
+                                <br>
+
+                                <label for="defaultFormCardNameEx" class="font-weight-light">Type de recette</label>
+                                <br>
+                                <select name="recipeType" class="form-control">
+                                    <option value="Chèque"  @if ($discount->recipeType == 'Chèque') selected @endif >Chèque</option>
+                                    <option value="Espèces"  @if ($discount->recipeType == 'Espèces') selected @endif >Espèces</option>
+                                </select>
+
+                                <br>
+                                
                                 <label for="defaultFormCardNameEx" class="font-weight-light">Nom de la banque</label>
                                 <input type="text" name="nameBank" class="form-control" value="{{ $discount->nameBank }}">
                                 
                                 <br>
 
-                                <label for="defaultFormCardNameEx" class="font-weight-light">Nom de l'émetteur</label>
-                                <input type="text" name="nameSender" class="form-control" value="{{ $discount->nameSender }}">
-                                
-                                <br>
-
-                                <label for="defaultFormCardNameEx" class="font-weight-light">Date de la remise</label>
-                                <input type="date" name="dateDiscount" class="form-control" value="{{ $discount->dateDiscount }}">
-                                
-                                <br>
-                                
-                                <label for="defaultFormCardNameEx" class="font-weight-light">Montant de la remise</label>
-                                <input type="text" name="priceDiscount" class="form-control" value="{{ $discount->priceDiscount }}">
-                                
-
-                                <label for="defaultFormCardNameEx" class="font-weight-light">Type de recette</label>
-                                <br>
-                                <select name="recipeType" class="form-control">
-                                    <option value="Recette1"  @if ($discount->recipeType == 'Recette1') selected @endif >Recette1</option>
-                                    <option value="Recette2"  @if ($discount->recipeType == 'Recette2') selected @endif >Recette2</option>
-                                </select>
-                                <br>
                                 <label for="defaultFormCardNameEx" class="font-weight-light">Chat concerné</label>
                                 <br>
                                 <select name="cat" class="form-control">
-                                    <option value="Chat1"  @if ($discount->cat == 'Chat1') selected @endif >Chat1</option>
-                                    <option value="Chat2" @if ($discount->cat == 'Chat2') selected @endif >Chat2</option>
+                                    <option value=""  @if ($discount->cat == '') selected @endif ></option>
+                                    <option value="Mistigri"  @if ($discount->cat == 'Mistigri') selected @endif >Mistigri</option>
+                                    <option value="Felix" @if ($discount->cat == 'Felix') selected @endif >Felix</option>
                                 </select>
                                 <br>
 

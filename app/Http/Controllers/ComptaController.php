@@ -7,6 +7,7 @@ use App\Http\Requests\DiscountFormRequest;
 use Illuminate\Support\Facades\DB;
 use App\Liasse;
 use App\Discount;
+use App\Fournisseur;
 
 class ComptaController extends Controller
 {
@@ -91,6 +92,109 @@ class ComptaController extends Controller
     public function manageLiasse(Request $request)
     {
         return view('compta.listLiasse',['liasses'=>Liasse::getAllLiasses()]);
+    }
+
+    // Par Anaïs le 20/03/2018
+    // Retrouve le fournisseur par son id (s'il' existe)
+    //  L'ajoute s'il n'existe pas et que les champs ne sont pas remplis
+    //  Le modifie si des champs ont été remplis ou modifiés
+    //  Sinon on affiche la page d'ajout d'un nouveau fournisseur
+    public function modifyFournisseur(Request $request, $id)
+    {
+        $message = '';
+        $fournisseur = Fournisseur::find($id);
+        
+
+        // Modification de le fournisseur
+        if ($fournisseur != NULL){
+            if ( $request->input('nickname') != NULL){
+                $fournisseur->nickname = $request->input('nickname');
+                $message = 'Le fournisseur a bien été modifié.';
+            }
+            if ($request->input('name') != NULL){
+                $fournisseur->name = $request->input('name');
+                $message = 'Le fournisseur a bien été modifié.';
+            }
+            if ($request->input('adress') != NULL){
+                $fournisseur->adress = $request->input('adress');
+                $message = 'Le fournisseur a bien été modifié.';
+            }
+            if ($request->input('postcode') != NULL){
+                $fournisseur->postcode = $request->input('postcode');
+                $message = 'Le fournisseur a bien été modifié.';
+            }
+            if ($request->input('city') != NULL){
+                $fournisseur->city = $request->input('city');
+                $message = 'Le fournisseur a bien été modifié.';
+            }
+            if ($request->input('email') != NULL){
+                $fournisseur->email = $request->input('email');
+                $message = 'Le fournisseur a bien été modifié.';
+            }
+            if ($request->input('phone') != NULL){
+                $fournisseur->phone = $request->input('phone');
+                $message = 'Le fournisseur a bien été modifié.';
+            }
+            if ($request->input('type') != NULL){
+                $fournisseur->type = $request->input('type');
+                $message = 'Le fournisseur a bien été modifié.';
+            }
+            if ($request->input('comment') != NULL){
+                $fournisseur->comment = $request->input('comment');
+                $message = 'Le fournisseur a bien été modifié.';
+            }
+            $fournisseur->save();
+            $fournisseur = Fournisseur::find($id);
+
+        // Ajout de le fournisseur
+        } elseif ($request->input('nickname') != NULL) {
+            $fournisseur = new Fournisseur();
+            if ( $request->input('nickname') != NULL){
+                $fournisseur->nickname = $request->input('nickname');
+            }
+            if ($request->input('name') != NULL){
+                $fournisseur->name = $request->input('name');
+            }
+            if ($request->input('adress') != NULL){
+                $fournisseur->adress = $request->input('adress');
+            }
+            if ($request->input('postcode') != NULL){
+                $fournisseur->postcode = $request->input('postcode');
+            }
+            if ($request->input('city') != NULL){
+                $fournisseur->city = $request->input('city');
+            }
+            if ($request->input('email') != NULL){
+                $fournisseur->email = $request->input('email');
+            }
+            if ($request->input('phone') != NULL){
+                $fournisseur->phone = $request->input('phone');
+            }
+            if ($request->input('type') != NULL){
+                $fournisseur->type = $request->input('type');
+            }
+            if ($request->input('comment') != NULL){
+                $fournisseur->comment = $request->input('comment');
+            }
+            $fournisseur->save();
+            $fournisseur = Fournisseur::find($fournisseur->id);
+            $message = 'Le fournisseur a bien été ajouté.';
+            
+        // Affiche la page de création de fournisseur
+        } else {
+            $fournisseur = new Fournisseur();
+            $fournisseur->id = 0;
+        }
+        return view('compta.fournisseur',
+            ['fournisseur'=>$fournisseur,
+            'message'=>$message]);
+    }
+
+    // Par Anaïs le 20/03/2018
+    // Affiche la liste de tous les fournisseurs
+    public function manageFournisseur(Request $request)
+    {
+        return view('compta.listFournisseur',['fournisseurs'=>Fournisseur::getAllFournisseur()]);
     }
 
 }

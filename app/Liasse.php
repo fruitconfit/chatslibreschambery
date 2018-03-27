@@ -18,6 +18,7 @@ class Liasse extends Model
         }
         return $listLiasses;
     }
+    
     // Par Anaïs le 20/03/2018
     // Calcule le prix totale des remise d'une liasse
     public static function getAllDiscountByLiasseId($idLiasse){
@@ -29,6 +30,7 @@ class Liasse extends Model
         }
         return $listDiscountByLiasseId;
     }
+
     // Par Anaïs le 20/03/2018
     // Calcule et renvoie le prix totale des remise d'une liasse
     public static function liasseTotalPrice($idLiasse){
@@ -39,6 +41,7 @@ class Liasse extends Model
         }
         return $total_price;
     }
+
     // Par Anaïs le 20/03/2018
     // Calcule et renvoie le nombre de remise d'une liasse
     public static function liasseTotalDiscount($idLiasse){
