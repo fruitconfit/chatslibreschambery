@@ -66,9 +66,25 @@ class AdminController extends Controller
         return view('admin.groups',['roles'=>$this->getAllRole()]);
     }
 
-    public function manageGroups()
+    public function manageRole($id)
     {
-        return view('admin.groups',['roles'=>$this->getAllRole()]);
+        $role = Role::find($id);
+        $permissions = $role->permissions->toArray();
+        $permissionNameForRole = array();
+        foreach($permissions as $permission){
+            array_push($permissionNameForRole,$permission['name']);
+        }
+        $message = "";
+        if(isset($_GET["checkList"])){
+            foreach($permissions as $permission){
+                $role->revokePermissionTo($permission['name']);
+            }
+            foreach($_GET["checkList"] as $perm){
+                $role->givePermissionTo(Permission::findByName($perm));
+            }
+            $message = "Modification réussi";
+        }
+        return view('admin.manageRole',['permissions'=>$permissionNameForRole,'allPermissions'=>Permission::all(),'roleId'=>$id,'message'=>$message]);
     }
 
     private function getAllRole(){

@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\Route;
 
 class CheckAuth
 {
@@ -19,8 +20,9 @@ class CheckAuth
     public function handle($request, Closure $next, $guard = null)
     {
         // Check User is connected & Permission exist for this page
-        if(null !== Auth::User() && count(Permission::where("name", "=",$request->getPathInfo())->get()) > 0){
-            if (!Auth::User()->hasPermissionTo('all') && $request->getPathInfo() != '/home' && !Auth::User()->hasPermissionTo($request->getPathInfo())) {
+        $path = substr($request->getPathInfo(),1);
+        if(null !== Auth::User() && count(Permission::where("name", "=",$path)->get()) > 0){
+            if (!Auth::User()->hasPermissionTo('all') && $path != 'home' && !Auth::User()->hasPermissionTo($path)) {
                 return redirect('/home');
             }
         }

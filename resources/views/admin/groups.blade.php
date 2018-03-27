@@ -19,7 +19,7 @@
                             @foreach($roles as $role)
                             <tr>
                                 <td>{{ $role->name }}</td>
-                                <td class="col-md-2"><a href="{{ route('manageGroups') }}">Permission</a></td>
+                                <td class="col-md-2"><a href="{{ route('manageRole',['id'=>$role->id]) }}">Permission</a></td>
                                 <td class="col-md-2 text-center"><a href="{{ route('deleteRole',['id'=>$role->id]) }}"><i class="fa fa-trash"></i></a></td>
                             </tr>
                             @endforeach

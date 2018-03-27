@@ -28,3 +28,9 @@ select{
 .verif-delete{
   display:none;
 }
+
+.checkbox-perm{
+  position: relative;
+  visibility: visible;
+  left: 0px;
+}
