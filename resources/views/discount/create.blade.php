@@ -73,7 +73,7 @@
                             
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button class="btn btn-primary" type="submit">Ajouter la remise</button>
+                                    <button class="btn btn-primary" type="submit">Ajouter puis continuer</button>
                                 </div>
                             </div>
                         </div>

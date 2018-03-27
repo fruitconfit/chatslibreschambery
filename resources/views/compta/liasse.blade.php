@@ -104,7 +104,7 @@
                     <form action="{{ route('discount.create',$liasse->id) }}">
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <input type="submit" class="btn btn-primary" value="Ajouter une remise" />
+                                <input type="submit" class="btn btn-primary" value="Ajouter" />
                             </div>
                         </div>
                     </form>

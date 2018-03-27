@@ -14,7 +14,7 @@
                                 <table class="table table-striped table-bordered">
                                     <thead class="font-weight-bold">
                                         <tr>
-                                            <th>Ref</th>
+                                            <th>Ref liasse</th>
                                             <th>Emetteur</th>
                                             <th>Faite le</th>
                                             <th>Montant</th>
@@ -26,7 +26,7 @@
                                     <tbody>
                                         @foreach($dons as $don)
                                             <tr>
-                                                <td>{{ $don->id }}</td>
+                                                <th>{{ $don->id_liasse }}</th>
                                                 <td>{{ $don->nameSender }}</td>
                                                 <td>{{ $don->dateDiscount }}</td>
                                                 <td>{{ $don->priceDiscount }}€</td>

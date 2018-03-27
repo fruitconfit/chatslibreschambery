@@ -49,4 +49,14 @@ class DiscountController extends Controller
         return redirect()->route('manageLiasse');
     }
 
+    // Par Anaïs le 27/03/2018
+    // Supprime la remise et update la vue
+    public function deleteDiscount($id)
+    {
+        $discount = Discount::findOrFail($id);
+        $id_liasse = $discount->id_liasse;
+        Discount::destroy($id);
+        return redirect()->route('modifyLiasse',$id_liasse);
+    }
+
 }

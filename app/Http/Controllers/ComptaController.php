@@ -31,6 +31,8 @@ class ComptaController extends Controller
         return view('compta.liasse');
     }
 
+    /* --------------------------------------------------- LIASSES --------------------------------------------------- */
+
     // Par Anaïs le ...
     // Retrouve la liasse par son id (si elle existe)
     //  L'ajoute si elle n'existe pas et que les champs ne sont pas remplis
@@ -93,6 +95,16 @@ class ComptaController extends Controller
     {
         return view('compta.listLiasse',['liasses'=>Liasse::getAllLiasses()]);
     }
+
+    // Par Anaïs le 27/03/2018
+    // Supprime la liasse et update la vue
+    public function deleteLiasse($id)
+    {
+        Liasse::destroy($id);
+        return view('compta.listLiasse',['liasses'=>Liasse::getAllLiasses()]);
+    }
+
+/* --------------------------------------------------- FOURNISSEURS --------------------------------------------------- */
 
     // Par Anaïs le 20/03/2018
     // Retrouve le fournisseur par son id (s'il' existe)
@@ -197,6 +209,15 @@ class ComptaController extends Controller
         return view('compta.listFournisseur',['fournisseurs'=>Fournisseur::getAllFournisseur()]);
     }
 
+    // Par Anaïs le 27/03/2018
+    // Supprime le fournisseur et update la vue
+    public function deleteFournisseur($id)
+    {
+        Fournisseur::destroy($id);
+        return view('compta.listFournisseur',['fournisseurs'=>Fournisseur::getAllFournisseur()]);
+    }
+
+    /* --------------------------------------------------- DONS --------------------------------------------------- */
 
     // Par Anaïs le 27/03/2018
     // Affiche la liste de tous les dons
