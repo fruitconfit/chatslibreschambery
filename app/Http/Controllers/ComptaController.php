@@ -191,6 +191,7 @@ class ComptaController extends Controller
             $fournisseur->save();
             $fournisseur = Fournisseur::find($fournisseur->id);
             $message = 'Le fournisseur a bien été ajouté.';
+            return view('compta.listFournisseur',['fournisseurs'=>Fournisseur::getAllFournisseur()]);
             
         // Affiche la page de création de fournisseur
         } else {
