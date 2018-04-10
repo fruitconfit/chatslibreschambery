@@ -49,5 +49,7 @@ Route::middleware('auth')->group(function(){
 	Route::get('/compta/listFournisseur', 'ComptaController@manageFournisseur')->name('manageFournisseur');
 	// Invoices
 	Route::resource('invoices', 'InvoiceController');
+	// Error
+	Route::get('/403', 'ErrorController@error403')->name('403');
 	
 });

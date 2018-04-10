@@ -22,13 +22,10 @@ class CheckAuth
         // Check User is connected & Permission exist for this page
         $path = substr($request->getPathInfo(),1);
         if(null !== Auth::User() && count(Permission::where("name", "=",$path)->get()) > 0){
-            if (!Auth::User()->hasPermissionTo('all') && $path != 'home' && !Auth::User()->hasPermissionTo($path)) {
-                return redirect('/home');
+            if (!Auth::User()->hasPermissionTo('all') && $path != '403' && !Auth::User()->hasPermissionTo($path)) {
+                return redirect('/403');
             }
         }
-        //dump($request->getPathInfo(), Auth::User()->hasPermissionTo('all'));
-        //dump(User::permission('edit articles')->get()[0] == Auth::User());
-        //die;
 
         return $next($request);
     }
