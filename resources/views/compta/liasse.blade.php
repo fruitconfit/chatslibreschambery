@@ -24,7 +24,7 @@
                         <div class="form-group row">
                             <label for="creationDate" class="col-md-4 col-form-label text-md-right">Créée le (*)</label>
                             <div class="col-md-6">
-                                <input id="creationDate" type="date" value="@if ($liasse->creationDate != NULL){{$liasse->creationDate}} @endif" name="creationDate" required>
+                                <input id="creationDate" type="date" value="@if ($liasse->id > 0){{$liasse->creationDate}}@endif" name="creationDate" required>
                             </div>
                         </div>
 
