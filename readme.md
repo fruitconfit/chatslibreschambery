@@ -24,7 +24,7 @@
     - Si la version actuel n'est pas 7.1.9 cliquer sur 7.1.9
 - Créer une base de données avec le nom choisis dans la configuration dans PHPMyAdmin.
 - Mettre à jour la base de données: 
-    - Dans GitBash à l'endroit du projet faire la commande `php artisan migrate`
+    - Dans GitBash à l'endroit du projet faire la commande `php artisan migrate --seed`
 - Le projet est installé et démarré vous pouvez y accéder sur `localhost/chatslibreschambery/public/` dans votre navigateur favori
 
 
@@ -35,7 +35,7 @@
 - Mettre à jour les dépendances ( librairies )
     - `composer install`
 - Mettre à jour la base de donnée
-    - `php artisan migrate:refresh` 
+    - `php artisan migrate:fresh --seed` 
     - /!\ Cette commande supprime actuellement toute les données dans la base /!\
 
 ## Faire un commit

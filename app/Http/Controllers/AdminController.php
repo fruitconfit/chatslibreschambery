@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use App\User;
+use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Permission;
+
 
 class AdminController extends Controller
 {
@@ -27,6 +30,11 @@ class AdminController extends Controller
     public function groups()
     {
         //$role = Role::create(['name' => 'reader']);
+        //Auth::User()->assignRole('admin');
+        //Role::find(1)->givePermissionTo(Permission::find(1));
+        //$role = Role::create(['name' => 'admin']);
+        //$permission = Permission::create(['name' => '/admin/role/add']);
+        //Role::find(3)->givePermissionTo($permission);
         return view('admin.groups',['roles'=>$this->getAllRole()]);
     }
 
@@ -58,9 +66,25 @@ class AdminController extends Controller
         return view('admin.groups',['roles'=>$this->getAllRole()]);
     }
 
-    public function manageGroups()
+    public function manageRole($id)
     {
-        return view('admin.groups',['roles'=>$this->getAllRole()]);
+        $role = Role::find($id);
+        $permissions = $role->permissions->toArray();
+        $permissionNameForRole = array();
+        foreach($permissions as $permission){
+            array_push($permissionNameForRole,$permission['name']);
+        }
+        $message = "";
+        if(isset($_GET["checkList"])){
+            foreach($permissions as $permission){
+                $role->revokePermissionTo($permission['name']);
+            }
+            foreach($_GET["checkList"] as $perm){
+                $role->givePermissionTo(Permission::findByName($perm));
+            }
+            $message = "Modification réussi";
+        }
+        return view('admin.manageRole',['permissions'=>$permissionNameForRole,'allPermissions'=>Permission::all(),'roleId'=>$id,'message'=>$message]);
     }
 
     private function getAllRole(){

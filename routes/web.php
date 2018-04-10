@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function(){
 	// Administration
 	Route::get('/admin/groups', 'AdminController@groups')->name('groups');
 	Route::get('/admin/groups/delete/{id}', 'AdminController@deleteRole')->name('deleteRole');
-	Route::get('/admin/groups/manage', 'AdminController@manageGroups')->name('manageGroups');
+	Route::get('/admin/groups/manage/{id}', 'AdminController@manageRole')->name('manageRole');
 	Route::get('/admin/users', 'AdminController@manageUsers')->name('users');
 	Route::get('/admin/users/delete/{id}', 'AdminController@deleteUser')->name('deleteUser');
 	Route::get('/admin/role/add', 'AdminController@addRole')->name('addRole');
@@ -57,4 +57,6 @@ Route::middleware('auth')->group(function(){
 	Route::resource('invoices', 'InvoiceController');
 		// Dons
 	Route::get('/compta/listDon', 'ComptaController@manageDons')->name('manageDons');
+	// Error
+	Route::get('/403', 'ErrorController@error403')->name('403');
 });

@@ -69,7 +69,7 @@
                 </li>
                 <!--/.Search Form-->
                 <!-- Side navigation links -->
-                <li @if (null == Auth::user()) class="d-none" @endif>
+                <li>
                     <ul class="collapsible collapsible-accordion">
                         <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-lock"></i> MODULE ADMIN<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
@@ -123,14 +123,14 @@
         <!-- Navbar -->
         <nav class="navbar fixed-top navbar-toggleable-md navbar-expand-lg scrolling-navbar double-nav">
             <!-- SideNav slide-out button -->
-            <div class="float-left">
+            <div @if (null == Auth::user()) class="d-none" @endif class="float-left">
                 <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
             </div>
             <!-- Breadcrumb-->
             <div class="breadcrumb-dn mr-auto">
                 <p><strong>M</strong>odules d'<strong>I</strong>nformation, d'<strong>A</strong>dministration et d'<strong>O</strong>rganisation <strong>U</strong>nifiés (M.I.A.O.U)</p>
             </div>
-            <ul class="nav navbar-nav nav-flex-icons ml-auto">
+            <ul @if (null == Auth::user()) class="d-none" @endif class="nav navbar-nav nav-flex-icons ml-auto">
                 <li class="d-none nav-item">
                     <a class="nav-link"><i class="fa fa-envelope"></i> <span class="clearfix d-none d-sm-inline-block">Contact</span></a>
                 </li>
