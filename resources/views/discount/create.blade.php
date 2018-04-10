@@ -43,7 +43,7 @@
                             <br>
                             
                             <label for="defaultFormCardNameEx" class="font-weight-light">Montant de la remise</label>
-                            <input type="text" name="priceDiscount" class="form-control">
+                            <input type="number" step="0.01" name="priceDiscount" class="form-control">
                             
                             <br>
                             

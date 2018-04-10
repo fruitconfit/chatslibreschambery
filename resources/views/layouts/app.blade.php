@@ -94,9 +94,9 @@
                                     </li>
                                     <li><a href="{{ route('manageDons') }}" class="waves-effect">Consultation des dons</a>
                                     </li>
-                                    <li class="d-none"><a href="#" class="waves-effect">Consulter le bilan</a>
+                                    <li class="d-none"><a href="#" class="waves-effect">Gestion des reçus fiscaux</a>
                                     </li>
-                                    <li class="d-none"><a href="#" class="waves-effect">Consulter détail factures</a>
+                                    <li class="d-none"><a href="#" class="waves-effect">Consultation le bilan</a>
                                     </li>
                                 </ul>
                             </div>
@@ -104,11 +104,11 @@
                         <li class="d-none"><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-envelope-open"></i> MODULE COUPONS<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><a href="#" class="waves-effect">Editer coupon</a>
+                                    <li><a href="#" class="waves-effect">Edition des coupons</a>
                                     </li>
-                                    <li><a href="#" class="waves-effect">Consulter coupons</a>
+                                    <li><a href="#" class="waves-effect">Consultation des coupons</a>
                                     </li>
-                                    <li><a href="#" class="waves-effect">Traiter coupons</a>
+                                    <li><a href="#" class="waves-effect">Traitement des coupons</a>
                                     </li>
                                 </ul>
                             </div>

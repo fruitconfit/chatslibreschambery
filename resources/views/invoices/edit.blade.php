@@ -7,6 +7,7 @@
             <div class="card card-default">
                 <div class="card-header">
                     Modification de la facture
+                    <a class="float-right" href="{{ route('invoices.index') }}">Retour <i class="fa fa-chevron-right"></i></a>
                 </div>
                 <div class="card-body">
 
@@ -39,7 +40,7 @@
                                 <select id="fournisseur" name="provider_id" class="form-control" required>
                                     <option value="">-</option>
                                     @foreach($fournisseurs as $fournisseur)
-                                        <option value="{{ $fournisseur->id }}">{{ $fournisseur->nickname }}</option>
+                                        <option value="{{ $fournisseur->id }}" @if ($invoice->provider_id == $fournisseur->id) selected @endif>{{ $fournisseur->nickname }}</option>
                                     @endforeach
                                 </select>
                                 <a href="{{ route('modifyFournisseur',0) }}" class="btn btn-info btn-md">Nouveau fournisseur</a>

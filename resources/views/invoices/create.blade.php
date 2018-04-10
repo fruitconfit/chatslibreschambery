@@ -7,6 +7,7 @@
             <div class="card card-default">
                 <div class="card-header">
                     Ajouter une facture
+                    <a class="float-right" href="{{ route('invoices.index') }}">Retour <i class="fa fa-chevron-right"></i></a>
                 </div>
                 <div class="card-body">
 

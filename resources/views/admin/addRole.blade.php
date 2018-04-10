@@ -5,7 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card card-default">
-                <div class="card-header">Ajouter des rôles</div>
+                <div class="card-header">
+                    Ajouter des rôles
+                    <a class="float-right" href="{{ route('groups') }}">Retour <i class="fa fa-chevron-right"></i></a>
+                </div>
                 <div class="card-body">
 
                     <form method="GET" action="{{ route('addRole') }}">
