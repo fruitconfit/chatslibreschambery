@@ -35,7 +35,7 @@
 - Mettre à jour les dépendances ( librairies )
     - `composer install`
 - Mettre à jour la base de donnée
-    - `php artisan migrate:refresh --seed` 
+    - `php artisan migrate:fresh --seed` 
     - /!\ Cette commande supprime actuellement toute les données dans la base /!\
 
 ## Faire un commit
