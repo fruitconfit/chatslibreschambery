@@ -37,19 +37,26 @@ Route::middleware('auth')->group(function(){
 	Route::get('/admin/users/add/role/{id}', 'AdminController@addRoleToUser')->name('addRoleToUser');
 	Route::get('/admin/users/delete/role/{id}', 'AdminController@deleteRoleToUser')->name('deleteRoleToUser');
 	// Comptability
+		// Liasses
 	Route::get('/compta/listLiasse', 'ComptaController@manageLiasse')->name('manageLiasse');
 	Route::get('/compta/liasse/{id}', 'ComptaController@modifyLiasse')->name('modifyLiasse');
+	Route::get('/compta/listLiasse/delete/{id}', 'ComptaController@deleteLiasse')->name('deleteLiasse');
+		// Discounts (remises)
 	Route::get('/discount/create/{id}','DiscountController@create')->name('discount.create');
 	Route::post('/discount/create','DiscountController@store')->name('discount.store');
 	Route::get('/discount/edit/{id}', function($id){
 		return view('discount.edit')->with('discount', App\Discount::findOrFail($id));
 	});
 	Route::post('/discount/edit', 'DiscountController@update')->name('discount.update');
+	Route::get('/discount/delete/{id}', 'DiscountController@deleteDiscount')->name('discount.deleteDiscount');
+		// Fournisseurs
 	Route::get('/compta/fournisseur/{id}', 'ComptaController@modifyFournisseur')->name('modifyFournisseur');
 	Route::get('/compta/listFournisseur', 'ComptaController@manageFournisseur')->name('manageFournisseur');
-	// Invoices
+	Route::get('/compta/listFournisseur/delete/{id}', 'ComptaController@deleteFournisseur')->name('deleteFournisseur');
+		// Invoices (factures)
 	Route::resource('invoices', 'InvoiceController');
+		// Dons
+	Route::get('/compta/listDon', 'ComptaController@manageDons')->name('manageDons');
 	// Error
 	Route::get('/403', 'ErrorController@error403')->name('403');
-	
 });

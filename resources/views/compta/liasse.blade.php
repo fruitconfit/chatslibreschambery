@@ -14,6 +14,7 @@
                 @elseif ($liasse->id > 0)
                     Modifier la liasse
                 @endif
+                    <a class="float-right" href="{{ route('manageLiasse') }}">Retour <i class="fa fa-chevron-right"></i></a>
                 </div>
 
                 <div class="card-body">
@@ -92,6 +93,7 @@
                                                 <td>{{ $discount->nameBank }}</td>
                                                 <td>{{ $discount->cat }}</td>
                                                 <td class="text-center"><a href="{{ url('discount/edit/'.$discount->id) }}" class="waves-effect"><i class="fa fa-edit"></i></a></td>
+                                                <td class="text-center"><a href="{{ route('discount.deleteDiscount',['id'=>$discount->id]) }}"><i class="fa fa-trash"></i></a></td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -104,7 +106,7 @@
                     <form action="{{ route('discount.create',$liasse->id) }}">
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <input type="submit" class="btn btn-primary" value="Ajouter une remise" />
+                                <input type="submit" class="btn btn-primary" value="Ajouter" />
                             </div>
                         </div>
                     </form>

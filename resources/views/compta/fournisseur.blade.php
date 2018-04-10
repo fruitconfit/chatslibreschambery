@@ -14,14 +14,15 @@
                 @elseif ($fournisseur->id > 0)
                     Modifier le fournisseur
                 @endif
+                    <a class="float-right" href="{{ route('manageFournisseur') }}">Retour <i class="fa fa-chevron-right"></i></a>
                 </div>
 
                 <div class="card-body">
                     <form method="GET" action="{{ route('modifyFournisseur',$fournisseur->id) }}">
                         <div class="card-body"> 
                             <!-- nom raccourci -->
-                            <label for="nickname" class="font-weight-light">Nom raccourci</label>
-                            <input type="text" name="nickname" value="@if ($fournisseur->nickname != NULL){{$fournisseur->nickname}}@endif" class="form-control" required>
+                            <label for="nickname" class="font-weight-light" maxlength="16">Nom raccourci</label>
+                            <input type="text" maxlength="16" name="nickname" value="@if ($fournisseur->nickname != NULL){{$fournisseur->nickname}}@endif" class="form-control" required>
 
                             <br>
 

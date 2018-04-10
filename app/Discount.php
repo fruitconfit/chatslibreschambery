@@ -28,4 +28,17 @@ class Discount extends Model
         }
         return $listDiscounts;
     }
+    
+    public static function getAllDons(){
+        $discounts = DB::table('discounts')->get();
+        $listDiscounts = array();
+        foreach($discounts as $discount){
+            if($discount->typeDiscount == 'Don'){
+                $discountTemp = Discount::find($discount->id);
+                array_push($listDiscounts, $discountTemp);
+            }
+        }
+        return $listDiscounts;
+    }
+    
 }

@@ -16,6 +16,7 @@
                 @endif
                 <div class="card-header">
                     Ajout des remises
+                    <a class="float-right" href="{{ route('modifyLiasse',$id_liasse) }}">Retour <i class="fa fa-chevron-right"></i></a>
                 </div>
                 <div class="card-body"> 
                     <form method="POST" action="{{ route('discount.store') }}">
@@ -71,9 +72,10 @@
                             <label for="defaultFormCardNameEx" class="font-weight-light">Informations supplémentaires</label>
                             <textarea name="description" class="form-control" style="height:100px"></textarea>
                             
+
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button class="btn btn-primary" type="submit">Ajouter la remise</button>
+                                    <button class="btn btn-primary" type="submit">Ajouter puis continuer</button>
                                 </div>
                             </div>
                         </div>

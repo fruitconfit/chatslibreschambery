@@ -5,7 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card card-default">
-                <div class="card-header">Liste des fournisseurs</div>
+                <div class="card-header">
+                    Liste des fournisseurs
+                </div>
 
                 <div class="card-body">
                     <div class="form-group row col-md-12">Nombre de fournisseurs : {{ DB::table('fournisseurs')->count(DB::raw('DISTINCT id')) }}</div>
@@ -35,6 +37,7 @@
                                             <td>{{ $fournisseur->phone }}</td>
                                             <td>{{ $fournisseur->type }}</td>
                                             <td class="text-center"><a href="{{ route('modifyFournisseur',$fournisseur->id) }}" class="waves-effect"><i class="fa fa-edit"></i></a></td>
+                                            <td class="text-center"><a href="{{ route('deleteFournisseur',['id'=>$fournisseur->id]) }}"><i class="fa fa-trash"></i></a></td>
                                         </tr>
                                         @endforeach
                                     </tbody>
