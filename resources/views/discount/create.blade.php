@@ -36,9 +36,15 @@
 
                             <label for="defaultFormCardNameEx" class="font-weight-light">Type de remise</label>
                             <select name="typeDiscount" class="form-control">
-                                <option value="Don" selected>Don bénévole</option>
-                                <option value="Subvention">Subvention</option>
+                                <option value="Subvention" selected>Subvention</option>
+                                <option value="Don" id="don" onclick="showRecuCheckbox()">Don bénévole</option>
+                                <option value="Autre">Autre</option>
                             </select>
+
+                            <p id="checkrecu" style="display:none">
+                                <br>
+                                Souhaite un reçu: <input type="checkbox" name="recu">
+                            </p>
 
                             <br>
                             

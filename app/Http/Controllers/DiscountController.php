@@ -23,6 +23,8 @@ class DiscountController extends Controller
     	$champs["dateDiscount"]=$request->get("dateDiscount");
         $champs["priceDiscount"]=str_replace(',', '.', $request->get("priceDiscount")); // change les nombres à virgule en nombre décimaux valides
     	$champs["recipeType"]=$request->get("recipeType");
+    	$champs["recu"]=$request->get("recu");
+    	$champs["edite"]=NULL;
     	$champs["cat"]=$request->get("cat");
     	$champs["description"]=$request->get("description");
         $champs["id_liasse"]=$request->get("id_liasse");
@@ -43,6 +45,7 @@ class DiscountController extends Controller
         $discount->dateDiscount = $request->get("dateDiscount");
         $discount->priceDiscount = str_replace(',', '.', $request->get("priceDiscount"));
         $discount->recipeType = $request->get("recipeType");
+        $discount->recu = $request->get("recu");
         $discount->cat = $request->get("cat");
         $discount->description = $request->get("description");
 
