@@ -137,6 +137,7 @@
                 <li class="d-none nav-item">
                     <a class="nav-link"><i class="fa fa-comments-o"></i> <span class="clearfix d-none d-sm-inline-block">Aide</span></a>
                 </li>
+                <!-- Modify user info-->
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('accountModify') }}"><i class="fa fa-cog"></i> <span class="clearfix d-none d-sm-inline-block">Compte</span></a>
                 </li>
@@ -150,6 +151,7 @@
                     </div>
                 </li>
                 @if (null !== Auth::user())
+                    <!-- Logout-->
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout')}}"><i class="fa fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Se déconnecter</span></a>
                     </li>

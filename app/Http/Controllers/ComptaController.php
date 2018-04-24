@@ -115,7 +115,6 @@ class ComptaController extends Controller
     {
         $message = '';
         $fournisseur = Fournisseur::find($id);
-        
 
         // Modification de le fournisseur
         if ($fournisseur != NULL){

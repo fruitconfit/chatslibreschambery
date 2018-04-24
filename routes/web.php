@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function(){
 	Route::get('/home', 'HomeController@index')->name('home');
 	Route::get('/account', 'AccountController@index')->name('account');
 	Route::get('/account', 'AccountController@modify')->name('accountModify');
+	Route::get('/renameUser/{id}', 'AccountController@renameUser')->name('renameUser');
 	Route::get('/logout', 'AccountController@logout')->name('logout');
 	Route::get('/send', 'AccountController@newPassword')->name('newPassword');
 	Route::get('/reset', 'AccountController@newPasswordPage')->name('newPasswordPage');
