@@ -10,13 +10,13 @@
                     <form method="GET" action="{{ route('manageRole',$roleId) }}">
                         @csrf
 
-                        @foreach($allPermissions as $permission)
-                            @if (in_array($permission->name, $permissions)) 
-                                {{ Form::checkbox('checkList[]', $permission->name, true, ['class' => 'checkbox-perm']) }}
+                        @foreach($permissionGroup as $permission)
+                            @if (in_array($permission, $permissions)) 
+                                {{ Form::checkbox('checkList[]', $permission, true, ['class' => 'checkbox-perm']) }}
                             @else
-                               {{ Form::checkbox('checkList[]', $permission->name, null, ['class' => 'checkbox-perm']) }}
+                               {{ Form::checkbox('checkList[]', $permission, null, ['class' => 'checkbox-perm']) }}
                             @endif
-                            {{ $permission->name }}<br>
+                            {{ $permission }}<br>
                         @endforeach
                         <!-- valider le formulaire -->
                         <div class="form-group row mb-0">

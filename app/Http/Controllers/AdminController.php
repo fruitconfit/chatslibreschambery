@@ -8,6 +8,7 @@ use Spatie\Permission\Models\Role;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\Route;
 
 
 class AdminController extends Controller
@@ -29,12 +30,6 @@ class AdminController extends Controller
      */
     public function groups()
     {
-        //$role = Role::create(['name' => 'reader']);
-        //Auth::User()->assignRole('admin');
-        //Role::find(1)->givePermissionTo(Permission::find(1));
-        //$role = Role::create(['name' => 'admin']);
-        //$permission = Permission::create(['name' => '/admin/role/add']);
-        //Role::find(3)->givePermissionTo($permission);
         return view('admin.groups',['roles'=>$this->getAllRole()]);
     }
 
@@ -68,11 +63,34 @@ class AdminController extends Controller
 
     public function manageRole($id)
     {
+        $routeCollection = Route::getRoutes(); // RouteCollection object
+        $routes = $routeCollection->getRoutes(); // array of route objects
+        $permissionGroup = array();
+        foreach($routes as $route){
+            if(isset($route->getAction()['group_name'])){
+                if(!isset($permissionGroup[$route->getAction()['group_name']])){
+                    $permissionGroup[$route->getAction()['group_name']] = array();
+                }
+                array_push($permissionGroup[$route->getAction()['group_name']] ,$route);
+            }
+        }
         $role = Role::find($id);
         $permissions = $role->permissions->toArray();
-        $permissionNameForRole = array();
-        foreach($permissions as $permission){
-            array_push($permissionNameForRole,$permission['name']);
+        $userHasGroup = array();
+        $uriInGroup = $permissionGroup;
+        foreach($permissionGroup as $key => $group){
+            $uriInGroup[$key] = array();
+            foreach($group as $route){
+                array_push($uriInGroup[$key],$route->uri);
+            }
+        }
+        foreach($uriInGroup as $groupName => $group){
+            foreach($permissions as $permission){
+                if(in_array($permission['name'], $group)){
+                    array_push($userHasGroup,$groupName);
+                    break;
+                }
+            }
         }
         $message = "";
         if(isset($_GET["checkList"])){
@@ -84,7 +102,7 @@ class AdminController extends Controller
             }
             $message = "Modification réussi";
         }
-        return view('admin.manageRole',['permissions'=>$permissionNameForRole,'allPermissions'=>Permission::all(),'roleId'=>$id,'message'=>$message]);
+        return view('admin.manageRole',['permissions'=>$userHasGroup,'permissionGroup'=>array_keys($permissionGroup),'roleId'=>$id,'message'=>$message]);
     }
 
     private function getAllRole(){
