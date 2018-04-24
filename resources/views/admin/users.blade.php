@@ -17,7 +17,7 @@
                                         <tr>
                                             <th>{{ $user->name }} 
                                             @if ($user->email !== Auth::user()->email)
-                                                <a onclick="displayCheckDelete({{$user->id}})">(Supprimer l'utilisateur)</a>
+                                                <a onclick="displayCheckDelete('{{ route('deleteUser',$user->id) }}')">(Supprimer l'utilisateur)</a>
                                             @endif
                                             </th>
                                         </tr>
