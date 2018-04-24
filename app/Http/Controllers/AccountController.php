@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AdminController;
 use App\User;
 
 class AccountController extends Controller
@@ -105,5 +106,20 @@ class AccountController extends Controller
 			$password .= chr($random);
 		}
 		return $password;
-	}
+    }
+    
+    // Par Anaïs le 24/04/2018
+    // Renomme un utilisateur
+    public function renameUser(Request $request, $userid)
+    {
+        $user = User::find($userid);
+        $message = '';
+        if(null !== $request->input('name')){
+            $message = 'Vos informations ont bien été enregistrées.';
+            $user = User::find($userid);
+            $user->name = $request->input('name');
+            $user->save();
+        }
+        return view('admin.renameUser',['user'=>$user, 'message'=>$message]);
+    }
 }

@@ -87,7 +87,7 @@ class AdminController extends Controller
         return view('admin.manageRole',['permissions'=>$permissionNameForRole,'allPermissions'=>Permission::all(),'roleId'=>$id,'message'=>$message]);
     }
 
-    private function getAllRole(){
+    public static function getAllRole(){
         $roles = DB::table('roles')->get();
         $listRole = array();
         foreach($roles as $role){
@@ -97,7 +97,7 @@ class AdminController extends Controller
         return $listRole;
     }
 
-    private function getAllRoleName(){
+    public static function getAllRoleName(){
         $roles = DB::table('roles')->get();
         $listRole = array();
         foreach($roles as $role){
@@ -140,7 +140,7 @@ class AdminController extends Controller
     }
 
 
-    private function getAllUser(){
+    public static function getAllUser(){
         $users = DB::table('users')->get();
         $listUser = array();
         foreach($users as $user){

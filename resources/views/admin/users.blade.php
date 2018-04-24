@@ -15,17 +15,24 @@
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead class="font-weight-bold">
                                         <tr>
-                                            <th>{{ $user->name }}
-                                            @if ($user->email !== Auth::user()->email)
-                                                <a onclick="displayCheckDelete('{{ route('deleteUser',$user->id) }}', '{{$user->name}}')">(Supprimer l'utilisateur)</a>
-                                            @endif
+                                            <th>
+                                                {{ $user->name }} 
+                                                @if ($user->email !== Auth::user()->email)
+                                                <span  class="float-right">
+                                                    <a  href="{{ route('renameUser', $user->id) }}"><i class="fa fa-edit"></i></a>
+                                                    <a onclick="displayCheckDelete({{$user->id}})"><i class="fa fa-trash"></i></a>
+                                                </span>
+                                                @endif
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($user->getRoleNames() as $role)
                                         <tr>
-                                            <td>{{ $role }}</td>
+                                            <td>
+                                                {{ $role }}
+                                                <a class="d-none float-right" onclick="#"><i class="fa fa-trash"></i></a>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
