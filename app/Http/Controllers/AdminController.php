@@ -98,11 +98,12 @@ class AdminController extends Controller
             // Checklist empty because any permission for this role
             if(!isset($_GET["checkList"])){
                 $_GET["checkList"] = array();
+                $userHasGroup = array();
             }
             foreach($_GET["checkList"] as $perm){
                 // Not create a duplicata if role already exist
                 if(!in_array($perm,$userHasGroup)){
-                    foreach($uriInGroup[$perm] as $permGroup){
+                    foreach(array_unique($uriInGroup[$perm]) as $permGroup){
                         $role->givePermissionTo(Permission::findByName($permGroup));
                     }
                 }
@@ -111,7 +112,7 @@ class AdminController extends Controller
             $noCheckGroup = array_diff_key($uriInGroup,array_flip($_GET["checkList"]));
             foreach($noCheckGroup as $perm => $value){
                 foreach($uriInGroup[$perm] as $permGroup){
-                    $role->revokePermissionTo($permGroup);       
+                    $role->revokePermissionTo(Permission::findByName($permGroup));       
                 }
             }
 
