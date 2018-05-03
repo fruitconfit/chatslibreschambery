@@ -40,7 +40,7 @@ class InvoiceController extends Controller
         $request->validate([
             'date_ajout' => 'required|date',
             'provider_id' => 'required',
-            'numero_facture' => 'required|alpha_num',
+            'numero_facture' => 'required',
             'date_facture' => 'required|date',
             'montant' => 'required|numeric',
             'date_reglement' => 'nullable',
@@ -85,7 +85,7 @@ class InvoiceController extends Controller
         $request->validate([
             'date_ajout' => 'required|date',
             'provider_id' => 'required',
-            'numero_facture' => 'required|alpha_num',
+            'numero_facture' => 'required',
             'date_facture' => 'required|date',
             'montant' => 'required|numeric',
             'date_reglement' => 'nullable',

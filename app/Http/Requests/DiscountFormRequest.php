@@ -25,7 +25,7 @@ class DiscountFormRequest extends FormRequest
     {
         return [
             'typeDiscount' => 'required',
-            'nameBank' => 'required',
+            'nameBank',
             'nameSender' => 'required',
             'dateDiscount' => 'required',
             'priceDiscount' => 'required',
