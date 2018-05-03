@@ -61,7 +61,7 @@ class AdminController extends Controller
         return view('admin.groups',['roles'=>$this->getAllRole()]);
     }
 
-    public function manageRole($id)
+    public function manageRole(Request $request,$id)
     {
         $routeCollection = Route::getRoutes(); // RouteCollection object
         $routes = $routeCollection->getRoutes(); // array of route objects
@@ -75,7 +75,7 @@ class AdminController extends Controller
             }
         }
         $role = Role::find($id);
-        $permissions = $role->permissions->toArray();
+        $permissions = $role->permissions;
         $userHasGroup = array();
         $uriInGroup = $permissionGroup;
         foreach($permissionGroup as $key => $group){
@@ -93,13 +93,28 @@ class AdminController extends Controller
             }
         }
         $message = "";
-        if(isset($_GET["checkList"])){
-            foreach($permissions as $permission){
-                $role->revokePermissionTo($permission['name']);
+
+        if(isset($_GET["checkList"]) || isset($_GET["_token"])){
+            // Checklist empty because any permission for this role
+            if(!isset($_GET["checkList"])){
+                $_GET["checkList"] = array();
             }
             foreach($_GET["checkList"] as $perm){
-                $role->givePermissionTo(Permission::findByName($perm));
+                // Not create a duplicata if role already exist
+                if(!in_array($perm,$userHasGroup)){
+                    foreach($uriInGroup[$perm] as $permGroup){
+                        $role->givePermissionTo(Permission::findByName($permGroup));
+                    }
+                }
             }
+            
+            $noCheckGroup = array_diff_key($uriInGroup,array_flip($_GET["checkList"]));
+            foreach($noCheckGroup as $perm => $value){
+                foreach($uriInGroup[$perm] as $permGroup){
+                    $role->revokePermissionTo($permGroup);       
+                }
+            }
+
             $message = "Modification réussi";
         }
         return view('admin.manageRole',['permissions'=>$userHasGroup,'permissionGroup'=>array_keys($permissionGroup),'roleId'=>$id,'message'=>$message]);
