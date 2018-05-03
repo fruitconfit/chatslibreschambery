@@ -31,7 +31,7 @@
                                             <td>{{ $liasse->transmission }}</td>
                                             <td>{{ $liasse->creditate }}</td>
                                             <td class="text-center"><a href="{{ route('modifyLiasse',$liasse->id) }}" class="waves-effect"><i class="fa fa-edit"></i></a></td>
-                                            <td class="d-none" class="text-center"><a href="{{ route('deleteLiasse',['id'=>$liasse->id]) }}"><i class="fa fa-trash"></i></a></td>
+                                            <td class="d-none text-center"><a href="{{ route('deleteLiasse',['id'=>$liasse->id]) }}"><i class="fa fa-trash"></i></a></td>
                                         </tr>
                                         @endforeach
                                     </tbody>

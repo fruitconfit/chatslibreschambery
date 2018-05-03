@@ -40,16 +40,21 @@
                                 
                                 <label for="defaultFormCardNameEx" class="font-weight-light">Type de remise</label>
                                 <br>
-                                <select name="typeDiscount" class="form-control">
+                                <select name="typeDiscount" class="form-control" onchange="show(this.options[this.selectedIndex].value)">
                                     <option value="Subvention" @if ($discount->typeDiscount == 'Subvention') selected @endif >Subvention</option>
-                                    <option value="Don" @if ($discount->typeDiscount == 'Don') selected @endif >Don bénévole</option>
+                                    <option value="Don" id="idDon" @if ($discount->typeDiscount == 'Don') selected @endif >Don bénévole</option>
                                     <option value="Autre" @if ($discount->typeDiscount == 'Autre') selected @endif >Autre</option>
                                 </select>
-                                                
-                                @if ($discount->typeDiscount == 'Don')
-                                    <br>
-                                    <label class="font-weight-light">Souhaite un reçu:</label> <input type="checkbox" name="recu"><!--ajouter le pré-check si déjà coché avant-->
-                                @endif
+                                
+                                <div id="hiddenDiv" @if ($discount->typeDiscount != 'Don') style="display:none" @endif>
+                                    <label class="font-weight-light">Souhaite un reçu:</label>
+                                    @if ($discount->recu == 1) 
+                                        {{ Form::checkbox('recu', 1, 1, ['class' => 'checkbox-perm']) }}
+                                    @else
+                                        {{ Form::checkbox('recu', 1, null, ['class' => 'checkbox-perm']) }}
+                                    @endif
+                                </div>
+                                
 
                                 <br>
                                 
