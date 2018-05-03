@@ -14,13 +14,14 @@
                                 <table class="table table-striped table-bordered">
                                     <thead class="font-weight-bold">
                                         <tr>
-                                            <th>Ref liasse</th>
+                                            <th>Liasse</th>
                                             <th>Emetteur</th>
                                             <th>Faite le</th>
                                             <th>Montant</th>
                                             <th>Recette</th>
                                             <th>Banque</th>
                                             <th>Chat concerné</th>
+                                            <th>Reçu fiscal</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -33,6 +34,11 @@
                                                 <td>{{ $don->recipeType }}</td>
                                                 <td>{{ $don->nameBank }}</td>
                                                 <td>{{ $don->cat }}</td>
+                                                <td>
+                                                    @if($don->recu == 1)
+                                                        Oui
+                                                    @endif
+                                                </td>
                                                 <td class="text-center"><a href="{{ url('discount/edit/'.$don->id) }}" class="waves-effect"><i class="fa fa-edit"></i></a></td>
                                             </tr>
                                         @endforeach

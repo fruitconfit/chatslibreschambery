@@ -35,10 +35,16 @@
                             <br>
 
                             <label for="defaultFormCardNameEx" class="font-weight-light">Type de remise</label>
-                            <select name="typeDiscount" class="form-control">
-                                <option value="Don" selected>Don bénévole</option>
-                                <option value="Subvention">Subvention</option>
+                            <select name="typeDiscount" class="form-control" onchange="show(this.options[this.selectedIndex].value)">
+                                <option value="Subvention" selected>Subvention</option>
+                                <option value="Don" id="idDon">Don bénévole</option>
+                                <option value="Autre">Autre</option>
                             </select>
+
+                            <div id="hiddenDiv" style="display:none">
+                                <label class="font-weight-light">Souhaite un reçu:</label>
+                                {{ Form::checkbox('recu', 1, null, ['class' => 'checkbox-perm']) }}
+                            </div>
 
                             <br>
                             

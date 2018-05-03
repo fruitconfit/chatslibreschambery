@@ -40,10 +40,21 @@
                                 
                                 <label for="defaultFormCardNameEx" class="font-weight-light">Type de remise</label>
                                 <br>
-                                <select name="typeDiscount" class="form-control">
-                                    <option value="Don" @if ($discount->typeDiscount == 'Don bénévole') selected @endif >Don bénévole</option>
+                                <select name="typeDiscount" class="form-control" onchange="show(this.options[this.selectedIndex].value)">
                                     <option value="Subvention" @if ($discount->typeDiscount == 'Subvention') selected @endif >Subvention</option>
+                                    <option value="Don" id="idDon" @if ($discount->typeDiscount == 'Don') selected @endif >Don bénévole</option>
+                                    <option value="Autre" @if ($discount->typeDiscount == 'Autre') selected @endif >Autre</option>
                                 </select>
+                                
+                                <div id="hiddenDiv" @if ($discount->typeDiscount != 'Don') style="display:none" @endif>
+                                    <label class="font-weight-light">Souhaite un reçu:</label>
+                                    @if ($discount->recu == 1) 
+                                        {{ Form::checkbox('recu', 1, 1, ['class' => 'checkbox-perm']) }}
+                                    @else
+                                        {{ Form::checkbox('recu', 1, null, ['class' => 'checkbox-perm']) }}
+                                    @endif
+                                </div>
+                                
 
                                 <br>
                                 

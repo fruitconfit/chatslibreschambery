@@ -21,6 +21,8 @@ class CreateDiscountsTable extends Migration
             $table->string('dateDiscount');
             $table->string('priceDiscount');
             $table->string('recipeType');
+            $table->string('recu')->nullable();
+            $table->string('edite')->nullable();
             $table->string('cat')->nullable();
             $table->text('description')->nullable();
             $table->integer('id_liasse')->unsigned();
