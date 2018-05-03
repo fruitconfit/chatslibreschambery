@@ -98,6 +98,8 @@
                                     </li>
                                     <li class="d-none"><a href="#" class="waves-effect">Consultation le bilan</a>
                                     </li>
+                                    <li><a href="{{ route('manageCoupon') }}" class="waves-effect">Gestion des coupons</a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>

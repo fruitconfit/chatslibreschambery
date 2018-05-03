@@ -16,6 +16,7 @@ class CreateCoupon extends Migration
         Schema::create('coupons', function (blueprint $table)
         {
           $table->increments('id');
+          $table->string('refCoupon')->nullable();
           $table->string('referentName');
           $table->string('referentPhone');
           $table->string('benevoleName');
@@ -23,6 +24,7 @@ class CreateCoupon extends Migration
           $table->date('dateExpiration');
         });
     }
+
 
     /**
      * Reverse the migrations.

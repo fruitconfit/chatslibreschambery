@@ -6,10 +6,15 @@
     <div class= "col-md-10">
       <div class="card card-default">
         <div class="card-header">
-          Creer un coupon
+          @if ($coupon->id == 0)
+              Ajouter un coupon
+          @elseif ($coupon->id > 0)
+              Modifier le coupon
+          @endif
+          <a class="float-right" href="{{ route('manageCoupon') }}">Retour <i class="fa fa-chevron-right"></i></a>
         </div>
         <div class="card-body">
-          <form method="GET" action="{{route('createCoupon', $coupon->id)}}">
+          <form method="GET" action="{{route('modifyCoupon', $coupon->id)}}">
             <div class="card-body">
               <!-- nom referent de l'association -->
               <label for="referentName" class="font-weight-light">Référent d'association à contacter en cas de doute</label>

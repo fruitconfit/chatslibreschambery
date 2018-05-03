@@ -54,6 +54,11 @@ Route::middleware('auth')->group(function(){
 	Route::get('/compta/fournisseur/{id}', 'ComptaController@modifyFournisseur')->name('modifyFournisseur');
 	Route::get('/compta/listFournisseur', 'ComptaController@manageFournisseur')->name('manageFournisseur');
 	Route::get('/compta/listFournisseur/delete/{id}', 'ComptaController@deleteFournisseur')->name('deleteFournisseur');
+	Route::get('/compta/coupon/{id}', 'CouponController@modifyCoupon')->name('modifyCoupon');
+  Route::get('/compta/listCoupon', 'CouponController@manageCoupon')->name('manageCoupon');
+  Route::get('/compta/listCoupon/delete/{id}', 'CouponController@deleteCoupon')->name('deleteCoupon');
+
+
 		// Invoices (factures)
 	Route::resource('invoices', 'InvoiceController');
 		// Dons
