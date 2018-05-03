@@ -14,6 +14,8 @@ class Discount extends Model
         'dateDiscount', 
         'priceDiscount', 
         'recipeType',
+        'recu', 
+        'edite', 
         'cat', 
         'description', 
         'id_liasse'

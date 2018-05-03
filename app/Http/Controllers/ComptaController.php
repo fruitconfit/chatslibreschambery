@@ -63,9 +63,7 @@ class ComptaController extends Controller
         // Ajout de la liasse
         } elseif ($request->input('creationDate') != NULL) {
             $liasse = new Liasse();
-            if ( $request->input('creationDate') != NULL){
-                $liasse->creationDate = $request->input('creationDate');
-            }
+            $liasse->creationDate = $request->input('creationDate');
             if ($request->input('transmission') != NULL){
                 $liasse->transmission = $request->input('transmission');
             }
@@ -115,7 +113,6 @@ class ComptaController extends Controller
     {
         $message = '';
         $fournisseur = Fournisseur::find($id);
-        
 
         // Modification de le fournisseur
         if ($fournisseur != NULL){

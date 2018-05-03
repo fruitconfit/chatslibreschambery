@@ -17,12 +17,18 @@ class DiscountController extends Controller
 
     public function store(DiscountFormRequest $request){
     	$champs = [];
-    	$champs["typeDiscount"]=$request->get("typeDiscount");
-    	$champs["nameBank"]=$request->get("nameBank");
     	$champs["nameSender"]=$request->get("nameSender");
     	$champs["dateDiscount"]=$request->get("dateDiscount");
+        $champs["typeDiscount"]=$request->get("typeDiscount");
+        if($request->get("recu") == 'Don'){
+            $champs["recu"]=$request->get("recu");
+        } else {
+            $champs["recu"]=NULL;
+        }
         $champs["priceDiscount"]=str_replace(',', '.', $request->get("priceDiscount")); // change les nombres à virgule en nombre décimaux valides
     	$champs["recipeType"]=$request->get("recipeType");
+    	$champs["nameBank"]=$request->get("nameBank");
+    	$champs["edite"]=NULL;
     	$champs["cat"]=$request->get("cat");
     	$champs["description"]=$request->get("description");
         $champs["id_liasse"]=$request->get("id_liasse");
@@ -37,12 +43,17 @@ class DiscountController extends Controller
     	$discount = Discount::findOrFail($request->get('id'));
         $id_liasse = $discount->id_liasse;
     	
-        $discount->typeDiscount = $request->get('typeDiscount');
-        $discount->nameBank = $request->get("nameBank");
         $discount->nameSender = $request->get("nameSender");
         $discount->dateDiscount = $request->get("dateDiscount");
+        $discount->typeDiscount = $request->get("typeDiscount");
+        if($discount->typeDiscount == 'Don'){
+            $discount->recu = $request->get("recu");
+        } else {
+            $discount->recu=NULL;
+        }
         $discount->priceDiscount = str_replace(',', '.', $request->get("priceDiscount"));
         $discount->recipeType = $request->get("recipeType");
+        $discount->nameBank = $request->get("nameBank");
         $discount->cat = $request->get("cat");
         $discount->description = $request->get("description");
 

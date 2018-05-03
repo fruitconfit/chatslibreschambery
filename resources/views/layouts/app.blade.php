@@ -88,15 +88,17 @@
                                 <ul>
                                     <li><a href="{{ route('manageLiasse') }}" class="waves-effect">Gestion des liasses</a>
 									</li>
+                                    <li><a href="{{ route('manageDons') }}" class="waves-effect">Consultation des dons</a>
+                                    </li>
                                     <li><a href="{{ route('manageFournisseur') }}" class="waves-effect">Gestion des fournisseurs</a>
                                     </li>
                                     <li><a href="{{ route('invoices.index') }}" class="waves-effect">Gestion des factures</a>
                                     </li>
-                                    <li><a href="{{ route('manageDons') }}" class="waves-effect">Consultation des dons</a>
-                                    </li>
                                     <li class="d-none"><a href="#" class="waves-effect">Gestion des reçus fiscaux</a>
                                     </li>
                                     <li class="d-none"><a href="#" class="waves-effect">Consultation le bilan</a>
+                                    </li>
+                                    <li><a href="{{ route('manageCoupon') }}" class="waves-effect">Gestion des coupons</a>
                                     </li>
                                 </ul>
                             </div>
@@ -137,6 +139,7 @@
                 <li class="d-none nav-item">
                     <a class="nav-link"><i class="fa fa-comments-o"></i> <span class="clearfix d-none d-sm-inline-block">Aide</span></a>
                 </li>
+                <!-- Modify user info-->
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('accountModify') }}"><i class="fa fa-cog"></i> <span class="clearfix d-none d-sm-inline-block">Compte</span></a>
                 </li>
@@ -150,6 +153,7 @@
                     </div>
                 </li>
                 @if (null !== Auth::user())
+                    <!-- Logout-->
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout')}}"><i class="fa fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Se déconnecter</span></a>
                     </li>

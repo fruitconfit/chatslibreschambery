@@ -58,6 +58,7 @@
                     </form>
                 </div>
             </div>
+            @if ($liasse->id > 0)
             <div class="card card-default">
                 <div class="card-header">Gérer les remises de la liasse</div>
 
@@ -102,7 +103,6 @@
                         </div>
                     </div>
 
-                    @if ($liasse->id > 0)
                     <form action="{{ route('discount.create',$liasse->id) }}">
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
@@ -110,9 +110,9 @@
                             </div>
                         </div>
                     </form>
-                    @endif
                 </div>
             </div>
+            @endif
         </div>
     </div>
 </div>

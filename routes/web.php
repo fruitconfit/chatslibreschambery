@@ -62,7 +62,7 @@ Route::middleware('auth')->group(function(){
 		Route::get('/compta/liasse/{id}', 'ComptaController@modifyLiasse')->name('modifyLiasse');
 		Route::get('/compta/listLiasse/delete/{id}', 'ComptaController@deleteLiasse')->name('deleteLiasse');
 	});
-
+	
 	// Discounts (remises)
 	Route::group(array('group_name' => 'Gestion des remises'), function()
 	{
@@ -81,6 +81,9 @@ Route::middleware('auth')->group(function(){
 		Route::get('/compta/fournisseur/{id}', 'ComptaController@modifyFournisseur')->name('modifyFournisseur');
 		Route::get('/compta/listFournisseur', 'ComptaController@manageFournisseur')->name('manageFournisseur');
 		Route::get('/compta/listFournisseur/delete/{id}', 'ComptaController@deleteFournisseur')->name('deleteFournisseur');
+		Route::get('/compta/coupon/{id}', 'CouponController@modifyCoupon')->name('modifyCoupon');
+		Route::get('/compta/listCoupon', 'CouponController@manageCoupon')->name('manageCoupon');
+		Route::get('/compta/listCoupon/delete/{id}', 'CouponController@deleteCoupon')->name('deleteCoupon');
 	});
 
 	// Invoices (factures)
