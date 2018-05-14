@@ -10,11 +10,16 @@ class Invoice extends Model
 
 	protected $fillable = [
 		'date_ajout',
-		'provider_id',
+		'fournisseur_id',
 		'numero_facture',
 		'date_facture',
 		'montant',
 		'date_reglement',
 		'commentaire'
 	];
+
+	public function fournisseur()
+	{
+		return $this->belongsTo('App\Fournisseur');
+	}
 }

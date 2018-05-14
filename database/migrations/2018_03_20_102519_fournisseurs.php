@@ -22,9 +22,11 @@ class Fournisseurs extends Migration
             $table->string('city');
             $table->string('email');
             $table->string('phone');
-            $table->string('type');
+            $table->integer('typefournisseur_id')->unsigned();
             $table->text('comment')->nullable();
             $table->timestamps();
+
+            $table->foreign('typefournisseur_id')->references('id')->on('miaou_typesfournisseurs');
         });
     }
 

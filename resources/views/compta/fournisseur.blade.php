@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="d-none">
 
 </div>
@@ -65,9 +66,11 @@
                             <!-- type de fournisseur -->
                             <label for="type" class="font-weight-light">Type de fournisseur</label>
                             <select name="type" class="form-control">
-                                <option value="Vétérinaire" @if ($fournisseur->type == 'Vétérinaire' || $fournisseur == NULL) selected @endif>Vétérinaire</option>
-                                <option value="Fournisseur de nourriture" @if ($fournisseur->type == 'Fournisseur de nourriture') selected @endif>Fournisseur de nourriture</option>
+                                @foreach ($typesfournisseurs as $typefournisseur)
+                                    <option value="{{ $typefournisseur->id }}">{{ $typefournisseur->nom }}</option>
+                                @endforeach
                             </select>
+                            <a href="{{ url('/typefournisseur/create') }}" class="btn btn-info btn-md">Nouveau type de fournisseur</a>
 
                             <br>
                             

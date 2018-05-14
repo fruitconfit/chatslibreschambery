@@ -6,6 +6,14 @@
   <?php $invoices = $invoices->where('date_facture', '<=', $_GET['to']); ?>
 @endif
 
+@if (isset($_GET['providerType']) && !empty($_GET['providerType']))
+  
+@endif
+
+@if (isset($_GET['provider']) && !empty($_GET['provider']))
+  <?php $invoices = $invoices->where('fournisseur_id', $_GET['provider']); ?>
+@endif
+
 @if (isset($_GET['paid']) && !empty($_GET['paid']))
   @if ($_GET['paid'] == 'true')
     <?php $invoices = $invoices->where('date_reglement', '!=', NULL); ?>
@@ -44,11 +52,7 @@
                       @foreach ($invoices as $invoice)
                       <tr>
                         <td>{{ date('d/m/Y', strtotime($invoice->date_ajout)) }}</td>
-                        @foreach($fournisseurs as $fournisseur)
-                          @if (($invoice->provider_id) == ($fournisseur->id))
-                            <td>{{ $fournisseur->nickname }}</td>
-                          @endif
-                        @endforeach
+                        <td>{{ $invoice->fournisseur->nickname }}</td>
                         <td>{{ $invoice->numero_facture }}</td>
                         <td>{{ date('d/m/Y', strtotime($invoice->date_facture)) }}</td>
                         <td>{{ $invoice->montant }}</td>
@@ -67,6 +71,8 @@
                   <div class="row">
                     <a class="btn peach-gradient btn-rounded" href="{{ route('invoices.create') }}">Ajouter</a>
                   </div>
+
+                  <hr>
 
                   <h4>Filtrer</h4>
 

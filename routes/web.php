@@ -81,6 +81,10 @@ Route::middleware('auth')->group(function(){
 		Route::get('/compta/fournisseur/{id}', 'ComptaController@modifyFournisseur')->name('modifyFournisseur');
 		Route::get('/compta/listFournisseur', 'ComptaController@manageFournisseur')->name('manageFournisseur');
 		Route::get('/compta/listFournisseur/delete/{id}', 'ComptaController@deleteFournisseur')->name('deleteFournisseur');
+		Route::get('/typefournisseur/create', function(){
+			return view('compta.typefournisseur');
+		});
+		Route::post('/typefournisseur/store', 'ComptaController@storeTypeFournisseur')->name('storeTypeFournisseur');
 	});
 
 	// Coupons
@@ -101,5 +105,12 @@ Route::middleware('auth')->group(function(){
 	Route::group(array('group_name' => 'Gestion des dons'), function()
 	{
 		Route::get('/compta/listDon', 'ComptaController@manageDons')->name('manageDons');
+		Route::get('/recu/{id}/print', function($id){
+			$don = App\Discount::findOrFail($id);
+			$numberToWords = new NumberToWords\NumberToWords();
+			$currencyTransformer = $numberToWords->getCurrencyTransformer('fr');
+			$somme_lettres = $currencyTransformer->toWords($don->priceDiscount, 'EUR');
+			return view('recu.print', ['don' => $don, 'somme_lettres' => $somme_lettres]);
+		});
 	});
 });

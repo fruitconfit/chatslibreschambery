@@ -35,7 +35,7 @@
                         <div class="form-group row">
                             <label for="fournisseur" class="col-sm-2 col-form-label">Fournisseur</label>
                             <div class="col-sm-10">
-                                <select id="fournisseur" name="provider_id" class="form-control" required>
+                                <select id="fournisseur" name="fournisseur_id" class="form-control" required>
                                     <option value="">-</option>
                                     @foreach($fournisseurs as $fournisseur)
                                         <option value="{{ $fournisseur->id }}">{{ $fournisseur->nickname }}</option>

@@ -37,10 +37,10 @@
                         <div class="form-group row">
                             <label for="fournisseur" class="col-sm-2 col-form-label">Fournisseur</label>
                             <div class="col-sm-10">
-                                <select id="fournisseur" name="provider_id" class="form-control" required>
+                                <select id="fournisseur" name="fournisseur_id" class="form-control" required>
                                     <option value="">-</option>
                                     @foreach($fournisseurs as $fournisseur)
-                                        <option value="{{ $fournisseur->id }}" @if ($invoice->provider_id == $fournisseur->id) selected @endif>{{ $fournisseur->nickname }}</option>
+                                        <option value="{{ $fournisseur->id }}" @if ($invoice->fournisseur_id == $fournisseur->id) selected @endif>{{ $fournisseur->nickname }}</option>
                                     @endforeach
                                 </select>
                                 <a href="{{ route('modifyFournisseur',0) }}" class="btn btn-info btn-md">Nouveau fournisseur</a>

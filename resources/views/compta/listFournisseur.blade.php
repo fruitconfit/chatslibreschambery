@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -35,7 +36,7 @@
                                             <td>{{ $fournisseur->postcode }}</td>
                                             <td>{{ $fournisseur->email }}</td>
                                             <td>{{ $fournisseur->phone }}</td>
-                                            <td>{{ $fournisseur->type }}</td>
+                                            <td>{{ $fournisseur->typefournisseur->nom }}</td>
                                             <td class="text-center"><a href="{{ route('modifyFournisseur',$fournisseur->id) }}" class="waves-effect"><i class="fa fa-edit"></i></a></td>
                                             <td class="text-center"><a href="{{ route('deleteFournisseur',['id'=>$fournisseur->id]) }}"><i class="fa fa-trash"></i></a></td>
                                         </tr>

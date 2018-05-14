@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Liasse;
 use App\Discount;
 use App\Fournisseur;
+use App\TypeFournisseur;
 
 class ComptaController extends Controller
 {
@@ -145,7 +146,7 @@ class ComptaController extends Controller
                 $message = 'Le fournisseur a bien été modifié.';
             }
             if ($request->input('type') != NULL){
-                $fournisseur->type = $request->input('type');
+                $fournisseur->typefournisseur_id = $request->input('type');
                 $message = 'Le fournisseur a bien été modifié.';
             }
             if ($request->input('comment') != NULL){
@@ -180,7 +181,7 @@ class ComptaController extends Controller
                 $fournisseur->phone = $request->input('phone');
             }
             if ($request->input('type') != NULL){
-                $fournisseur->type = $request->input('type');
+                $fournisseur->typefournisseur_id = $request->input('type');
             }
             if ($request->input('comment') != NULL){
                 $fournisseur->comment = $request->input('comment');
@@ -197,7 +198,7 @@ class ComptaController extends Controller
         }
         return view('compta.fournisseur',
             ['fournisseur'=>$fournisseur,
-            'message'=>$message]);
+            'message'=>$message, 'typesfournisseurs' => TypeFournisseur::all()]);
     }
 
     // Par Anaïs le 20/03/2018
@@ -223,4 +224,11 @@ class ComptaController extends Controller
     {
         return view('compta.listDon',['dons'=>Discount::getAllDons()]);
     }
+
+    public function storeTypeFournisseur(Request $request)
+    {
+        TypeFournisseur::create($request->except('_token'));
+        return view('compta.listFournisseur',['fournisseurs'=>Fournisseur::getAllFournisseur()]);
+    }
+    
 }
