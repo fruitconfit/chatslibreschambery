@@ -58,6 +58,7 @@
                     </form>
                 </div>
             </div>
+            <br>
             @if ($liasse->id > 0)
             <div class="card card-default">
                 <div class="card-header">Gérer les remises de la liasse</div>
@@ -116,4 +117,5 @@
         </div>
     </div>
 </div>
+<br>
 @endsection

@@ -39,15 +39,15 @@
 
                             <br>
 
-                            <!-- code postal -->
-                            <label for="postcode" class="font-weight-light">Code postal</label>
-                            <input type="text" name="postcode" value="@if ($fournisseur->postcode != NULL){{$fournisseur->postcode}}@endif" class="form-control" required>
-
-                            <br>
-
                             <!-- ville -->
                             <label for="city" class="font-weight-light">Ville</label>
                             <input type="text" name="city" value="@if ($fournisseur->city != NULL){{$fournisseur->city}}@endif" class="form-control" required>
+
+                            <br>
+                            
+                            <!-- code postal -->
+                            <label for="postcode" class="font-weight-light">Code postal</label>
+                            <input type="text" name="postcode" value="@if ($fournisseur->postcode != NULL){{$fournisseur->postcode}}@endif" class="form-control" required>
 
                             <br>
 

@@ -33,6 +33,24 @@
 
                                 <br>
 
+                                <!-- adresse -->
+                                <label for="adress" class="font-weight-light">Adresse</label>
+                                <input type="text" name="adress" value="{{$discount->adress}}" class="form-control" required>
+
+                                <br>
+
+                                <!-- ville -->
+                                <label for="city" class="font-weight-light">Ville</label>
+                                <input type="text" name="city" value="{{$discount->city}}" class="form-control" required>
+
+                                <br>
+
+                                <!-- code postal -->
+                                <label for="postcode" class="font-weight-light">Code postal</label>
+                                <input type="text" name="postcode" value="{{$discount->postcode}}" class="form-control" required>
+
+                                <br>
+
                                 <label for="defaultFormCardNameEx" class="font-weight-light">Date de la remise</label>
                                 <input type="date" name="dateDiscount" class="form-control" value="{{ $discount->dateDiscount }}">
 

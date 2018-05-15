@@ -18,6 +18,9 @@ class DiscountController extends Controller
     public function store(DiscountFormRequest $request){
     	$champs = [];
     	$champs["nameSender"]=$request->get("nameSender");
+    	$champs["adress"]=$request->get("adress");
+    	$champs["city"]=$request->get("city");
+    	$champs["postcode"]=$request->get("postcode");
     	$champs["dateDiscount"]=$request->get("dateDiscount");
         $champs["typeDiscount"]=$request->get("typeDiscount");
         if($request->get("recu") == 'Don'){
@@ -44,6 +47,9 @@ class DiscountController extends Controller
         $id_liasse = $discount->id_liasse;
     	
         $discount->nameSender = $request->get("nameSender");
+        $discount->adress = $request->input('adress');
+        $discount->city = $request->input('city');
+        $discount->postcode = $request->input('postcode');
         $discount->dateDiscount = $request->get("dateDiscount");
         $discount->typeDiscount = $request->get("typeDiscount");
         if($discount->typeDiscount == 'Don'){

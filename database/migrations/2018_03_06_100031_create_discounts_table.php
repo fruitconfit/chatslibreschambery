@@ -18,6 +18,9 @@ class CreateDiscountsTable extends Migration
             $table->string('typeDiscount');
             $table->string('nameBank')->nullable();
             $table->string('nameSender');
+            $table->string('adress');
+            $table->integer('postcode');
+            $table->string('city');
             $table->string('dateDiscount');
             $table->string('priceDiscount');
             $table->string('recipeType');
