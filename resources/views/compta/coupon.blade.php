@@ -17,27 +17,27 @@
           <form method="GET" action="{{route('modifyCoupon', $coupon->id)}}">
             <div class="card-body">
               <!-- nom referent de l'association -->
-              <label for="referentName" class="font-weight-light">Référent d'association à contacter en cas de doute</label>
+              <label for="referentName" class="font-weight-light">Référent d'association à contacter en cas de doute (*)</label>
               <input type="text" name="referentName" value="@if ($coupon->referentName != NULL){{$coupon->referentName}}@endif" class="from-control" required>
-              <br>
+               <br>
 
               <!-- num referent de l'association -->
-              <label for="referentPhone" class="font-weight-light">Numéro du référent</label>
+              <label for="referentPhone" class="font-weight-light">Téléphone du référent (*)</label>
               <input type="tel" name="referentPhone" value="@if ($coupon->referentPhone != NULL){{$coupon->referentPhone}}@endif" class="from-control" required>
               <br>
 
               <!-- nom benevole de l'association -->
-              <label for="benevoleName" class="font-weight-light">Bénévole de l'association</label>
+              <label for="benevoleName" class="font-weight-light">Bénévole de l'association (*)</label>
               <input type="text" name="benevoleName" value="@if ($coupon->benevoleName != NULL){{$coupon->benevoleName}}@endif" class="from-control" required>
               <br>
 
               <!-- num benevole de l'association -->
-              <label for="benevoleNamePhone" class="font-weight-light">Numéro du bénévole</label>
+              <label for="benevoleNamePhone" class="font-weight-light">Téléphone du bénévole (*)</label>
               <input type="tel" name="benevolePhone" value="@if ($coupon->benevolePhone != NULL){{$coupon->benevolePhone}}@endif" class="from-control" required>
               <br>
 
               <!--date expiration-->
-              <label for="dateExpiration" class="font-weight-light">Date d'expiration du coupon</label>
+              <label for="dateExpiration" class="font-weight-light">Date d'expiration du coupon (*)</label>
               <input type="date" name="dateExpiration" value="@if($coupon->dateExpiration !=NULL){{$coupon->dateExpiration}}@endif" class="from-control" required>
               <!-- valider le formulaire -->
               <div class="form-group row mb-0">
@@ -46,11 +46,10 @@
                   </div>
               </div>
               <div class="col-md-12">{{$message}}</div>
-          </div>
-      </form>
+            </div>
+          </form>
+       <div class="form-group row col-md-12">Les champs signalés d'un (*) sont obligatoires.</div>
+    </div>
   </div>
-</div>
-</div>
-</div>
 </div>
 @endsection

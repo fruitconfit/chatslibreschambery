@@ -45,6 +45,7 @@
                         <th scope="col">Date de la facture</th>
                         <th scope="col">Montant € TTC</th>
                         <th scope="col">Payée</th>
+                        <th scope="col">Commentaire</th>
                         <th scope="col"></th>
                       </tr>
                     </thead>
@@ -63,6 +64,7 @@
                             {{ date('d/m/Y', strtotime($invoice->date_reglement)) }}
                           @endif
                         </td>
+                        <td>{{ $invoice->commentaire }}</td>
                         <td><a href="{{ url('/invoices/'.$invoice->id.'/edit') }}"> <i class="fa fa-edit"></i></a></td>
                       </tr>
                       @endforeach
