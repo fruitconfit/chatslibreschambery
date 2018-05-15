@@ -26,14 +26,14 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="dateAjout" class="col-sm-2 col-form-label">Date d'ajout</label>
+                            <label for="dateAjout" class="col-sm-3 col-form-label">Date d'ajout (*)</label>
                             <div class="col-sm-10">
                                 <input type="date" id="dateAjout" value="{{ date('Y-m-d') }}" name="date_ajout" class="form-control" required>
                             </div>
                         </div>
                         
                         <div class="form-group row">
-                            <label for="fournisseur" class="col-sm-2 col-form-label">Fournisseur</label>
+                            <label for="fournisseur" class="col-sm-3 col-form-label">Fournisseur (*)</label>
                             <div class="col-sm-10">
                                 <select id="fournisseur" name="fournisseur_id" class="form-control" required>
                                     <option value="">-</option>
@@ -46,35 +46,35 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="numFacture" class="col-sm-2 col-form-label">Numéro de facture</label>
+                            <label for="numFacture" class="col-sm-3 col-form-label">Numéro de facture (*)</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="numFacture" name="numero_facture" required>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="dateFacture" class="col-sm-2 col-form-label">Date de la facture</label>
+                            <label for="dateFacture" class="col-sm-3 col-form-label">Date de la facture (*)</label>
                             <div class="col-sm-10">
                                 <input type="date" id="dateFacture" name="date_facture" class="form-control" required>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="montant" class="col-sm-2 col-form-label">Montant € TTC</label>
+                            <label for="montant" class="col-sm-3 col-form-label">Montant € TTC (*)</label>
                             <div class="col-sm-10">
                                 <input type="number" class="form-control" id="montant" name="montant" step="any" required>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="dateReglement" class="col-sm-2 col-form-label">Date de règlement</label>
+                            <label for="dateReglement" class="col-sm-3 col-form-label">Date de règlement</label>
                             <div class="col-sm-10">
                                 <input type="date" id="dateReglement" name="date_reglement" class="form-control">
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="commentaire" class="col-sm-2 col-form-label">Commentaire</label>
+                            <label for="commentaire" class="col-sm-3 col-form-label">Commentaire</label>
                             <div class="col-sm-10">
                                 <textarea class="form-control rounded-0" id="commentaire" name="commentaire"></textarea>
                             </div>
@@ -87,6 +87,7 @@
                         </div>
                     
                     </form>
+                        <div class="form-group row col-md-12">Les champs signalés d'un (*) sont obligatoires.</div>
                 </div>
             </div>
         </div>
