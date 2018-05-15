@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function(){
 		Route::get('/logout', 'AccountController@logout')->name('logout');
 		Route::get('/send', 'AccountController@newPassword')->name('newPassword');
 		Route::get('/reset', 'AccountController@newPasswordPage')->name('newPasswordPage');
+		Route::get('/renameUser/{id}', 'AccountController@renameUser')->name('renameUser');
 	});
 
 	// Erreur

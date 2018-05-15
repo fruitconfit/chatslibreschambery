@@ -147,9 +147,16 @@ class AdminController extends Controller
         return view('admin.users',['users'=>$this->getAllUser(), 'roles'=>$this->getAllRoleName()]);
     }
 
+    function cmp($a, $b)
+    {
+        return strcasecmp($a->name, $b->name);
+    }
+
     public function manageUsers()
     {
-        return view('admin.users',['users'=>$this->getAllUser(), 'roles'=>$this->getAllRoleName()]);
+        $users = $this->getAllUser();
+        usort($users, array($this, "cmp"));
+        return view('admin.users',['users'=>$users, 'roles'=>$this->getAllRoleName()]);
     }
 
     public function addRoleToUser(Request $request,$id)
