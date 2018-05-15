@@ -32,7 +32,7 @@ class CouponController extends Controller
         return view('home');
     }
 
-    /* --------------------------------------------------- LIASSES --------------------------------------------------- */
+    /* --------------------------------------------------- COUPONS --------------------------------------------------- */
 
     // Par samuel et théo le 03/05/2018
     // Retrouve le coupon par son id (si il existe)

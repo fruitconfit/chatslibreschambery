@@ -14,12 +14,13 @@
                                 <table class="table table-striped table-bordered">
                                     <thead class="font-weight-bold">
                                         <tr>
-                                            <th>Numéro de coupon</th>
+                                            <th>N° de coupon</th>
                                             <th>Nom du référent</th>
                                             <th>Téléphone du référent</th>
                                             <th>Nom du bénévole</th>
                                             <th>Téléphone du bénévole</th>
-                                            <th>Date d'expiration</th>
+                                            <th>Expire le</th>
+                                            <th>Commentaire</th>
                                         </tr>
                                     </thead>
                                     <tbody>
