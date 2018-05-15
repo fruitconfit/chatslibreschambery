@@ -25,7 +25,7 @@ class InvoiceController extends Controller
      */
     public function create()
     {
-        return view('invoices.create')->with('fournisseurs', Fournisseur::all());
+        return view('invoices.create')->with('fournisseurs', Fournisseur::getAllFournisseur());
     }
 
     /**
@@ -69,7 +69,7 @@ class InvoiceController extends Controller
      */
     public function edit(Invoice $invoice)
     {
-        return view('invoices.edit', ['fournisseurs' => Fournisseur::all(), 'invoice' => $invoice]);
+        return view('invoices.edit', ['fournisseurs' => Fournisseur::getAllFournisseur(), 'invoice' => $invoice]);
     }
 
     /**

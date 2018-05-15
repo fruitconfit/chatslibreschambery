@@ -69,29 +69,28 @@
                     </tbody>
                   </table>
                   <div class="row">
-                    <a class="btn peach-gradient btn-rounded" href="{{ route('invoices.create') }}">Ajouter</a>
+                    <a class="btn btn-primary" href="{{ route('invoices.create') }}">Ajouter</a>
                   </div>
+                </div>
+              </div>
 
-                  <hr>
+              <br>
 
-                  <h4>Filtrer</h4>
+              <div class="card card-default">
+                <div class="card-header">
+                  Filtrer
+                </div>
+                <div class="card-body">
 
                   <form method="GET" action="{{ route('invoices.index') }}">
                     <div class="form-group row">
-                      <label for="from" class="col-sm-2 col-form-label">Date entre</label>
-                      <div class="col-sm-10">
-                        <input type="date" id="from" name="from" class="form-control">
-                      </div>
+                      <label for="from" class="col-form-label">Date entre</label>
+                      <input class="col-sm-3" type="date" id="from" name="from" class="form-control">
+                      <label for="to" class="col-form-label">et</label>
+                      <input class="col-sm-3" type="date" id="to" name="to" class="form-control">
                     </div>
 
-                    <div class="form-group row">
-                      <label for="to" class="col-sm-2 col-form-label">et</label>
-                      <div class="col-sm-10">
-                        <input type="date" id="to" name="to" class="form-control">
-                      </div>
-                    </div>
-
-                    <div class="form-group row">
+                    <!--<div class="form-group row">
                           <div class="col-sm-10">
                               <select name="providerType" class="form-control">
                                 <option value="">Par type de fournisseur</option>
@@ -100,10 +99,10 @@
                                 @endforeach
                               </select>
                           </div>
-                    </div>
+                    </div>-->
 
                       <div class="form-group row">
-                          <div class="col-sm-10">
+                          <div class="col-sm-5">
                               <select name="provider" class="form-control">
                                 <option value="">Par fournisseur</option>
                                 @foreach($fournisseurs as $fournisseur)
@@ -114,7 +113,7 @@
                       </div>
 
                     <div class="form-group row">
-                      <div class="col-sm-10">
+                      <div class="col-sm-5">
                         <select name="paid" class="form-control">
                           <option value="">Par statut (payée ou non)</option>
                           <option value="true">Payée</option>
@@ -125,7 +124,7 @@
 
                     <div class="form-group row">
                       <div class="col-sm-10">
-                        <button type="submit" class="btn btn-primary btn-md">Filtrer</button>
+                        <button type="submit" class="btn btn-primary">Filtrer</button>
                       </div>
                     </div>
                   </form>

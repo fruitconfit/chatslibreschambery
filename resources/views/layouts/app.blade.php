@@ -80,6 +80,8 @@
                                     </li>
                                     <li><a href="{{ route('groups') }}" class="waves-effect">Gestion des roles</a>
                                     </li>
+                                    <li><a href="{{ url('/typefournisseur/create') }}" class="waves-effect">Ajout de type de fournisseur</a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>
