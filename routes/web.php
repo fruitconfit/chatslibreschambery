@@ -54,6 +54,17 @@ Route::middleware('auth')->group(function(){
 		Route::get('/admin/users/add/role/{id}', 'AdminController@addRoleToUser')->name('addRoleToUser');
 		Route::get('/admin/users/delete/role/{id}', 'AdminController@deleteRoleToUser')->name('deleteRoleToUser');
 	});
+
+	// Types de fournisseurs
+	Route::group(array('group_name' => 'Gestion des types de fournisseurs'), function()
+	{
+		Route::get('/typefournisseur', 'ComptaController@manageTypeFournisseur')->name('manageTypeFournisseur');
+		Route::get('/typefournisseur/delete/{id}', 'ComptaController@deleteTypeFournisseur')->name('deleteTypeFournisseur');
+		Route::get('/typefournisseur/create', function(){
+			return view('compta.typefournisseur');
+		});
+		Route::post('/typefournisseur/store', 'ComptaController@storeTypeFournisseur')->name('storeTypeFournisseur');
+	});
 	
 	// Liasses
 	Route::group(array('group_name' => 'Gestion des liasses'), function()
@@ -81,12 +92,6 @@ Route::middleware('auth')->group(function(){
 		Route::get('/compta/fournisseur/{id}', 'ComptaController@modifyFournisseur')->name('modifyFournisseur');
 		Route::get('/compta/listFournisseur', 'ComptaController@manageFournisseur')->name('manageFournisseur');
 		Route::get('/compta/listFournisseur/delete/{id}', 'ComptaController@deleteFournisseur')->name('deleteFournisseur');
-		Route::get('/typefournisseur', 'ComptaController@manageTypeFournisseur')->name('manageTypeFournisseur');
-		Route::get('/typefournisseur/delete/{id}', 'ComptaController@deleteTypeFournisseur')->name('deleteTypeFournisseur');
-		Route::get('/typefournisseur/create', function(){
-			return view('compta.typefournisseur');
-		});
-		Route::post('/typefournisseur/store', 'ComptaController@storeTypeFournisseur')->name('storeTypeFournisseur');
 	});
 
 	// Coupons
