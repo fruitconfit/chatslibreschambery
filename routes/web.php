@@ -81,6 +81,8 @@ Route::middleware('auth')->group(function(){
 		Route::get('/compta/fournisseur/{id}', 'ComptaController@modifyFournisseur')->name('modifyFournisseur');
 		Route::get('/compta/listFournisseur', 'ComptaController@manageFournisseur')->name('manageFournisseur');
 		Route::get('/compta/listFournisseur/delete/{id}', 'ComptaController@deleteFournisseur')->name('deleteFournisseur');
+		Route::get('/typefournisseur', 'ComptaController@manageTypeFournisseur')->name('manageTypeFournisseur');
+		Route::get('/typefournisseur/delete/{id}', 'ComptaController@deleteTypeFournisseur')->name('deleteTypeFournisseur');
 		Route::get('/typefournisseur/create', function(){
 			return view('compta.typefournisseur');
 		});

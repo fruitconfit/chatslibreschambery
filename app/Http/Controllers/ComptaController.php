@@ -228,7 +228,18 @@ class ComptaController extends Controller
     public function storeTypeFournisseur(Request $request)
     {
         TypeFournisseur::create($request->except('_token'));
-        return view('compta.listFournisseur',['fournisseurs'=>Fournisseur::getAllFournisseur()]);
+        return view('compta.manageTypeFournisseur',['typeFournisseurs'=>TypeFournisseur::getAllTypeFournisseur()]);
+    }
+
+    // Par Anaïs le 03/05/2018
+    // Affiche la liste des types de fournisseur
+    public function manageTypeFournisseur(){
+        return view('compta.manageTypeFournisseur',['typeFournisseurs'=>TypeFournisseur::getAllTypeFournisseur()]);
     }
     
+    public function deleteTypeFournisseur($id)
+    {
+        TypeFournisseur::destroy($id);
+        return view('compta.manageTypeFournisseur',['typeFournisseurs'=>TypeFournisseur::getAllTypeFournisseur()]);
+    }
 }

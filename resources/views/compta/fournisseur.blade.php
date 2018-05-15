@@ -70,7 +70,7 @@
                                     <option value="{{ $typefournisseur->id }}">{{ $typefournisseur->nom }}</option>
                                 @endforeach
                             </select>
-                            <a href="{{ url('/typefournisseur/create') }}" class="btn btn-info btn-md">Nouveau type de fournisseur</a>
+                            <!--<a href="{{ url('/typefournisseur/create') }}" class="btn btn-info btn-md">Nouveau type de fournisseur</a>-->
 
                             <br>
                             

@@ -39,7 +39,7 @@
                   <table class="table" id="table_factures">
                     <thead class="thead-light">
                       <tr>
-                        <th scope="col">Date d'ajout</th>
+                        <th scope="col">Ajoutée le</th>
                         <th scope="col">Fournisseur</th>
                         <th scope="col">n° de facture</th>
                         <th scope="col">Date de la facture</th>
@@ -50,7 +50,7 @@
                     </thead>
                     <tbody>
                       @foreach ($invoices as $invoice)
-                      <tr>
+                      <tr @if (is_null($invoice->date_reglement))  class="table-danger" @else class="table-success" @endif>
                         <td>{{ date('d/m/Y', strtotime($invoice->date_ajout)) }}</td>
                         <td>{{ $invoice->fournisseur->nickname }}</td>
                         <td>{{ $invoice->numero_facture }}</td>
@@ -84,7 +84,7 @@
 
                   <form method="GET" action="{{ route('invoices.index') }}">
                     <div class="form-group row">
-                      <label for="from" class="col-form-label">Date entre</label>
+                      <label for="from" class="col-form-label">Date comprise entre</label>
                       <input class="col-sm-3" type="date" id="from" name="from" class="form-control">
                       <label for="to" class="col-form-label">et</label>
                       <input class="col-sm-3" type="date" id="to" name="to" class="form-control">
@@ -133,6 +133,7 @@
         </div>
     </div>
 </div>
+<br>
 
 @endsection
 
