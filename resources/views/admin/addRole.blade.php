@@ -10,7 +10,6 @@
                     <a class="float-right" href="{{ route('groups') }}">Retour <i class="fa fa-chevron-right"></i></a>
                 </div>
                 <div class="card-body">
-                    <div class="col-md-12 @if($message != "") alert alert-success @endif">{{$message}}</div>
 
                     <form method="GET" action="{{ route('addRole') }}">
                         @csrf
@@ -31,11 +30,10 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary" value="Submit">
-                                    Ajouter un role
-                                </button>
+                                <button type="submit" class="btn btn-primary" value="Submit">Ajouter un role</button>
                             </div>
                         </div>
+                    <div class="col-md-12 @if($message != "") alert alert-success @endif">{{$message}}</div>
                     </form>
                 </div>
             </div>

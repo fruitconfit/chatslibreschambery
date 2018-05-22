@@ -25,8 +25,8 @@
                         <!-- valider le formulaire -->
                         <div class="form-group row mb-0">
                             <button type="submit" class="btn btn-primary" value="Submit">Enregistrer</button>
-                            <div class="col-md-12 @if($message != "") alert alert-success @endif">{{$message}}</div>
                         </div>
+                    <div class="col-md-12 @if($message != "") alert alert-success @endif">{{$message}}</div>
                     </form>
                 </div>
             </div>

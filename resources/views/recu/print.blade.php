@@ -4,7 +4,7 @@
 <head>
 	
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	<title></title>
+	<title>Reçu cerfa</title>
 	<meta name="generator" content="LibreOffice 6.0.2.1 (Linux)"/>
 	<meta name="author" content="Marianne Blanc"/>
 	<meta name="created" content="2011-08-21T16:28:37"/>
@@ -109,7 +109,7 @@
 	</tr>
 	<tr>
 		<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000" height="25" align="left" valign=middle><b><font size=3 color="#000000">   Adresse : </font></b></td>
-		<td colspan="3" style="border-bottom: 1px solid #000000" align="left" valign=middle><font size=3 color="#000000">ADRESSE CODEPOSTAL VILLE</font></td>
+		<td colspan="3" style="border-bottom: 1px solid #000000" align="left" valign=middle><font size=3 color="#000000"><?php echo $don->adress; ?>, <?php echo $don->city; ?>, <?php echo $don->postcode; ?></font></td>
 		<td style="border-bottom: 1px solid #000000" align="left" valign=middle><font size=3 color="#000000"><br></font></td>
 		<td style="border-bottom: 1px solid #000000" align="left" valign=middle><font size=3 color="#000000"><br></font></td>
 		<td style="border-bottom: 1px solid #000000" align="left" valign=middle><font size=3 color="#000000"><br></font></td>

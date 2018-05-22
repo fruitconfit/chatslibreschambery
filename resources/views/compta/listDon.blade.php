@@ -36,11 +36,12 @@
                                                 <td>{{ $don->nameBank }}</td>
                                                 <td>
                                                     @if($don->recu == 1)
-                                                        Oui
+                                                        <a href="{{ url('recu/'.$don->id.'/print') }}" target="_blank" class="waves-effect"><i class="fa fa-download"></i></a>
+                                                    @else
+                                                        Non
                                                     @endif
                                                 </td>
                                                 <td class="text-center"><a href="{{ url('discount/edit/'.$don->id) }}" class="waves-effect"><i class="fa fa-edit"></i></a></td>
-                                                <td class="text-center"><a href="{{ url('recu/'.$don->id.'/print') }}" target="_blank" class="waves-effect"><i class="fa fa-download"></i></a></td>
                                             </tr>
                                         @endforeach
                                     </tbody>
