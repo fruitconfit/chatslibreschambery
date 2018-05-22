@@ -97,7 +97,7 @@ class CouponController extends Controller
                 $coupon->commentaire = $request->input('commentaire');
             }
             $coupon->save();
-            $coupon->refCoupon = date("Y")."-".$coupon->id;
+            $coupon->refCoupon = date("y")."1".$coupon->id;
             $coupon->save();
             $coupon = Coupon::find($coupon->id);
             $message = 'Le coupon a bien été ajouté.';

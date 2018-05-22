@@ -108,10 +108,6 @@
                                     <li><a href="{{ route('invoices.index') }}" class="waves-effect">Gestion des factures</a>
                                     </li>
                                     @endcan
-                                    <li class="d-none"><a href="#" class="waves-effect">Gestion des reçus fiscaux</a>
-                                    </li>
-                                    <li class="d-none"><a href="#" class="waves-effect">Consultation le bilan</a>
-                                    </li>
                                     @can('compta/listCoupon')
                                     <li><a href="{{ route('manageCoupon') }}" class="waves-effect">Gestion des coupons</a>
                                     </li>
