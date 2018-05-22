@@ -56,7 +56,7 @@
 	</tr>
 	<tr>
 		<td colspan=5 align="center" valign=top><font color="#000000">(Articles 200 et 238bis du Code Général des Impôts)</font></td>
-		<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=4 align="center" valign=middle sdval="1" sdnum="1033;"><font color="#FF0000"><?php echo $don->id; ?></font></td>
+		<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=4 align="center" valign=middle sdval="1" sdnum="1033;"><font color="#000000"><?php echo $don->id; ?></font></td>
 		<td align="left" valign=bottom><font color="#000000"><br></font></td>
 	</tr>
 	<tr>
@@ -97,7 +97,7 @@
 	</tr>
 	<tr>
 		<td style="border-top: 1px solid #000000; border-left: 1px solid #000000" height="25" align="left" valign=middle><b><font size=3 color="#000000">   Nom :</font></b></td>
-		<td colspan="3" style="border-top: 1px solid #000000" align="left" valign=middle><font size=3 color="#FF0000"><?php echo $don->nameSender; ?></font></td>
+		<td colspan="3" style="border-top: 1px solid #000000" align="left" valign=middle><font size=3 color="#000000"><?php echo $don->nameSender; ?></font></td>
 		<td style="border-top: 1px solid #000000" align="left" valign=middle><font size=3 color="#000000"><br></font></td>
 		<td style="border-top: 1px solid #000000" align="left" valign=middle><font size=3 color="#000000"><br></font></td>
 		<td style="border-top: 1px solid #000000" align="left" valign=middle><font size=3 color="#000000"><br></font></td>
@@ -109,7 +109,7 @@
 	</tr>
 	<tr>
 		<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000" height="25" align="left" valign=middle><b><font size=3 color="#000000">   Adresse : </font></b></td>
-		<td colspan="3" style="border-bottom: 1px solid #000000" align="left" valign=middle><font size=3 color="#FF0000">ADRESSE CODEPOSTAL VILLE</font></td>
+		<td colspan="3" style="border-bottom: 1px solid #000000" align="left" valign=middle><font size=3 color="#000000">ADRESSE CODEPOSTAL VILLE</font></td>
 		<td style="border-bottom: 1px solid #000000" align="left" valign=middle><font size=3 color="#000000"><br></font></td>
 		<td style="border-bottom: 1px solid #000000" align="left" valign=middle><font size=3 color="#000000"><br></font></td>
 		<td style="border-bottom: 1px solid #000000" align="left" valign=middle><font size=3 color="#000000"><br></font></td>
@@ -125,7 +125,7 @@
 	</tr>
 	<tr>
 		<td style="border-left: 1px solid #000000" height="21" align="left" valign=bottom><font size=3 color="#000000">  la somme de :</font></td>
-		<td align="left" valign=bottom sdnum="1033;0;#,##0.00 &quot;€&quot;"><font size=3 color="#FF0000"><?php echo $don->priceDiscount.'€'; ?></font></td>
+		<td align="left" valign=bottom sdnum="1033;0;#,##0.00 &quot;€&quot;"><font size=3 color="#000000"><?php echo $don->priceDiscount.'€'; ?></font></td>
 		<td align="left" valign=bottom><font size=3 color="#000000"><br></font></td>
 		<td align="left" valign=bottom><font size=3 color="#000000"><br></font></td>
 		<td align="left" valign=bottom><font size=3 color="#000000"><br></font></td>
@@ -138,19 +138,19 @@
 	<tr>
 		<td style="border-left: 1px solid #000000" height="21" align="left" valign=bottom><b><font size=3 color="#000000">  Somme en toutes lettres :</font></b></td>
 		<td align="left" valign=bottom><font size=3 color="#000000"><br></font></td>
-		<td colspan="3" align="left" valign=bottom><font size=3 color="#FF0000"><?php echo $somme_lettres; ?></font></td>
+		<td colspan="3" align="left" valign=bottom><font size=3 color="#000000"><?php echo $somme_lettres; ?></font></td>
 		<td colspan=4 align="center" valign=bottom><font size=3 color="#000000"> Date et signature</font></td>
 		<td style="border-right: 1px solid #000000" align="left" valign=bottom><font color="#000000"><br></font></td>
 	</tr>
 	<tr>
 		<td style="border-left: 1px solid #000000" height="21" align="left" valign=bottom><b><font size=3 color="#000000">  Date du paiement : </font></b></td>
 		<td align="left" valign=bottom><font size=3 color="#000000"><br></font></td>
-		<td align="left" valign=bottom><font size=3 color="#FF0000"><?php echo date('d/m/Y', strtotime($don->dateDiscount)); ?></font></td>
+		<td align="left" valign=bottom><font size=3 color="#000000"><?php echo date('d/m/Y', strtotime($don->dateDiscount)); ?></font></td>
 		<td align="left" valign=bottom><font size=3 color="#000000"><br></font></td>
 		<td align="left" valign=bottom><font size=3 color="#000000"><br></font></td>
 		<td align="left" valign=bottom><font size=3 color="#000000"><br></font></td>
 		<td align="left" valign=bottom><font size=3 color="#000000">    Le</font></td>
-		<td colspan=2 align="left" valign=bottom sdnum="1033;1033;M/D/YYYY"><font size=3 color="#FF0000"><?php echo date('d/m/Y'); ?></font></td>
+		<td colspan=2 align="left" valign=bottom sdnum="1033;1033;M/D/YYYY"><font size=3 color="#000000"><?php echo date('d/m/Y'); ?></font></td>
 		<td style="border-right: 1px solid #000000" align="left" valign=bottom><font color="#000000"><br></font></td>
 	</tr>
 	<tr>
@@ -178,7 +178,7 @@
 		<td style="border-right: 1px solid #000000" align="left" valign=bottom><font color="#000000"><br></font></td>
 	</tr>
 	<tr>
-		<td style="border-left: 1px solid #000000" colspan=2 rowspan=3 height="60" align="left" valign=middle><font size=3 color="#FF0000">@if ($don->recipeType == 'Espèces')☑ Numéraire<br>□ Chèque ou virement<br>□ Autres (3)@endif @if ($don->recipeType == 'Chèque')□ Numéraire<br>☑ Chèque ou virement<br>□ Autres (3) @endif</font></td>
+		<td style="border-left: 1px solid #000000" colspan=2 rowspan=3 height="60" align="left" valign=middle><font size=3 color="#000000">@if ($don->recipeType == 'Espèces')☑ Numéraire<br>□ Chèque ou virement<br>□ Autres (3)@endif @if ($don->recipeType == 'Chèque')□ Numéraire<br>☑ Chèque ou virement<br>□ Autres (3) @endif</font></td>
 		<td align="left" valign=bottom><font size=3 color="#000000"><br></font></td>
 		<td align="left" valign=bottom><font size=3 color="#000000"><br></font></td>
 		<td align="left" valign=bottom><font size=3 color="#000000"><br></font></td>
@@ -189,7 +189,7 @@
 		<td style="border-right: 1px solid #000000" align="left" valign=bottom><font color="#000000"><br></font></td>
 	</tr>
 	<tr>
-		<td align="left" valign=bottom><font size=3 color="#FF0000"><br></font></td>
+		<td align="left" valign=bottom><font size=3 color="#000000"><br></font></td>
 		<td align="left" valign=bottom><font size=3 color="#000000"><br></font></td>
 		<td align="left" valign=bottom><font size=3 color="#000000"><br></font></td>
 		<td align="left" valign=bottom><font size=3 color="#000000"><br></font></td>

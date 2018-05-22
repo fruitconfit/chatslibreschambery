@@ -86,11 +86,7 @@
                             <br>
 
                             <label for="defaultFormCardNameEx" class="font-weight-light">Chat concerné</label>
-                            <select name="cat" class="form-control">
-                                <option value="" selected></option>
-                                <option value="Mistigri">Mistigri</option>
-                                <option value="Felix">Felix</option>
-                            </select>
+                            <input type="text" name="cat" class="form-control">
 
                             <br>
 

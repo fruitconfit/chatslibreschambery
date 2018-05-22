@@ -97,11 +97,7 @@
 
                                 <label for="defaultFormCardNameEx" class="font-weight-light">Chat concerné</label>
                                 <br>
-                                <select name="cat" class="form-control">
-                                    <option value=""  @if ($discount->cat == '') selected @endif ></option>
-                                    <option value="Mistigri"  @if ($discount->cat == 'Mistigri') selected @endif >Mistigri</option>
-                                    <option value="Felix" @if ($discount->cat == 'Felix') selected @endif >Felix</option>
-                                </select>
+                                <input type="text" name="cat" value="{{$discount->cat}}" class="form-control">
                                 <br>
 
                                 <label for="defaultFormCardNameEx" class="font-weight-light">Informations supplémentaires</label>
