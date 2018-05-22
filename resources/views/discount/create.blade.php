@@ -19,6 +19,7 @@
                     <a class="float-right" href="{{ route('modifyLiasse',$id_liasse) }}">Retour <i class="fa fa-chevron-right"></i></a>
                 </div>
                 <div class="card-body"> 
+                
                     <form method="POST" action="{{ route('discount.store') }}">
                     @csrf
                         <div class="card-body"> 
@@ -102,9 +103,9 @@
                                     <button class="btn btn-primary" type="submit">Ajouter puis continuer</button>
                                 </div>
                             </div>
+                        <div class="form-group row col-md-12">Les champs signalés d'un (*) sont obligatoires.</div>
                         </div>
                     </form>
-                        <div class="form-group row col-md-12">Les champs signalés d'un (*) sont obligatoires.</div>
                 </div><!-- Card -->
             </div>
         </div>

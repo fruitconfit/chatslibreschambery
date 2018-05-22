@@ -84,7 +84,7 @@
                                     <button type="submit" class="btn btn-primary" value="Submit">Enregistrer</button>
                                 </div>
                             </div>
-                            <div class="col-md-12">{{$message}}</div>
+                            <div class="col-md-12 @if($message != "") alert alert-success @endif">{{$message}}</div>
                         </div>
                     </form>
                         <div class="form-group row col-md-12">Les champs signalés d'un (*) sont obligatoires.</div>

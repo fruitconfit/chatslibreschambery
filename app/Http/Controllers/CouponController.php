@@ -38,7 +38,7 @@ class CouponController extends Controller
     // Retrouve le coupon par son id (si il existe)
     //  L'ajoute si il n'existe pas et que les champs ne sont pas remplis
     //  Le modifie si des champs ont été remplis ou modifiés
-    //  Sinon on affiche la page d'ajout d'une nouvelle liasse
+    //  Sinon on affiche la page d'ajout d'un nouveau coupon
     public function modifyCoupon(Request $request, $id)
     {
         $message = '';
@@ -49,23 +49,27 @@ class CouponController extends Controller
         if ($coupon != NULL){
             if ( $request->input('referentName') != NULL){
                 $coupon->referentName = $request->input('referentName');
-                $message = 'Le nom du référent a bien été modifiée.';
+                $message = 'Le nom du référent a bien été modifié.';
             }
             if ($request->input('referentPhone') != NULL){
                 $coupon->referentPhone = $request->input('referentPhone');
-                $message = 'le numéro de téléphone du responsable a bien été modifiée.';
+                $message = 'Le numéro de téléphone du responsable a bien été modifié.';
             }
             if ($request->input('benevoleName') != NULL){
                 $coupon->benevoleName = $request->input('benevoleName');
-                $message = 'le nom du bénévole a bien été modifiée.';
+                $message = 'Le nom du bénévole a bien été modifié.';
             }
             if ($request->input('benevolePhone') != NULL){
                 $coupon->benevolePhone = $request->input('benevolePhone');
-                $message = 'le numéro de téléphone du bénévole a bien été modifiée.';
+                $message = 'Le numéro de téléphone du bénévole a bien été modifié.';
             }
             if ($request->input('dateExpiration') != NULL){
                 $coupon->dateExpiration = $request->input('dateExpiration');
-                $message = 'le numéro de téléphone du bénévole a bien été modifiée.';
+                $message = 'Le numéro de téléphone du bénévole a bien été modifié.';
+            }
+            if ($request->input('commentaire') != NULL){
+                $coupon->commentaire = $request->input('commentaire');
+                $message = 'Le commentaire a bien été modifié.';
             }
 
             $coupon->save();
@@ -89,11 +93,14 @@ class CouponController extends Controller
             if ($request->input('dateExpiration') != NULL){
                 $coupon->dateExpiration = $request->input('dateExpiration');
             }
+            if ($request->input('commentaire') != NULL){
+                $coupon->commentaire = $request->input('commentaire');
+            }
             $coupon->save();
             $coupon->refCoupon = date("Y")."-".$coupon->id;
             $coupon->save();
             $coupon = Coupon::find($coupon->id);
-            $message = 'Le coupon a bien été ajoutée.';
+            $message = 'Le coupon a bien été ajouté.';
 
         // Affiche la page de création du coupon
         } else {

@@ -52,7 +52,7 @@
                             <div class="col-md-6 offset-md-3">
                                 <button type="submit" class="btn btn-primary" value="Submit">Enregistrer</button>
                                 <button type="impress" class="btn btn-primary" value="Impress">Imprimer #</button>
-                                <div class="col-md-12">{{$message}}</div>
+                                <div class="col-md-12 @if($message != "") alert alert-success @endif">{{$message}}</div>
                             </div>
                         </div>
                     </form>

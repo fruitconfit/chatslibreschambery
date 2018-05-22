@@ -28,7 +28,7 @@
                                     Modifier
                                 </button>
                             </div>
-                            <div class="col-md-12">{{$message}}</div>
+                            <div class="col-md-12 @if($message != "") alert alert-success @endif">{{$message}}</div>
                         </div>
                     </form>
                 </div>
