@@ -117,7 +117,7 @@ Route::middleware('auth')->group(function(){
 			$don = App\Discount::findOrFail($id);
 			$numberToWords = new NumberToWords\NumberToWords();
 			$currencyTransformer = $numberToWords->getCurrencyTransformer('fr');
-			$somme_lettres = $currencyTransformer->toWords($don->priceDiscount, 'EUR');
+			$somme_lettres = $currencyTransformer->toWords(str_replace(".", "",number_format($don->priceDiscount,2)), 'EUR');
 			return view('recu.print', ['don' => $don, 'somme_lettres' => $somme_lettres]);
 		});
 	});
