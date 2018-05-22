@@ -10,6 +10,7 @@
                     <a class="float-right" href="{{ route('groups') }}">Retour <i class="fa fa-chevron-right"></i></a>
                 </div>
                 <div class="card-body">
+                    <div class="col-md-12 @if($message != "") alert alert-success @endif">{{$message}}</div>
 
                     <form method="GET" action="{{ route('addRole') }}">
                         @csrf
@@ -36,7 +37,6 @@
                             </div>
                         </div>
                     </form>
-                    <div class="col-md-12 @if($message != "") alert alert-success @endif">{{$message}}</div>
                 </div>
             </div>
         </div>

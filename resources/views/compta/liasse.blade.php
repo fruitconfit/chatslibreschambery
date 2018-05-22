@@ -24,7 +24,11 @@
                         <div class="form-group row">
                             <label for="creationDate" class="col-md-4 col-form-label text-md-right">Créée le (*)</label>
                             <div class="col-md-6">
-                                <input id="creationDate" type="date" value="@if ($liasse->id > 0){{$liasse->creationDate}}@endif" name="creationDate" required>
+                                @if ($liasse->id > 0)
+                                <input id="creationDate" type="date" value="{{$liasse->creationDate}}" name="creationDate" required>
+                                @else
+                                <input id="creationDate" type="date" value="{{date('Y-m-d')}}" name="creationDate" required>
+                                @endif
                             </div>
                         </div>
 
@@ -53,7 +57,6 @@
                                 <button type="submit" class="btn btn-primary" value="Submit">Enregistrer</button>
                             </div>
                         </div>
-                        <div class="col-md-12 @if($message != "") alert alert-success @endif">{{$message}}</div>
                     </form>
                 </div>
             </div>

@@ -44,6 +44,7 @@ class DiscountController extends Controller
 
     public function update(DiscountFormRequest $request) {
     	$discount = Discount::findOrFail($request->get('id'));
+        $id_discount = $discount->id;
         $id_liasse = $discount->id_liasse;
     	
         $discount->nameSender = $request->get("nameSender");
@@ -65,7 +66,7 @@ class DiscountController extends Controller
 
         $discount->save();
 
-        return redirect()->route('modifyLiasse', $id_liasse);
+        return view('discount.edit', [ 'discount'=>$discount]);
     }
 
     // Par Anaïs le 27/03/2018

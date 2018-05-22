@@ -11,6 +11,7 @@
                 </div>
 
                 <div class="card-body">
+                    <div class="col-md-12 @if($message != "") alert alert-success @endif">{{$message}}</div>
                     <form method="GET" action="{{ route('renameUser',$user->id) }}">
                         @csrf
 
@@ -28,7 +29,6 @@
                                     Modifier
                                 </button>
                             </div>
-                            <div class="col-md-12 @if($message != "") alert alert-success @endif">{{$message}}</div>
                         </div>
                     </form>
                 </div>

@@ -49,7 +49,7 @@
                             <br>
 
                             <label for="defaultFormCardNameEx" class="font-weight-light">Date de la remise (*)</label>
-                            <input type="date" name="dateDiscount" class="form-control">
+                            <input type="date" name="dateDiscount" value="{{date('Y-m-d')}}" class="form-control">
 
                             <br>
 

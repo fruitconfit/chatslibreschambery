@@ -21,6 +21,7 @@
                 <div class="card-body">
                     <form method="GET" action="{{ route('modifyFournisseur',$fournisseur->id) }}">
                         <div class="card-body"> 
+                            <div class="col-md-12 @if($message != "") alert alert-success @endif">{{$message}}</div>
                             <!-- nom raccourci -->
                             <label for="nickname" class="font-weight-light" maxlength="16">Nom raccourci (*)</label>
                             <input type="text" maxlength="16" name="nickname" value="@if ($fournisseur->nickname != NULL){{$fournisseur->nickname}}@endif" class="form-control" required>
@@ -84,7 +85,6 @@
                                     <button type="submit" class="btn btn-primary" value="Submit">Enregistrer</button>
                                 </div>
                             </div>
-                            <div class="col-md-12 @if($message != "") alert alert-success @endif">{{$message}}</div>
                             <div class="form-group row col-md-12">Les champs signalés d'un (*) sont obligatoires.</div>
                         </div>
                     </form>

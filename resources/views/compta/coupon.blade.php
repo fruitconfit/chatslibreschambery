@@ -18,6 +18,7 @@
             @csrf
             <div class="card-body">
               <!-- nom referent de l'association -->
+              <div class="col-md-12 @if($message != "") alert alert-success @endif">{{$message}}</div>
               <label for="referentName" class="font-weight-light">Référent d'association à contacter en cas de doute (*)</label>
               <input type="text" name="referentName" value="@if ($coupon->referentName != NULL){{$coupon->referentName}} @else Elodie Daulon @endif" class="form-control" required>
               <br>
@@ -52,7 +53,6 @@
                       <button type="submit" class="btn btn-primary" value="Submit">Enregistrer</button>
                   </div>
               </div>
-              <div class="col-md-12 @if($message != "") alert alert-success @endif">{{$message}}</div>
             </form>
           <div class="form-group row col-md-12">Les champs signalés d'un (*) sont obligatoires.</div>
         </div><!-- Card -->
