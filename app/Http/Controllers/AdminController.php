@@ -45,7 +45,7 @@ class AdminController extends Controller
             $roles = $this->getAllRole();
             foreach($roles as $role){
                 if($role->name == $request->input('name')){
-                    $message = 'le role existe déjà';
+                    $message = 'Le role existe déjà';
                     return view('admin.addRole',['message'=>$message]);
                 }
             }
@@ -116,7 +116,7 @@ class AdminController extends Controller
                 }
             }
 
-            $message = "Modification réussi";
+            $message = "Modification réussie";
         }
         return view('admin.manageRole',['permissions'=>$userHasGroup,'permissionGroup'=>array_keys($permissionGroup),'roleId'=>$id,'message'=>$message]);
     }

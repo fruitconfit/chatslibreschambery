@@ -85,9 +85,9 @@
                                 </div>
                             </div>
                             <div class="col-md-12 @if($message != "") alert alert-success @endif">{{$message}}</div>
+                            <div class="form-group row col-md-12">Les champs signalés d'un (*) sont obligatoires.</div>
                         </div>
                     </form>
-                        <div class="form-group row col-md-12">Les champs signalés d'un (*) sont obligatoires.</div>
                 </div>
             </div>
         </div>

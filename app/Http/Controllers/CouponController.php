@@ -49,27 +49,27 @@ class CouponController extends Controller
         if ($coupon != NULL){
             if ( $request->input('referentName') != NULL){
                 $coupon->referentName = $request->input('referentName');
-                $message = 'Le nom du référent a bien été modifié.';
+                $message = 'Le coupon a bien été modifié.';
             }
             if ($request->input('referentPhone') != NULL){
                 $coupon->referentPhone = $request->input('referentPhone');
-                $message = 'Le numéro de téléphone du responsable a bien été modifié.';
+                $message = 'Le coupon a bien été modifié.';
             }
             if ($request->input('benevoleName') != NULL){
                 $coupon->benevoleName = $request->input('benevoleName');
-                $message = 'Le nom du bénévole a bien été modifié.';
+                $message = 'Le coupon a bien été modifié.';
             }
             if ($request->input('benevolePhone') != NULL){
                 $coupon->benevolePhone = $request->input('benevolePhone');
-                $message = 'Le numéro de téléphone du bénévole a bien été modifié.';
+                $message = 'Le coupon a bien été modifié.';
             }
             if ($request->input('dateExpiration') != NULL){
                 $coupon->dateExpiration = $request->input('dateExpiration');
-                $message = 'Le numéro de téléphone du bénévole a bien été modifié.';
+                $message = 'Le coupon a bien été modifié.';
             }
-            if ($request->input('commentaire') != NULL){
+            if ($request->input('dateExpiration') != NULL){
                 $coupon->commentaire = $request->input('commentaire');
-                $message = 'Le commentaire a bien été modifié.';
+                $message = 'Le coupon a bien été modifié.';
             }
 
             $coupon->save();

@@ -46,15 +46,9 @@ class ComptaController extends Controller
 
         // Modification de la liasse
         if ($liasse != NULL){
-            if ( $request->input('creationDate') != NULL){
+            if ( $request->input('creationDate') != NULL || $request->input('transmission') != NULL || $request->input('creditate') != NULL){
                 $liasse->creationDate = $request->input('creationDate');
-                $message = 'La liasse a bien été modifiée.';
-            }
-            if ($request->input('transmission') != NULL){
                 $liasse->transmission = $request->input('transmission');
-                $message = 'La liasse a bien été modifiée.';
-            }
-            if ($request->input('creditate') != NULL){
                 $liasse->creditate = $request->input('creditate');
                 $message = 'La liasse a bien été modifiée.';
             }

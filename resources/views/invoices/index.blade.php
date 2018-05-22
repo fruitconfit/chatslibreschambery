@@ -32,7 +32,7 @@
         <div class="col-md-10">
             <div class="card card-default">
                 <div class="card-header">
-                  Lister les factures
+                  Liste des factures
                 </div>
                 <div class="card-body">
 

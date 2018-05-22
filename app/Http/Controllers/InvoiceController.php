@@ -91,7 +91,7 @@ class InvoiceController extends Controller
             'commentaire' => 'nullable'
         ]);
         $invoice->date_ajout = $request->get('date_ajout');
-        $invoice->provider_id = $request->get('fournisseur_id');
+        $invoice->fournisseur_id = $request->get('fournisseur_id');
         $invoice->numero_facture = $request->get('numero_facture');
         $invoice->date_facture = $request->get('date_facture');
         $invoice->montant = $request->get('montant');
