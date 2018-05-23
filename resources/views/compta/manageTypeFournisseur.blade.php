@@ -16,17 +16,14 @@
                             </tr>
                         </thead>
 
-
-                            <tbody>
-                                @foreach($typeFournisseurs as $typeFournisseur)
-                                <tr>
-                                    <td>{{ $typeFournisseur->nom }}</td>
-                                    <td class="col-md-2 text-center"><a href="{{ route('deleteTypeFournisseur',['id'=>$typeFournisseur->id]) }}"><i class="fa fa-trash"></i></a></td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-
-
+                        <tbody>
+                            @foreach($typeFournisseurs as $typeFournisseur)
+                            <tr>
+                                <td>{{ $typeFournisseur->nom }}</td>
+                                <td class="col-md-2 text-center"><a href="{{ route('deleteTypeFournisseur',['id'=>$typeFournisseur->id]) }}"><i class="fa fa-trash"></i></a></td>
+                            </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
 

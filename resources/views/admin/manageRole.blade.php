@@ -26,7 +26,12 @@
                         <div class="form-group row mb-0">
                             <button type="submit" class="btn btn-primary" value="Submit">Enregistrer</button>
                         </div>
-                    <div class="col-md-12 @if($message != "") alert alert-success @endif">{{$message}}</div>
+                        @if($message != "")
+                        <div class="alert alert-success alert-dismissible">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            {{$message}}
+                        </div>
+                        @endif
                     </form>
                 </div>
             </div>

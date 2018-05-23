@@ -13,26 +13,27 @@
                 <div class="card-body">
                     <form method="GET" action="{{ route('renameUser',$user->id) }}">
                         @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Nom</label>
-
-                            <div class="col-md-6">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="name" class="col-form-label">Nom</label>
                                 <input id="name" type="text" name="name" value="{{ $user->name }}" required>
                             </div>
-                        </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-3">
-                                <button type="submit" class="btn btn-primary" value="Submit">
-                                    Modifier
-                                </button>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary" value="Submit">Modifier</button>
                             </div>
+
+                            @if($message != "")
+                            <div class="alert alert-success alert-dismissible">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                {{$message}}
+                            </div>
+                            @endif
                         </div>
-                    <div class="col-md-12 @if($message != "") alert alert-success @endif">{{$message}}</div>
                     </form>
                 </div>
             </div>
+            <br>
         </div>
     </div>
 </div>
