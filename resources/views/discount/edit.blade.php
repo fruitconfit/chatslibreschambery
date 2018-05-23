@@ -16,7 +16,7 @@
                 @endif
                 <div class="card-header">
                     Modifier une remise
-                    <a class="float-right" href="{{ route('modifyLiasse',$discount->id_liasse) }}">Retour <i class="fa fa-chevron-right"></i></a>
+                    <a class="float-right" href="{{ route('modifyLiasse',$discount->id_liasse) }}">Retour à la liasse <i class="fa fa-chevron-right"></i></a>
                 </div>
                 <div class="card-body"> 
                     <form method="POST" action="{{ route('discount.update') }}">

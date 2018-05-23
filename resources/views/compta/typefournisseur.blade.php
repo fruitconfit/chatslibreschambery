@@ -8,7 +8,7 @@
             <div class="card card-default">
                 <div class="card-header">
                     Ajouter un type de fournisseur
-                    <a class="float-right" href="{{ route('manageFournisseur') }}">Retour <i class="fa fa-chevron-right"></i></a>
+                    <a class="float-right" href="{{ route('manageTypeFournisseur') }}">Retour <i class="fa fa-chevron-right"></i></a>
                 </div>
 
                 <div class="card-body">
