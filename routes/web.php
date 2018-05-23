@@ -28,7 +28,6 @@ Route::middleware('auth')->group(function(){
 		Route::get('/logout', 'AccountController@logout')->name('logout');
 		Route::get('/send', 'AccountController@newPassword')->name('newPassword');
 		Route::get('/reset', 'AccountController@newPasswordPage')->name('newPasswordPage');
-		Route::get('/renameUser/{id}', 'AccountController@renameUser')->name('renameUser');
 	});
 
 	// Erreur
@@ -40,9 +39,9 @@ Route::middleware('auth')->group(function(){
 	// Administration des utilisateurs
 	Route::group(array('group_name' => 'Administration des utilisateurs'), function()
 	{
-		Route::get('/admin/groups', 'AdminController@groups')->name('groups');
-		Route::get('/admin/users', 'AdminController@manageUsers')->name('users');
-		Route::get('/admin/users/delete/{id}', 'AdminController@deleteUser')->name('deleteUser');
+		Route::get('/renameUser/{id}', 'AccountController@renameUser')->name('renameUser');
+		Route::get('/admin/users', 'AccountController@manageUsers')->name('users');
+		Route::get('/admin/users/delete/{id}', 'AccountController@deleteUser')->name('deleteUser');
 	});
 
 	// Administation des roles
@@ -54,6 +53,7 @@ Route::middleware('auth')->group(function(){
 		Route::get('/admin/role/view', 'AdminController@viewRole')->name('viewRole');
 		Route::get('/admin/users/add/role/{id}', 'AdminController@addRoleToUser')->name('addRoleToUser');
 		Route::get('/admin/users/delete/role/{id}', 'AdminController@deleteRoleToUser')->name('deleteRoleToUser');
+		Route::get('/admin/groups', 'AdminController@groups')->name('groups');
 	});
 
 	// Types de fournisseurs

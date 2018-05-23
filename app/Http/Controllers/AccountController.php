@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\DB;
 use App\User;
 
 class AccountController extends Controller
@@ -26,7 +27,7 @@ class AccountController extends Controller
      */
     public function index()
     {
-        return view('account');
+        return view('auth.account');
     }
 
     public function modify(Request $request)
@@ -46,7 +47,7 @@ class AccountController extends Controller
             Auth::login($user);
             $messageValida = 'Vos informations ont été modifiées';
         }
-        return view('account',['message'=>$message]);
+        return view('auth.account',['message'=>$message]);
     }
 
     public function logout(){
@@ -121,5 +122,33 @@ class AccountController extends Controller
             $user->save();
         }
         return view('admin.renameUser',['user'=>$user, 'message'=>$message]);
+    }
+
+    public function deleteUser($id)
+    {
+        User::destroy($id);
+        return view('admin.users',['users'=>$this->getAllUser(), 'roles'=>AdminController::getAllRoleName()]);
+    }
+
+    function cmp($a, $b)
+    {
+        return strcasecmp($a->name, $b->name);
+    }
+
+    public function manageUsers()
+    {
+        $users = $this->getAllUser();
+        usort($users, array($this, "cmp"));
+        return view('admin.users',['users'=>$users, 'roles'=>AdminController::getAllRoleName()]);
+    }
+
+    public static function getAllUser(){
+        $users = DB::table('users')->get();
+        $listUser = array();
+        foreach($users as $user){
+            $userTemp = User::find($user->id);
+            array_push($listUser, $userTemp);
+        }
+        return $listUser;
     }
 }

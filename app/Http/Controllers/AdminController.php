@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AccountController;
 
 
 class AdminController extends Controller
@@ -141,24 +142,6 @@ class AdminController extends Controller
         return $listRole;
     }
 
-    public function deleteUser($id)
-    {
-        User::destroy($id);
-        return view('admin.users',['users'=>$this->getAllUser(), 'roles'=>$this->getAllRoleName()]);
-    }
-
-    function cmp($a, $b)
-    {
-        return strcasecmp($a->name, $b->name);
-    }
-
-    public function manageUsers()
-    {
-        $users = $this->getAllUser();
-        usort($users, array($this, "cmp"));
-        return view('admin.users',['users'=>$users, 'roles'=>$this->getAllRoleName()]);
-    }
-
     public function addRoleToUser(Request $request,$id)
     {
         $user = User::find($id);
@@ -166,28 +149,17 @@ class AdminController extends Controller
         $newRole = Role::findById($request->input('nameAdd'));
         foreach($roles as $role){
             if($role == $newRole->name){
-                return view('admin.users',['users'=>$this->getAllUser(), 'roles'=>$this->getAllRoleName()]);
+                return view('admin.users',['users'=>AccountController::getAllUser(), 'roles'=>$this->getAllRoleName()]);
             }
         }
         $user->assignRole($newRole);
-        return view('admin.users',['users'=>$this->getAllUser(), 'roles'=>$this->getAllRoleName()]);
+        return view('admin.users',['users'=>AccountController::getAllUser(), 'roles'=>$this->getAllRoleName()]);
     }
     public function deleteRoleToUser(Request $request,$id)
     {
         $user = User::find($id);
         $newRole = Role::findById($request->input('nameDelete'));
         $user->removeRole($newRole);
-        return view('admin.users',['users'=>$this->getAllUser(), 'roles'=>$this->getAllRoleName()]);
-    }
-
-
-    public static function getAllUser(){
-        $users = DB::table('users')->get();
-        $listUser = array();
-        foreach($users as $user){
-            $userTemp = User::find($user->id);
-            array_push($listUser, $userTemp);
-        }
-        return $listUser;
+        return view('admin.users',['users'=>AccountController::getAllUser(), 'roles'=>$this->getAllRoleName()]);
     }
 }
