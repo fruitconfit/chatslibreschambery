@@ -49,6 +49,7 @@ class CouponController extends Controller
         if ($coupon != NULL){
             if ( $request->input('referentName') != NULL){
                 $coupon->referentName = $request->input('referentName');
+                $coupon->commentaire = $request->input('commentaire');
                 $message = 'Le coupon a bien été modifié.';
             }
             if ($request->input('referentPhone') != NULL){
@@ -65,10 +66,6 @@ class CouponController extends Controller
             }
             if ($request->input('dateExpiration') != NULL){
                 $coupon->dateExpiration = $request->input('dateExpiration');
-                $message = 'Le coupon a bien été modifié.';
-            }
-            if ($request->input('dateExpiration') != NULL){
-                $coupon->commentaire = $request->input('commentaire');
                 $message = 'Le coupon a bien été modifié.';
             }
 
@@ -97,7 +94,8 @@ class CouponController extends Controller
                 $coupon->commentaire = $request->input('commentaire');
             }
             $coupon->save();
-            $coupon->refCoupon = date("y")."1".$coupon->id;
+            $id = str_pad($coupon->id,3,"0",STR_PAD_LEFT);
+            $coupon->refCoupon = date("y")."1".$id;
             $coupon->save();
             $coupon = Coupon::find($coupon->id);
             $message = 'Le coupon a bien été ajouté.';

@@ -113,6 +113,7 @@ class ComptaController extends Controller
         if ($fournisseur != NULL){
             if ( $request->input('nickname') != NULL){
                 $fournisseur->nickname = $request->input('nickname');
+                $fournisseur->comment = $request->input('comment');
                 $message = 'Le fournisseur a bien été modifié.';
             }
             if ($request->input('name') != NULL){
@@ -141,10 +142,6 @@ class ComptaController extends Controller
             }
             if ($request->input('type') != NULL){
                 $fournisseur->typefournisseur_id = $request->input('type');
-                $message = 'Le fournisseur a bien été modifié.';
-            }
-            if ($request->input('comment') != NULL){
-                $fournisseur->comment = $request->input('comment');
                 $message = 'Le fournisseur a bien été modifié.';
             }
             $fournisseur->save();

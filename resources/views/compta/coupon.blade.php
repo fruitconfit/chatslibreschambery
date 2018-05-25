@@ -46,10 +46,10 @@
               <!--date expiration-->
               <div class="form-group">
                 <label for="dateExpiration" class="col-form-label">Date d'expiration du coupon (*)</label>
-                <input type="date" name="dateExpiration" value="{{$coupon->dateExpiration}}" class="form-control" required>
+                <input type="date" name="dateExpiration" value="@if($coupon->dateExpiration != NULL){{$coupon->dateExpiration}}@else{{date('Y').'-12-31'}}@endif" class="form-control" required>
               </div>
 
-              <!--date expiration-->
+              <!-- commentaire -->
               <div class="form-group">
                 <label for="commentaire" class="col-form-label">Commentaire</label>
                 <textarea name="commentaire" class="form-control" style="height:100px" class="from-control">@if($coupon->commentaire !=NULL){{$coupon->commentaire}}@endif</textarea>
