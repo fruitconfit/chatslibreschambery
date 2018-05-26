@@ -18,11 +18,7 @@
             @csrf
             <div class="card-body">
               <div class="col-md-12 @if($message != "") alert alert-success @endif">{{$message}}</div>
-<<<<<<< HEAD
 
-=======
-              
->>>>>>> master
               <!-- nom referent de l'association -->
               <div class="form-group">
                 <label for="referentName" class="col-form-label">Référent d'association à contacter en cas de doute (*)</label>
@@ -46,7 +42,6 @@
                 <label for="benevolePhone" class="col-form-label">Téléphone du bénévole (*)</label>
                 <input type="tel" name="benevolePhone" value="@if ($coupon->benevolePhone != NULL){{$coupon->benevolePhone}} @endif" class="form-control" required>
               </div>
-<<<<<<< HEAD
 
               <!--date expiration-->
               <div class="form-group">
@@ -56,17 +51,6 @@
 
               <!--commentaire-->
               <div class="form-group">
-=======
-
-              <!--date expiration-->
-              <div class="form-group">
-                <label for="dateExpiration" class="col-form-label">Date d'expiration du coupon (*)</label>
-                <input type="date" name="dateExpiration" value="{{$coupon->dateExpiration}}" class="form-control" required>
-              </div>
-
-              <!--date expiration-->
-              <div class="form-group">
->>>>>>> master
                 <label for="commentaire" class="col-form-label">Commentaire</label>
                 <textarea name="commentaire" class="form-control" style="height:100px" class="from-control">@if($coupon->commentaire !=NULL){{$coupon->commentaire}}@endif</textarea>
               </div>
