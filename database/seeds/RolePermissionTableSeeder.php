@@ -15,18 +15,16 @@ class RolePermissionTableSeeder extends Seeder
     public function run()
     {
         $role = Role::create(['name' => 'admin']);
-        $permission = Permission::create(['name' => 'all']);
-        $role->givePermissionTo($permission);
         $routes = Route::getRoutes()->getRoutes();
         $routesStorage = array();
         foreach($routes as $value){
-            // Remove twice name and route with parameter (id,...)
-            if($value->uri != '/' && preg_match("/\/\{[a-z]*\}/i",$value->uri) == 0 && !in_array($value->uri, $routesStorage)){
-               array_push($routesStorage,$value->uri);
+            if(!in_array($value->uri, $routesStorage)){
+                array_push($routesStorage,$value->uri);
             }
         }
         foreach($routesStorage as $routeName){
             $permission = Permission::create(['name' => $routeName]);
+            $role->givePermissionTo($permission);
         }
     }
 }

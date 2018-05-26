@@ -8,6 +8,8 @@ use Spatie\Permission\Models\Role;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AccountController;
 
 
 class AdminController extends Controller
@@ -29,12 +31,6 @@ class AdminController extends Controller
      */
     public function groups()
     {
-        //$role = Role::create(['name' => 'reader']);
-        //Auth::User()->assignRole('admin');
-        //Role::find(1)->givePermissionTo(Permission::find(1));
-        //$role = Role::create(['name' => 'admin']);
-        //$permission = Permission::create(['name' => '/admin/role/add']);
-        //Role::find(3)->givePermissionTo($permission);
         return view('admin.groups',['roles'=>$this->getAllRole()]);
     }
 
@@ -50,7 +46,7 @@ class AdminController extends Controller
             $roles = $this->getAllRole();
             foreach($roles as $role){
                 if($role->name == $request->input('name')){
-                    $message = 'le role existe déjà';
+                    $message = 'Le role existe déjà';
                     return view('admin.addRole',['message'=>$message]);
                 }
             }
@@ -66,25 +62,64 @@ class AdminController extends Controller
         return view('admin.groups',['roles'=>$this->getAllRole()]);
     }
 
-    public function manageRole($id)
+    public function manageRole(Request $request,$id)
     {
+        $routeCollection = Route::getRoutes(); // RouteCollection object
+        $routes = $routeCollection->getRoutes(); // array of route objects
+        $permissionGroup = array();
+        foreach($routes as $route){
+            if(isset($route->getAction()['group_name'])){
+                if(!isset($permissionGroup[$route->getAction()['group_name']])){
+                    $permissionGroup[$route->getAction()['group_name']] = array();
+                }
+                array_push($permissionGroup[$route->getAction()['group_name']] ,$route);
+            }
+        }
         $role = Role::find($id);
-        $permissions = $role->permissions->toArray();
-        $permissionNameForRole = array();
-        foreach($permissions as $permission){
-            array_push($permissionNameForRole,$permission['name']);
+        $permissions = $role->permissions;
+        $userHasGroup = array();
+        $uriInGroup = $permissionGroup;
+        foreach($permissionGroup as $key => $group){
+            $uriInGroup[$key] = array();
+            foreach($group as $route){
+                array_push($uriInGroup[$key],$route->uri);
+            }
+        }
+        foreach($uriInGroup as $groupName => $group){
+            foreach($permissions as $permission){
+                if(in_array($permission['name'], $group)){
+                    array_push($userHasGroup,$groupName);
+                    break;
+                }
+            }
         }
         $message = "";
-        if(isset($_GET["checkList"])){
-            foreach($permissions as $permission){
-                $role->revokePermissionTo($permission['name']);
+
+        if(isset($_GET["checkList"]) || isset($_GET["_token"])){
+            // Checklist empty because any permission for this role
+            if(!isset($_GET["checkList"])){
+                $_GET["checkList"] = array();
+                $userHasGroup = array();
             }
             foreach($_GET["checkList"] as $perm){
-                $role->givePermissionTo(Permission::findByName($perm));
+                // Not create a duplicata if role already exist
+                if(!in_array($perm,$userHasGroup)){
+                    foreach(array_unique($uriInGroup[$perm]) as $permGroup){
+                        $role->givePermissionTo(Permission::findByName($permGroup));
+                    }
+                }
             }
-            $message = "Modification réussi";
+            
+            $noCheckGroup = array_diff_key($uriInGroup,array_flip($_GET["checkList"]));
+            foreach($noCheckGroup as $perm => $value){
+                foreach($uriInGroup[$perm] as $permGroup){
+                    $role->revokePermissionTo(Permission::findByName($permGroup));       
+                }
+            }
+
+            $message = "Modification réussie";
         }
-        return view('admin.manageRole',['permissions'=>$permissionNameForRole,'allPermissions'=>Permission::all(),'roleId'=>$id,'message'=>$message]);
+        return view('admin.manageRole',['permissions'=>$userHasGroup,'permissionGroup'=>array_keys($permissionGroup),'roleId'=>$id,'message'=>$message]);
     }
 
     public static function getAllRole(){
@@ -107,17 +142,6 @@ class AdminController extends Controller
         return $listRole;
     }
 
-    public function deleteUser($id)
-    {
-        User::destroy($id);
-        return view('admin.users',['users'=>$this->getAllUser(), 'roles'=>$this->getAllRoleName()]);
-    }
-
-    public function manageUsers()
-    {
-        return view('admin.users',['users'=>$this->getAllUser(), 'roles'=>$this->getAllRoleName()]);
-    }
-
     public function addRoleToUser(Request $request,$id)
     {
         $user = User::find($id);
@@ -125,28 +149,17 @@ class AdminController extends Controller
         $newRole = Role::findById($request->input('nameAdd'));
         foreach($roles as $role){
             if($role == $newRole->name){
-                return view('admin.users',['users'=>$this->getAllUser(), 'roles'=>$this->getAllRoleName()]);
+                return view('admin.users',['users'=>AccountController::getAllUser(), 'roles'=>$this->getAllRoleName()]);
             }
         }
         $user->assignRole($newRole);
-        return view('admin.users',['users'=>$this->getAllUser(), 'roles'=>$this->getAllRoleName()]);
+        return view('admin.users',['users'=>AccountController::getAllUser(), 'roles'=>$this->getAllRoleName()]);
     }
     public function deleteRoleToUser(Request $request,$id)
     {
         $user = User::find($id);
         $newRole = Role::findById($request->input('nameDelete'));
         $user->removeRole($newRole);
-        return view('admin.users',['users'=>$this->getAllUser(), 'roles'=>$this->getAllRoleName()]);
-    }
-
-
-    public static function getAllUser(){
-        $users = DB::table('users')->get();
-        $listUser = array();
-        foreach($users as $user){
-            $userTemp = User::find($user->id);
-            array_push($listUser, $userTemp);
-        }
-        return $listUser;
+        return view('admin.users',['users'=>AccountController::getAllUser(), 'roles'=>$this->getAllRoleName()]);
     }
 }

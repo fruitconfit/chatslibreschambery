@@ -8,14 +8,17 @@ use Illuminate\Support\Facades\DB;
 class Discount extends Model
 {
     protected $fillable = [
-        'typeDiscount', 
-        'nameBank', 
         'nameSender',
+        'adress',
+        'postcode',
+        'city',
         'dateDiscount', 
-        'priceDiscount', 
-        'recipeType',
+        'typeDiscount', 
         'recu', 
         'edite', 
+        'priceDiscount', 
+        'recipeType',
+        'nameBank', 
         'cat', 
         'description', 
         'id_liasse'

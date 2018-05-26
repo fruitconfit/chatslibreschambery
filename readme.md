@@ -50,7 +50,7 @@
 - Vérifier que le fichier est bien a 'commiter'
     - `git status`
     - Le fichier est en vert
-- Ajouter un si de suite tout les fichiers qui doivent être commité 
+- Ajouter ainsi de suite tout les fichiers qui doivent être commité 
     - Ne pas commité .env.example si vous l'avez supprimé
 - Une fois tout les fichiers souhaités en vert, donner un nom CLAIR et consis à ce commit
     - `git commit -m'nom clair de mon commit'`

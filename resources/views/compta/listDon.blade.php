@@ -16,12 +16,12 @@
                                         <tr>
                                             <th>Liasse</th>
                                             <th>Emetteur</th>
+                                            <th>Adresse</th>
                                             <th>Faite le</th>
                                             <th>Montant</th>
                                             <th>Recette</th>
                                             <th>Banque</th>
-                                            <th>Chat concerné</th>
-                                            <th>Reçu fiscal</th>
+                                            <th>Reçu</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -29,14 +29,16 @@
                                             <tr>
                                                 <th>{{ $don->id_liasse }}</th>
                                                 <td>{{ $don->nameSender }}</td>
+                                                <td>{{ $don->adress }} {{ $don->city }} {{ $don->postcode }}</td>
                                                 <td>{{ $don->dateDiscount }}</td>
                                                 <td>{{ $don->priceDiscount }}€</td>
                                                 <td>{{ $don->recipeType }}</td>
                                                 <td>{{ $don->nameBank }}</td>
-                                                <td>{{ $don->cat }}</td>
                                                 <td>
                                                     @if($don->recu == 1)
-                                                        Oui
+                                                        <a href="{{ url('recu/'.$don->id.'/print') }}" target="_blank" class="waves-effect"><i class="fa fa-download"></i></a>
+                                                    @else
+                                                        Non
                                                     @endif
                                                 </td>
                                                 <td class="text-center"><a href="{{ url('discount/edit/'.$don->id) }}" class="waves-effect"><i class="fa fa-edit"></i></a></td>

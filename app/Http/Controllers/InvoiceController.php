@@ -15,8 +15,7 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        $invoices = Invoice::all();
-        return view('invoices.index',['fournisseurs'=>Fournisseur::getAllFournisseur()])->with('invoices', $invoices);
+        return view('invoices.index', ['fournisseurs' => Fournisseur::all(), 'invoices' => Invoice::all()]);
     }
 
     /**
@@ -26,7 +25,7 @@ class InvoiceController extends Controller
      */
     public function create()
     {
-        return view('invoices.create',['fournisseurs'=>Fournisseur::getAllFournisseur()]);
+        return view('invoices.create')->with('fournisseurs', Fournisseur::getAllFournisseur());
     }
 
     /**
@@ -39,8 +38,8 @@ class InvoiceController extends Controller
     {
         $request->validate([
             'date_ajout' => 'required|date',
-            'provider_id' => 'required',
-            'numero_facture' => 'required|alpha_num',
+            'fournisseur_id' => 'required',
+            'numero_facture' => 'required',
             'date_facture' => 'required|date',
             'montant' => 'required|numeric',
             'date_reglement' => 'nullable',
@@ -70,7 +69,7 @@ class InvoiceController extends Controller
      */
     public function edit(Invoice $invoice)
     {
-        return view('invoices.edit',['fournisseurs'=>Fournisseur::getAllFournisseur()])->with('invoice', $invoice);
+        return view('invoices.edit', ['fournisseurs' => Fournisseur::getAllFournisseur(), 'invoice' => $invoice]);
     }
 
     /**
@@ -84,15 +83,15 @@ class InvoiceController extends Controller
     {
         $request->validate([
             'date_ajout' => 'required|date',
-            'provider_id' => 'required',
-            'numero_facture' => 'required|alpha_num',
+            'fournisseur_id' => 'required',
+            'numero_facture' => 'required',
             'date_facture' => 'required|date',
             'montant' => 'required|numeric',
             'date_reglement' => 'nullable',
             'commentaire' => 'nullable'
         ]);
         $invoice->date_ajout = $request->get('date_ajout');
-        $invoice->provider_id = $request->get('provider_id');
+        $invoice->fournisseur_id = $request->get('fournisseur_id');
         $invoice->numero_facture = $request->get('numero_facture');
         $invoice->date_facture = $request->get('date_facture');
         $invoice->montant = $request->get('montant');

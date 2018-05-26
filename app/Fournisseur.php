@@ -17,7 +17,7 @@ class Fournisseur extends Model
         'city', 
         'email',
         'phone', 
-        'type', 
+        'typefournisseur_id', 
         'comment'
     ];
     
@@ -31,5 +31,10 @@ class Fournisseur extends Model
             array_push($listFournisseur, $liasseTemp);
         }
         return $listFournisseur;
+    }
+
+    public function typefournisseur()
+    {
+        return $this->belongsTo('App\TypeFournisseur');
     }
 }

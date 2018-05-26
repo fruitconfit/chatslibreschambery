@@ -24,7 +24,11 @@
                         <div class="form-group row">
                             <label for="creationDate" class="col-md-4 col-form-label text-md-right">Créée le (*)</label>
                             <div class="col-md-6">
-                                <input id="creationDate" type="date" value="@if ($liasse->id > 0){{$liasse->creationDate}}@endif" name="creationDate" required>
+                                @if ($liasse->id > 0)
+                                <input id="creationDate" type="date" value="{{$liasse->creationDate}}" name="creationDate" required>
+                                @else
+                                <input id="creationDate" type="date" value="{{date('Y-m-d')}}" name="creationDate" required>
+                                @endif
                             </div>
                         </div>
 
@@ -51,13 +55,12 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-3">
                                 <button type="submit" class="btn btn-primary" value="Submit">Enregistrer</button>
-                                <button type="impress" class="btn btn-primary" value="Impress">Imprimer #</button>
-                                <div class="col-md-12">{{$message}}</div>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
+            <br>
             @if ($liasse->id > 0)
             <div class="card card-default">
                 <div class="card-header">Gérer les remises de la liasse</div>
@@ -116,4 +119,5 @@
         </div>
     </div>
 </div>
+<br>
 @endsection

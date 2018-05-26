@@ -22,6 +22,7 @@ class CreateCoupon extends Migration
           $table->string('benevoleName');
           $table->string('benevolePhone');
           $table->date('dateExpiration');
+          $table->string('commentaire')->nullable();
         });
     }
 

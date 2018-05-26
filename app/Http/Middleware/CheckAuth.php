@@ -22,7 +22,7 @@ class CheckAuth
         // Check User is connected & Permission exist for this page
         $path = substr($request->getPathInfo(),1);
         if(null !== Auth::User() && count(Permission::where("name", "=",$path)->get()) > 0){
-            if (!Auth::User()->hasPermissionTo('all') && $path != '403' && !Auth::User()->hasPermissionTo($path)) {
+            if ($path != '403' && !Auth::User()->hasPermissionTo($path)) {
                 return redirect('/403');
             }
         }

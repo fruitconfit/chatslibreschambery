@@ -14,12 +14,13 @@
                                 <table class="table table-striped table-bordered">
                                     <thead class="font-weight-bold">
                                         <tr>
-                                            <th>Numéro de coupon</th>
+                                            <th>N° de coupon</th>
                                             <th>Nom du référent</th>
                                             <th>Téléphone du référent</th>
                                             <th>Nom du bénévole</th>
                                             <th>Téléphone du bénévole</th>
-                                            <th>Date d'expiration</th>
+                                            <th>Expire le</th>
+                                            <th>Commentaire</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -31,6 +32,7 @@
                                             <td>{{ $coupon->benevoleName }}</td>
                                             <td>{{ $coupon->benevolePhone }}</td>
                                             <td>{{ $coupon->dateExpiration }}</td>
+                                            <td>{{ $coupon->commentaire }}</td>
 
                                             <td class="text-center"><a href="{{ route('modifyCoupon',$coupon->id) }}" class="waves-effect"><i class="fa fa-edit"></i></a></td>
                                             <td class="text-center"><a href="{{ route('deleteCoupon',['id'=>$coupon->id]) }}"><i class="fa fa-trash"></i></a></td>

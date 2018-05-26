@@ -30,13 +30,11 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary" value="Submit">
-                                    Ajouter un role
-                                </button>
+                                <button type="submit" class="btn btn-primary" value="Submit">Ajouter un role</button>
                             </div>
                         </div>
+                    <div class="col-md-12 @if($message != "") alert alert-success @endif">{{$message}}</div>
                     </form>
-                    <div>{{$message}}</div>
                 </div>
             </div>
         </div>

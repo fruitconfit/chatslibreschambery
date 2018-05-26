@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'M.I.A.O.U') }}</title>
+    <title>M.I.A.O.U</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -74,44 +74,44 @@
                         <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-lock"></i> MODULE ADMIN<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
+                                    @can('admin/users')
                                     <li><a href="{{ route('users') }}" class="waves-effect">Gestion des utilisateurs</a>
                                     </li>
-                                    <li class="d-none"><a href="{{route('addRole')}}" class="waves-effect">Ajout de role</a>
-                                    </li>
+                                    @endcan
+                                    @can('admin/groups')
                                     <li><a href="{{ route('groups') }}" class="waves-effect">Gestion des roles</a>
                                     </li>
+                                    @endcan
+                                    @can('typefournisseur')
+                                    <li><a href="{{ route('manageTypeFournisseur') }}" class="waves-effect">Gestion des types de fournisseur</a>
+									</li>
+                                    @endcan
                                 </ul>
                             </div>
                         </li>
                         <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-eur"></i> MODULE COMPTA<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
+                                    @can('compta/listLiasse')
                                     <li><a href="{{ route('manageLiasse') }}" class="waves-effect">Gestion des liasses</a>
 									</li>
-                                    <li><a href="{{ route('manageDons') }}" class="waves-effect">Consultation des dons</a>
+                                    @endcan
+                                    @can('compta/listDon')
+                                    <li><a href="{{ route('manageDons') }}" class="waves-effect">Gestion des dons</a>
                                     </li>
+                                    @endcan
+                                    @can('compta/listFournisseur')
                                     <li><a href="{{ route('manageFournisseur') }}" class="waves-effect">Gestion des fournisseurs</a>
                                     </li>
+                                    @endcan
+                                    @can('invoices')
                                     <li><a href="{{ route('invoices.index') }}" class="waves-effect">Gestion des factures</a>
                                     </li>
-                                    <li class="d-none"><a href="#" class="waves-effect">Gestion des reçus fiscaux</a>
-                                    </li>
-                                    <li class="d-none"><a href="#" class="waves-effect">Consultation le bilan</a>
-                                    </li>
+                                    @endcan
+                                    @can('compta/listCoupon')
                                     <li><a href="{{ route('manageCoupon') }}" class="waves-effect">Gestion des coupons</a>
                                     </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="d-none"><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-envelope-open"></i> MODULE COUPONS<i class="fa fa-angle-down rotate-icon"></i></a>
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li><a href="#" class="waves-effect">Edition des coupons</a>
-                                    </li>
-                                    <li><a href="#" class="waves-effect">Consultation des coupons</a>
-                                    </li>
-                                    <li><a href="#" class="waves-effect">Traitement des coupons</a>
-                                    </li>
+                                    @endcan
                                 </ul>
                             </div>
                         </li>

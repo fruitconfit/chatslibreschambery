@@ -20,7 +20,7 @@
                                                 @if ($user->email !== Auth::user()->email)
                                                 <span  class="float-right">
                                                     <a  href="{{ route('renameUser', $user->id) }}"><i class="fa fa-edit"></i></a>
-                                                    <a onclick="displayCheckDelete({{$user->id}})"><i class="fa fa-trash"></i></a>
+                                                    <a onclick="displayCheckDelete('{{ route('deleteUser',$user->id) }}','{{ $user->name }}')">(Supprimer l'utilisateur)</a>
                                                 </span>
                                                 @endif
                                             </th>
