@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class "container">
-  <div class= "row justify-content-center">
-    <div class= "col-md-10">
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
       <div class="card card-default">
         <div class="card-header">
           @if ($coupon->id == 0)
@@ -15,42 +15,55 @@
         </div>
         <div class="card-body">
           <form method="GET" action="{{route('modifyCoupon', $coupon->id)}}">
+            @csrf
             <div class="card-body">
+              <div class="col-md-12 @if($message != "") alert alert-success @endif">{{$message}}</div>
+
               <!-- nom referent de l'association -->
-              <label for="referentName" class="font-weight-light">Référent d'association à contacter en cas de doute</label>
-              <input type="text" name="referentName" value="@if ($coupon->referentName != NULL){{$coupon->referentName}}@endif" class="from-control" required>
-              <br>
+              <div class="form-group">
+                <label for="referentName" class="col-form-label">Référent d'association à contacter en cas de doute (*)</label>
+                <input type="text" name="referentName" value="@if ($coupon->referentName != NULL){{$coupon->referentName}} @else Elodie Daulon @endif" class="form-control" required>
+              </div>
 
               <!-- num referent de l'association -->
-              <label for="referentPhone" class="font-weight-light">Numéro du référent</label>
-              <input type="tel" name="referentPhone" value="@if ($coupon->referentPhone != NULL){{$coupon->referentPhone}}@endif" class="from-control" required>
-              <br>
+              <div class="form-group">
+                <label for="referentPhone" class="col-form-label">Téléphone du référent (*)</label>
+                <input type="tel" name="referentPhone" value="@if ($coupon->referentPhone != NULL){{$coupon->referentPhone}} @else 0620440525 @endif" class="form-control" required>
+              </div>
 
               <!-- nom benevole de l'association -->
-              <label for="benevoleName" class="font-weight-light">Bénévole de l'association</label>
-              <input type="text" name="benevoleName" value="@if ($coupon->benevoleName != NULL){{$coupon->benevoleName}}@endif" class="from-control" required>
-              <br>
+              <div class="form-group">
+                <label for="benevoleName" class="col-form-label">Bénévole de l'association (*)</label>
+                <input type="text" name="benevoleName" value="@if ($coupon->benevoleName != NULL){{$coupon->benevoleName}} @endif" class="form-control" required>
+              </div>
 
               <!-- num benevole de l'association -->
-              <label for="benevoleNamePhone" class="font-weight-light">Numéro du bénévole</label>
-              <input type="tel" name="benevolePhone" value="@if ($coupon->benevolePhone != NULL){{$coupon->benevolePhone}}@endif" class="from-control" required>
-              <br>
+              <div class="form-group">
+                <label for="benevolePhone" class="col-form-label">Téléphone du bénévole (*)</label>
+                <input type="tel" name="benevolePhone" value="@if ($coupon->benevolePhone != NULL){{$coupon->benevolePhone}} @endif" class="form-control" required>
+              </div>
 
               <!--date expiration-->
-              <label for="dateExpiration" class="font-weight-light">Date d'expiration du coupon</label>
-              <input type="date" name="dateExpiration" value="@if($coupon->dateExpiration !=NULL){{$coupon->dateExpiration}}@endif" class="from-control" required>
-              <!-- valider le formulaire -->
-              <div class="form-group row mb-0">
-                  <div class="col-md-6 offset-md-4">
-                      <button type="submit" class="btn btn-primary" value="Submit">Enregistrer</button>
-                  </div>
+              <div class="form-group">
+                <label for="dateExpiration" class="col-form-label">Date d'expiration du coupon (*)</label>
+                <input type="date" name="dateExpiration" value="{{date('Y-m-d', mktime(0,0,0,12,31,date('y')))}}" class="form-control" required>
               </div>
-              <div class="col-md-12">{{$message}}</div>
-          </div>
-      </form>
+
+              <!--commentaire-->
+              <div class="form-group">
+                <label for="commentaire" class="col-form-label">Commentaire</label>
+                <textarea name="commentaire" class="form-control" style="height:100px" class="from-control">@if($coupon->commentaire !=NULL){{$coupon->commentaire}}@endif</textarea>
+              </div>
+
+              <!-- valider le formulaire -->
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary" value="Submit">Enregistrer</button>
+              </div>
+          <div class="form-group row col-md-12">Les champs signalés d'un (*) sont obligatoires.</div>
+          </form>
+        </div><!-- Card -->
+      </div>
+    </div>
   </div>
-</div>
-</div>
-</div>
 </div>
 @endsection
