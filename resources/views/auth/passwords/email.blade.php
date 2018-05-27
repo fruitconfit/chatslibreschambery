@@ -5,7 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card card-default">
-                <div class="card-header">Envoi du nouveau mot de passe</div>
+                <div class="card-header">
+                    Envoi du nouveau mot de passe
+                    <a class="float-right" href="{{ route('login') }}">Retour à la connexion <i class="fa fa-chevron-right"></i></a>
+                </div>
 
                 <div class="card-body">
                     <div class="container card-body">
@@ -30,7 +33,7 @@
                             </div>
 
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Envoi nouveau mot de passe</button>
+                                <button type="submit" class="btn btn-primary">Envoi d'un nouveau mot de passe</button>
                             </div>
                         </form>
                     </div>

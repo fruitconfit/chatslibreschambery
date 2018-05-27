@@ -31,13 +31,11 @@
 										<strong>{{ $errors->first('password') }}</strong>
 									</span>
 								@endif
-								<label for="Form-pass3">Mot de passe</label>
-								<p class="font-small d-flex justify-content-end"><a href="{{ route('password.request') }}" class="dark-grey-text ml-1 font-weight-bold">Mot de passe oublié ?</a></p>
 							</div>
 
                             <div class="row">
                                 <div class="col-sm">
-									<p class="text-left"><a href="{{ route('newPasswordPage') }}" class="dark-grey-text ml-1 font-weight-bold">Mot de passe oublié ?</a></p>	
+									<p class="text-left"><a href="{{ route('password.request') }}" class="dark-grey-text ml-1 font-weight-bold">Mot de passe oublié ?</a></p>	
 								</div>
                                 <div class="col-sm">
 									<p class="text-right">Vous n'avez pas de compte ? <a href="{{ route('register') }}" class="dark-grey-text ml-1 font-weight-bold">Inscrivez-vous</a></p>

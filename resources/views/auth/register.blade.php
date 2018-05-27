@@ -5,7 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card card-default">
-                <div class="card-header">S'inscrire</div>
+                <div class="card-header">
+                    S'inscrire
+                    <a class="float-right" href="{{ route('login') }}">Retour à la connexion <i class="fa fa-chevron-right"></i></a>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
