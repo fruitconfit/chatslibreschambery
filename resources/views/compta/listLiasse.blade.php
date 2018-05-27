@@ -13,7 +13,7 @@
                         <div class="form-group">Nombre de liasses : {{ DB::table('liasses')->count(DB::raw('DISTINCT id')) }}</div>
 
                         <table class="table table-striped table-bordered">
-                            <thead class="font-weight-bold">
+                            <thead class="font-weight-bold ">
                                 <tr>
                                     <th>Ref de la liasse</th>
                                     <th>Crée le</th>

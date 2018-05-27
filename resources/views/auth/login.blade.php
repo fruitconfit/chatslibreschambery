@@ -9,7 +9,7 @@
                 <div class="card-body">
 					<form method="POST" action="{{ route('login') }}">
 						@csrf
-						<div class="card-body mx-4 mt-4">
+						<div class="card-body container">
 
 							<div class="form-group">
                                 <label for="email" class="col-form-label">Adresse email</label>
@@ -31,21 +31,19 @@
 										<strong>{{ $errors->first('password') }}</strong>
 									</span>
 								@endif
-								<p class="font-small d-flex justify-content-end"><a href="{{ route('newPasswordPage') }}" class="dark-grey-text ml-1 font-weight-bold">Mot de passe oublié ?</a></p>
 							</div>
 
-							<div class="row d-flex align-items-center mb-4">
-
-								<div class="col-md-1 col-md-5 d-flex align-items-start">
-									<div class="text-center">
-										<button type="submit" class="btn btn-primary">Se connecter</button>
-									</div>
+                            <div class="row">
+                                <div class="col-sm">
+									<p class="text-left"><a href="{{ route('newPasswordPage') }}" class="dark-grey-text ml-1 font-weight-bold">Mot de passe oublié ?</a></p>	
 								</div>
-								
-								<div class="col-md-7">
-									<p class="font-small d-flex justify-content-end mt-3">Vous n'avez pas de compte ? <a href="{{ route('register') }}" class="dark-grey-text ml-1 font-weight-bold">Inscrivez-vous</a></p>
+                                <div class="col-sm">
+									<p class="text-right">Vous n'avez pas de compte ? <a href="{{ route('register') }}" class="dark-grey-text ml-1 font-weight-bold">Inscrivez-vous</a></p>
 								</div>
-
+							</div>
+							
+							<div class="text-center">
+								<button type="submit" class="btn btn-primary">Se connecter</button>
 							</div>
 						</div>
 					</form>

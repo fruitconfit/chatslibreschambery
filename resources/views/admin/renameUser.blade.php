@@ -13,7 +13,7 @@
                 <div class="card-body">
                     <form method="GET" action="{{ route('renameUser',$user->id) }}">
                         @csrf
-                        <div class="card-body">
+                        <div class="card-body container">
                             <div class="form-group">
                                 <label for="name" class="col-form-label">Nom</label>
                                 <input id="name" type="text" name="name" value="{{ $user->name }}" required>

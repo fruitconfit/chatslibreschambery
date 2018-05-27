@@ -31,47 +31,48 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card card-default">
-                <div class="card-header">
-                  Liste des factures
-                </div>
-                <div class="card-body">
+                <div class="card-header">Liste des factures</div>
 
-                  <table class="table" id="table_factures">
-                    <thead class="thead-light">
-                      <tr>
-                        <th scope="col">Ajoutée le</th>
-                        <th scope="col">Fournisseur</th>
-                        <th scope="col">n° de facture</th>
-                        <th scope="col">Date de la facture</th>
-                        <th scope="col">Montant € TTC</th>
-                        <th scope="col">Payée</th>
-                        <th scope="col">Commentaire</th>
-                        <th scope="col"></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      @foreach ($invoices as $invoice)
-                      <tr @if (is_null($invoice->date_reglement))  class="table-danger" @else class="table-success" @endif>
-                        <td>{{ date('d/m/Y', strtotime($invoice->date_ajout)) }}</td>
-                        <td>{{ $invoice->fournisseur->nickname }}</td>
-                        <td>{{ $invoice->numero_facture }}</td>
-                        <td>{{ date('d/m/Y', strtotime($invoice->date_facture)) }}</td>
-                        <td>{{ $invoice->montant }}</td>
-                        <td>
-                          @if (is_null($invoice->date_reglement))
-                            -
-                          @else
-                            {{ date('d/m/Y', strtotime($invoice->date_reglement)) }}
-                          @endif
-                        </td>
-                        <td>{{ $invoice->commentaire }}</td>
-                        <td><a href="{{ url('/invoices/'.$invoice->id.'/edit') }}"> <i class="fa fa-edit"></i></a></td>
-                      </tr>
-                      @endforeach
-                    </tbody>
-                  </table>
-                  <div class="row">
-                    <a class="btn btn-primary" href="{{ route('invoices.create') }}">Ajouter</a>
+                <div class="card-body">
+                  <div class="card-body container">
+
+                    <table class="table table-striped table-bordered" id="table_factures">
+                      <thead class="thead-light font-weight-bold">
+                        <tr>
+                          <th scope="col">Ajoutée le</th>
+                          <th scope="col">Fournisseur</th>
+                          <th scope="col">N° de facture</th>
+                          <th scope="col">Date de la facture</th>
+                          <th scope="col">Montant € TTC</th>
+                          <th scope="col">Payée le</th>
+                          <th scope="col">Commentaire</th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @foreach ($invoices as $invoice)
+                        <tr @if (is_null($invoice->date_reglement))  class="table-danger" @else class="table-success" @endif>
+                          <td>{{ date('d/m/Y', strtotime($invoice->date_ajout)) }}</td>
+                          <td>{{ $invoice->fournisseur->nickname }}</td>
+                          <td>{{ $invoice->numero_facture }}</td>
+                          <td>{{ date('d/m/Y', strtotime($invoice->date_facture)) }}</td>
+                          <td>{{ $invoice->montant }}€</td>
+                          <td>
+                            @if (is_null($invoice->date_reglement))
+                              -
+                            @else
+                              {{ date('d/m/Y', strtotime($invoice->date_reglement)) }}
+                            @endif
+                          </td>
+                          <td>{{ $invoice->commentaire }}</td>
+                          <td><a href="{{ url('/invoices/'.$invoice->id.'/edit') }}"> <i class="fa fa-edit"></i></a></td>
+                        </tr>
+                        @endforeach
+                      </tbody>
+                    </table>
+                    <div class="text-center">
+                      <a class="btn btn-primary" href="{{ route('invoices.create') }}">Ajouter</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -83,28 +84,17 @@
                   Filtrer
                 </div>
                 <div class="card-body">
-
-                  <form method="GET" action="{{ route('invoices.index') }}">
-                    <div class="form-group row">
-                      <label for="from" class="col-form-label">Date comprise entre</label>
-                      <input class="col-sm-3" type="date" id="from" name="from" class="form-control">
-                      <label for="to" class="col-form-label">et</label>
-                      <input class="col-sm-3" type="date" id="to" name="to" class="form-control">
-                    </div>
-
-                    <!--<div class="form-group row">
-                          <div class="col-sm-10">
-                              <select name="providerType" class="form-control">
-                                <option value="">Par type de fournisseur</option>
-                                @foreach($fournisseurs as $fournisseur)
-                                    <option value="{{ $fournisseur->id }}">{{ $fournisseur->type }}</option>
-                                @endforeach
-                              </select>
-                          </div>
-                    </div>-->
+                  <div class="card-body container">
+                    <form method="GET" action="{{ route('invoices.index') }}">
+                      <div class="form-group row">
+                        <label for="from" class="col-form-label">Date comprise entre</label>
+                        <input class="col-sm-2" type="date" id="from" name="from" class="form-control">
+                        <label for="to" class="col-form-label">et</label>
+                        <input class="col-sm-2" type="date" id="to" name="to" class="form-control">
+                      </div>
 
                       <div class="form-group row">
-                          <div class="col-sm-5">
+                          <div class="col-sm">
                               <select name="provider" class="form-control">
                                 <option value="">Par fournisseur</option>
                                 @foreach($fournisseurs as $fournisseur)
@@ -114,22 +104,21 @@
                           </div>
                       </div>
 
-                    <div class="form-group row">
-                      <div class="col-sm-5">
-                        <select name="paid" class="form-control">
-                          <option value="">Par statut (payée ou non)</option>
-                          <option value="true">Payée</option>
-                          <option value="false">Non payée</option>
-                        </select>
+                      <div class="form-group row">
+                        <div class="col-sm">
+                          <select name="paid" class="form-control">
+                            <option value="">Par statut (payée ou non)</option>
+                            <option value="true">Payée</option>
+                            <option value="false">Non payée</option>
+                          </select>
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="form-group row">
-                      <div class="col-sm-10">
+                      <div class="text-center">
                         <button type="submit" class="btn btn-primary">Filtrer</button>
                       </div>
-                    </div>
-                  </form>
+                    </form>
+                  </div>
                 </div>
             </div>
         </div>
