@@ -75,7 +75,11 @@
 
                             <div class="form-group">Les champs signalés d'un (*) sont obligatoires.</div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary" value="Submit">Ajouter le fournisseur</button>
+                                @if ($fournisseur->id == 0)
+                                    <button type="submit" class="btn btn-primary" value="Submit">Ajouter le fournisseur</button>
+                                @elseif ($fournisseur->id > 0)
+                                    <button type="submit" class="btn btn-primary" value="Submit">Modifier le fournisseur</button>
+                                @endif
                             </div>
                         </div>
                     </form>
