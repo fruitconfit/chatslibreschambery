@@ -7,62 +7,55 @@
             <div class="card card-default">
                 <div class="card-header">Gérer les utilisateurs</div>
                 <div class="card-body">
-                    @foreach($users as $user)
-
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm">
-                                <table class="table table-striped table-bordered table-hover">
-                                    <thead class="font-weight-bold">
-                                        <tr>
-                                            <th>
-                                                {{ $user->name }} 
-                                                @if ($user->email !== Auth::user()->email)
-                                                <span  class="float-right">
-                                                    <a  href="{{ route('renameUser', $user->id) }}"><i class="fa fa-edit"></i></a>
-                                                    <a onclick="displayCheckDelete('{{ route('deleteUser',$user->id) }}','{{ $user->name }}')">(Supprimer l'utilisateur)</a>
-                                                </span>
-                                                @endif
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($user->getRoleNames() as $role)
-                                        <tr>
-                                            <td>
-                                                {{ $role }}
-                                                <a class="d-none float-right" onclick="#"><i class="fa fa-trash"></i></a>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="col-sm">
-                                <form method="GET" action="{{ route('addRoleToUser',$user->id) }}">
-                                @csrf
-                                    <div class="form-group row">
-                                        {{ Form::select('nameAdd', $roles, null) }}
-                                            <button type="submit" class="btn btn-primary" value="Submit">
-                                                Ajouter ce role
-                                            </button>
-                                    </div>
-                                </form>
-                                <form method="GET" action="{{ route('deleteRoleToUser',$user->id) }}">
+                    <div class="card-body container">
+                        @foreach($users as $user)
+                            <div class="row">
+                                <div class="col-sm">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead class="font-weight-bold">
+                                            <tr>
+                                                <th>
+                                                    {{ $user->name }} <a  href="{{ route('renameUser', $user->id) }}"><i class="fa fa-edit"></i></a>
+                                                    @if ($user->email !== Auth::user()->email)
+                                                    <span  class="float-right">
+                                                        <a onclick="displayCheckDelete('{{ route('deleteUser',$user->id) }}','{{ $user->name }}')">(Supprimer l'utilisateur)</a>
+                                                    </span>
+                                                    @endif
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($user->getRoleNames() as $role)
+                                            <tr>
+                                                <td>{{ $role }}</td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-sm">
+                                    <form method="GET" action="{{ route('addRoleToUser',$user->id) }}">
                                     @csrf
-                                    <div class="form-group row">
-                                        {{ Form::select('nameDelete', $roles, null) }}
-                                            <button type="submit" class="btn btn-primary" value="Submit">
-                                                Supprimer ce role
-                                            </button>
-                                    </div>
-                                </form>
+                                        <div class="form-group row">
+                                            {{ Form::select('nameAdd', $roles, null) }}
+                                            <button type="submit" class="btn btn-primary" value="Submit">Ajouter ce role</button>
+                                        </div>
+                                    </form>
+                                    <form method="GET" action="{{ route('deleteRoleToUser',$user->id) }}">
+                                        @csrf
+                                        <div class="form-group row">
+                                            {{ Form::select('nameDelete', $roles, null) }}
+                                            <button type="submit" class="btn btn-primary" value="Submit">Supprimer ce role</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
+                            <hr>
+                        @endforeach
                     </div>
-                    @endforeach
                 </div>
             </div>
+            <br>
         </div>
     </div>
 </div>

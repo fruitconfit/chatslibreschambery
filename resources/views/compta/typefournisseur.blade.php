@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -14,21 +13,20 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('storeTypeFournisseur') }}">
                         @csrf
-                        <div class="card-body"> 
-                            
-                            <label for="nom" class="font-weight-light">Nom</label>
-                            <input type="text" name="nom" id="nom" required>
-
-                            <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">Enregistrer</button>
-                                </div>
+                        <div class="card-body container"> 
+                            <div class="form-group">
+                                <label for="nom" class="col-form-label">Nom</label>
+                                <input type="text" class="form-control" name="nom" id="nom" required>
                             </div>
-        
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Ajouter le type fournisseur</button>
+                            </div>
                         </div>
                     </form>
                 </div>
             </div>
+            <br>
         </div>
     </div>
 </div>

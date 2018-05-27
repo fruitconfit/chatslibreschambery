@@ -61,7 +61,7 @@
 
                             <div class="form-group">
                                 <label for="commentaire" class="col-form-label">Commentaire</label>
-                                <textarea class="form-control rounded-0" id="commentaire" name="commentaire"></textarea>
+                                <textarea class="form-control rounded-0" style="height:100px" id="commentaire" name="commentaire"></textarea>
                             </div>
 
                             <div class="form-group">Les champs signalés d'un (*) sont obligatoires.</div>

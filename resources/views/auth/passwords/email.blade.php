@@ -5,22 +5,24 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card card-default">
-                <div class="card-header">Envoi du nouveau mot de passe</div>
+                <div class="card-header">
+                    Envoi du nouveau mot de passe
+                    <a class="float-right" href="{{ route('login') }}">Retour à la connexion <i class="fa fa-chevron-right"></i></a>
+                </div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                    <div class="container card-body">
+                        @if (session('status'))
+                            <div class="alert alert-success">
+                                {{ session('status') }}
+                            </div>
+                        @endif
 
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
+                        <form method="POST" action="{{ route('password.email') }}">
+                            @csrf
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">Address email</label>
-
-                            <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email" class="col-form-label">Address email</label>
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
@@ -29,18 +31,15 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Envoi nouveau mot de passe
-                                </button>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Envoi d'un nouveau mot de passe</button>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
+            <br>
         </div>
     </div>
 </div>

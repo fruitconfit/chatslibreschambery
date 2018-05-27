@@ -11,26 +11,34 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="GET" action="{{ route('manageRole',$roleId) }}">
-                        @csrf
+                    <div class="card-body container">
+                        <form method="GET" action="{{ route('manageRole',$roleId) }}">
+                            @csrf
 
-                        @foreach($permissionGroup as $permission)
-                            @if (in_array($permission, $permissions)) 
-                                {{ Form::checkbox('checkList[]', $permission, true, ['class' => 'checkbox-perm']) }}
-                            @else
-                               {{ Form::checkbox('checkList[]', $permission, null, ['class' => 'checkbox-perm']) }}
+                            @foreach($permissionGroup as $permission)
+                                @if (in_array($permission, $permissions)) 
+                                    {{ Form::checkbox('checkList[]', $permission, true, ['class' => 'checkbox-perm']) }}
+                                @else
+                                {{ Form::checkbox('checkList[]', $permission, null, ['class' => 'checkbox-perm']) }}
+                                @endif
+                                {{ $permission }}<br>
+                            @endforeach
+                            <!-- valider le formulaire -->
+                            <div class="form-group row mb-0">
+                                <button type="submit" class="btn btn-primary" value="Submit">Enregistrer</button>
+                            </div>
+                            @if($message != "")
+                            <div class="alert alert-success alert-dismissible">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                {{$message}}
+                            </div>
                             @endif
-                            {{ $permission }}<br>
-                        @endforeach
-                        <!-- valider le formulaire -->
-                        <div class="form-group row mb-0">
-                            <button type="submit" class="btn btn-primary" value="Submit">Enregistrer</button>
-                        </div>
-                    <div class="col-md-12 @if($message != "") alert alert-success @endif">{{$message}}</div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
+        <br>
     </div>
 </div>
 @endsection

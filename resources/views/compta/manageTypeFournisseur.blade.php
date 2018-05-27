@@ -8,14 +8,14 @@
 
                 <div class="card-header">Gérer les types de fournisseur</div>
 
-                <div class="card-body col-md-6 offset-md-3">
-                    <table class="table table-striped table-bordered">
-                        <thead class="font-weight-bold">
-                            <tr>
-                                <th>Types de fournisseur</th>
-                            </tr>
-                        </thead>
-
+                <div class="card-body">
+                    <div class="card-body col-md-6 offset-md-3">
+                        <table class="table table-striped table-bordered">
+                            <thead class="font-weight-bold">
+                                <tr>
+                                    <th>Types de fournisseur</th>
+                                </tr>
+                            </thead>
 
                             <tbody>
                                 @foreach($typeFournisseurs as $typeFournisseur)
@@ -25,19 +25,17 @@
                                 </tr>
                                 @endforeach
                             </tbody>
-
-
-                    </table>
-                </div>
-
-                <form action="{{ url('/typefournisseur/create') }}">
-                    <div class="card-body row mb-0">
-                        <div class="col-md-6 offset-md-5">
-                            <input type="submit" class="btn btn-primary" value="Ajouter" />
-                        </div>
+                        </table>
                     </div>
-                </form>
+
+                    <div class="text-center">
+                        <form action="{{ url('/typefournisseur/create') }}">
+                            <input type="submit" class="btn btn-primary" value="Ajouter" />
+                        </form>
+                    </div>
+                </div>
             </div>
+            <br>
         </div>
     </div>
 </div>

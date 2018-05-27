@@ -6,7 +6,7 @@
         <div class="col-md-10">
             <div class="card card-default">
                 <div class="card-header">
-                    Modification de la facture
+                    Modifier la facture
                     <a class="float-right" href="{{ route('invoices.index') }}">Retour <i class="fa fa-chevron-right"></i></a>
                 </div>
                 <div class="card-body">
@@ -68,7 +68,7 @@
 
                             <div class="form-group">
                                 <label for="commentaire" class="col-form-label">Commentaire</label>
-                                <textarea class="form-control rounded-0" id="commentaire" name="commentaire">{{ $invoice->commentaire }}</textarea>
+                                <textarea class="form-control rounded-0" style="height:100px" id="commentaire" name="commentaire">{{ $invoice->commentaire }}</textarea>
                             </div>
                             <div class="form-group">Les champs signalés d'un (*) sont obligatoires.</div>
                             <div class="text-center">
