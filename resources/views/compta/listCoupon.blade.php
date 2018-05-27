@@ -33,7 +33,9 @@
                                             <td>{{ $coupon->benevolePhone }}</td>
                                             <td>{{ $coupon->dateExpiration }}</td>
                                             <td>{{ $coupon->commentaire }}</td>
-
+                                            <!--
+                                            <td> <a href="{{ url('recu/'.$coupon->refCoupon.'/print') }}" target="_blank" class="waves-effect"><i class="fa fa-download"></i></a> </td>
+                                            -->
                                             <td class="text-center"><a href="{{ route('modifyCoupon',$coupon->id) }}" class="waves-effect"><i class="fa fa-edit"></i></a></td>
                                             <td class="text-center"><a href="{{ route('deleteCoupon',['id'=>$coupon->id]) }}"><i class="fa fa-trash"></i></a></td>
                                         </tr>
