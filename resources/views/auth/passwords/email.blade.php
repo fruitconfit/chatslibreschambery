@@ -8,14 +8,14 @@
                 <div class="card-header">Envoi du nouveau mot de passe</div>
 
                 <div class="card-body">
-                    <div class="card-body container">
+                    <div class="container card-body">
                         @if (session('status'))
                             <div class="alert alert-success">
                                 {{ session('status') }}
                             </div>
                         @endif
 
-                        <form method="GET" action="{{ route('newPassword') }}">
+                        <form method="POST" action="{{ route('password.email') }}">
                             @csrf
 
                             <div class="form-group">
