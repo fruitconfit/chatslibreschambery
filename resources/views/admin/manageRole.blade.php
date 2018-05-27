@@ -37,8 +37,8 @@
                     </div>
                 </div>
             </div>
-            <br>
         </div>
+        <br>
     </div>
 </div>
 @endsection

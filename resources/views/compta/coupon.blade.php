@@ -68,8 +68,8 @@
           </form>
         </div><!-- Card -->
       </div>
-      <br>
     </div>
+    <br>
   </div>
 </div>
 @endsection
