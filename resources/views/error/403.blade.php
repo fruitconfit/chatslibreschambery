@@ -19,7 +19,7 @@
     </div>
     <div>
         <h1> 403 </h1>
-        <h2> Vous n'êtes pas autorisé à accéder à cette page </p2
-</div>
+        <h2> Vous n'êtes pas autorisé à accéder à cette page </p2>
+    </div>
 </div>
 @endsection

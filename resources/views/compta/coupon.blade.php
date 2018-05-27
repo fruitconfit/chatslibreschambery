@@ -17,8 +17,13 @@
           <form method="GET" action="{{route('modifyCoupon', $coupon->id)}}">
             @csrf
             <div class="card-body">
-              <div class="col-md-12 @if($message != "") alert alert-success @endif">{{$message}}</div>
-
+              @if($message != "")
+              <div class="alert alert-success alert-dismissible">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  {{$message}}
+              </div>
+              @endif
+              
               <!-- nom referent de l'association -->
               <div class="form-group">
                 <label for="referentName" class="col-form-label">Référent d'association à contacter en cas de doute (*)</label>
@@ -64,6 +69,7 @@
         </div><!-- Card -->
       </div>
     </div>
+    <br>
   </div>
 </div>
 @endsection
