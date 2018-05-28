@@ -46,7 +46,7 @@
                                 
                             <div class="form-group">
                                 <label for="postcode" class="col-form-label">Code postal (*)</label>
-                                <input type="text" name="postcode" value="@if ($fournisseur->postcode != NULL){{$fournisseur->postcode}}@endif" class="form-control" required>
+                                <input type="number" name="postcode" value="@if ($fournisseur->postcode != NULL){{$fournisseur->postcode}}@endif" class="form-control" required>
                             </div>
 
                             <div class="form-group">
