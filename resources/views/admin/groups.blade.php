@@ -21,7 +21,7 @@
                                 <tr>
                                     <td>{{ $role->name }}</td>
                                     <td class="col-md-2"><a href="{{ route('manageRole',['id'=>$role->id]) }}">Permission</a></td>
-                                    <td class="col-md-2 text-center"><a href="{{ route('deleteRole',['id'=>$role->id]) }}"><i class="fa fa-trash"></i></a></td>
+                                    <td class="col-md-2 text-center"><a onclick="displayCheckDelete('{{ route('deleteRole',$role->id) }}','{{ $role->name }}')"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 @endforeach
                             </tbody>
