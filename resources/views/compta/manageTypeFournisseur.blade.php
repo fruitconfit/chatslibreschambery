@@ -10,7 +10,7 @@
 
                 <div class="card-body">
                     <div class="card-body container">
-                    Si la suppression ne s'effectue pas, cela signifie qu'au moins un fournisseur utilise ce type.
+                    <div class="text-center">Si la suppression ne s'effectue pas, cela signifie qu'au moins un fournisseur utilise ce type.</div>
                         <div class="card-body col-md-6 offset-md-3">
                             <table class="table table-striped table-bordered">
                                 <thead class="font-weight-bold">

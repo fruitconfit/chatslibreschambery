@@ -11,7 +11,7 @@
                     @elseif ($fournisseur->id > 0)
                         Modifier le fournisseur
                     @endif
-                    <a class="float-right" href="{{ route('manageFournisseur') }}">Retour <i class="fa fa-chevron-right"></i></a>
+                    <a class="float-right" href="{{ route('manageFournisseur') }}">Retour à la liste des fournisseurs <i class="fa fa-chevron-right"></i></a>
                 </div>
 
                 <div class="card-body">

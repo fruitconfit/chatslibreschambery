@@ -19,7 +19,7 @@
                                 @if (in_array($permission, $permissions)) 
                                     {{ Form::checkbox('checkList[]', $permission, true, ['class' => 'checkbox-perm']) }}
                                 @else
-                                {{ Form::checkbox('checkList[]', $permission, null, ['class' => 'checkbox-perm']) }}
+                                    {{ Form::checkbox('checkList[]', $permission, null, ['class' => 'checkbox-perm']) }}
                                 @endif
                                 {{ $permission }}<br>
                             @endforeach
