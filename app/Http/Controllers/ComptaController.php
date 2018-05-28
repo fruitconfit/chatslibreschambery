@@ -221,6 +221,7 @@ class ComptaController extends Controller
         TypeFournisseur::create($request->except('_token'));
         return view('compta.manageTypeFournisseur',['typeFournisseurs'=>TypeFournisseur::getAllTypeFournisseur()]);
     }
+    /* --------------------------------------------------- TYPE FOURNISSEUR --------------------------------------------------- */
 
     // Par Anaïs le 03/05/2018
     // Affiche la liste des types de fournisseur
@@ -230,7 +231,17 @@ class ComptaController extends Controller
     
     public function deleteTypeFournisseur($id)
     {
-        TypeFournisseur::destroy($id);
+        $fournisseurs = Fournisseur::getAllFournisseur();
+        $used = false;
+        foreach($fournisseurs as $fournisseur){
+            if($fournisseur->typefournisseur_id == $id){
+                $used = true;
+                break;
+            }
+        }
+        if($used == false){
+            TypeFournisseur::destroy($id);
+        }
         return view('compta.manageTypeFournisseur',['typeFournisseurs'=>TypeFournisseur::getAllTypeFournisseur()]);
     }
 }
