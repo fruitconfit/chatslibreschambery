@@ -97,7 +97,7 @@
 									</li>
                                     @endcan
                                     @can('compta/listDon')
-                                    <li><a href="{{ route('manageDons') }}" class="waves-effect">Gestion des dons</a>
+                                    <li><a href="{{ route('manageDons') }}" class="waves-effect">Gestion des reçus fiscaux</a>
                                     </li>
                                     @endcan
                                     @can('compta/listFournisseur')

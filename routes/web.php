@@ -110,7 +110,7 @@ Route::middleware('auth')->group(function(){
 	});
 
 	// Dons
-	Route::group(array('group_name' => 'Gestion des dons'), function()
+	Route::group(array('group_name' => 'Gestion des reçus fiscaux'), function()
 	{
 		Route::get('/compta/listDon', 'ComptaController@manageDons')->name('manageDons');
 		Route::get('/recu/{id}/print', function($id){

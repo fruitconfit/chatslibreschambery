@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card card-default">
-                <div class="card-header">Liste des dons</div>
+                <div class="card-header">Gestion des reçus fiscaux</div>
 
                 <div class="card-body">
                     <div class="container card-body">
@@ -39,7 +39,6 @@
                                                 Non
                                             @endif
                                         </td>
-                                        <td class="text-center"><a href="{{ url('discount/edit/'.$don->id) }}" class="waves-effect"><i class="fa fa-edit"></i></a></td>
                                     </tr>
                                 @endforeach
                             </tbody>
