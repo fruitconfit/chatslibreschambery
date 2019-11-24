@@ -67,7 +67,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
-        $user->assignRole('admin');
+        $user->assignRole('benevole');
         return $user;
     }
 }
