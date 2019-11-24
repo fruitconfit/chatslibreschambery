@@ -41,6 +41,13 @@
                         <tr>
                           <th scope="col">Ajoutée le</th>
                           <th scope="col">Fournisseur</th>
+                          <th scope="col" style="display: none">Nom</th>
+                          <th scope="col" style="display: none">Adresse</th>
+                          <th scope="col" style="display: none">Code postal</th>
+                          <th scope="col" style="display: none">Ville</th>
+                          <th scope="col" style="display: none">Email</th>
+                          <th scope="col" style="display: none">Téléphone</th>
+                          <th scope="col" style="display: none">Type</th>
                           <th scope="col">N° de facture</th>
                           <th scope="col">Date de la facture</th>
                           <th scope="col">Montant € TTC</th>
@@ -54,6 +61,13 @@
                         <tr @if (is_null($invoice->date_reglement))  class="table-danger" @else class="table-success" @endif>
                           <td>{{ date('d/m/Y', strtotime($invoice->date_ajout)) }}</td>
                           <td>{{ $invoice->fournisseur->nickname }}</td>
+                          <td style="display: none">{{ $invoice->fournisseur->name }}</td>
+                          <td style="display: none">{{ $invoice->fournisseur->adress }}</td>
+                          <td style="display: none">{{ $invoice->fournisseur->postcode }}</td>
+                          <td style="display: none">{{ $invoice->fournisseur->city }}</td>
+                          <td style="display: none">{{ $invoice->fournisseur->email }}</td>
+                          <td style="display: none">{{ $invoice->fournisseur->phone }}</td>
+                          <td style="display: none">{{ $invoice->fournisseur->typefournisseur->nom }}</td>
                           <td>{{ $invoice->numero_facture }}</td>
                           <td>{{ date('d/m/Y', strtotime($invoice->date_facture)) }}</td>
                           <td>{{ $invoice->montant }}€</td>
