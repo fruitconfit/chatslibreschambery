@@ -9,6 +9,7 @@ use App\Liasse;
 use App\Discount;
 use App\Fournisseur;
 use App\TypeFournisseur;
+use App\Trace;
 
 class ComptaController extends Controller
 {
@@ -45,14 +46,17 @@ class ComptaController extends Controller
         $liasse = Liasse::find($id);
 
         // Modification de la liasse
-        if ($liasse != NULL){
+        if ($liasse != NULL && $request != NULL){
+            $befLiasse = clone $liasse;
             if ( $request->input('creationDate') != NULL || $request->input('transmission') != NULL || $request->input('creditate') != NULL){
                 $liasse->creationDate = $request->input('creationDate');
                 $liasse->transmission = $request->input('transmission');
                 $liasse->creditate = $request->input('creditate');
                 $message = 'La liasse a bien été modifiée.';
+                $liasse->save();
+                Trace::traceUpdate('Liasse', $request, $befLiasse);
             }
-            $liasse->save();
+            
             $liasse = Liasse::find($id);
 
         // Ajout de la liasse
@@ -67,6 +71,7 @@ class ComptaController extends Controller
             }
             $liasse->save();
             $liasse = Liasse::find($liasse->id);
+            Trace::traceCreate('Liasse', $request);
             $message = 'La liasse a bien été ajoutée.';
             
         // Affiche la page de création de liasse
@@ -93,7 +98,10 @@ class ComptaController extends Controller
     // Supprime la liasse et update la vue
     public function deleteLiasse($id)
     {
+        $liasse = Liasse::findOrFail($id);
         Liasse::destroy($id);
+        Trace::traceDelete('Liasse', $liasse);
+        \Session::flash('success', 'La liasse a bien été supprimée!');
         return view('compta.listLiasse',['liasses'=>Liasse::getAllLiasses()]);
     }
 
@@ -110,41 +118,54 @@ class ComptaController extends Controller
         $fournisseur = Fournisseur::find($id);
 
         // Modification de le fournisseur
-        if ($fournisseur != NULL){
+        if ($fournisseur != NULL && $request != NULL){
+            $befFournisseur = clone $fournisseur;
+            $fournisseurModified = false;
             if ( $request->input('nickname') != NULL){
                 $fournisseur->nickname = $request->input('nickname');
                 $fournisseur->comment = $request->input('comment');
+                $fournisseurModified = true;
                 $message = 'Le fournisseur a bien été modifié.';
             }
             if ($request->input('name') != NULL){
                 $fournisseur->name = $request->input('name');
+                $fournisseurModified = true;
                 $message = 'Le fournisseur a bien été modifié.';
             }
             if ($request->input('adress') != NULL){
                 $fournisseur->adress = $request->input('adress');
+                $fournisseurModified = true;
                 $message = 'Le fournisseur a bien été modifié.';
             }
             if ($request->input('postcode') != NULL){
                 $fournisseur->postcode = $request->input('postcode');
+                $fournisseurModified = true;
                 $message = 'Le fournisseur a bien été modifié.';
             }
             if ($request->input('city') != NULL){
                 $fournisseur->city = $request->input('city');
+                $fournisseurModified = true;
                 $message = 'Le fournisseur a bien été modifié.';
             }
             if ($request->input('email') != NULL){
                 $fournisseur->email = $request->input('email');
+                $fournisseurModified = true;
                 $message = 'Le fournisseur a bien été modifié.';
             }
             if ($request->input('phone') != NULL){
                 $fournisseur->phone = $request->input('phone');
+                $fournisseurModified = true;
                 $message = 'Le fournisseur a bien été modifié.';
             }
             if ($request->input('type') != NULL){
                 $fournisseur->typefournisseur_id = $request->input('type');
+                $fournisseurModified = true;
                 $message = 'Le fournisseur a bien été modifié.';
             }
-            $fournisseur->save();
+            if( $fournisseurModified ){
+                $fournisseur->save();
+                Trace::traceUpdate('Fournisseur', $request, $befFournisseur);
+            }
             $fournisseur = Fournisseur::find($id);
 
         // Ajout de le fournisseur
@@ -179,6 +200,7 @@ class ComptaController extends Controller
             }
             $fournisseur->save();
             $fournisseur = Fournisseur::find($fournisseur->id);
+            Trace::traceCreate('Fournisseur', $request);
             $message = 'Le fournisseur a bien été ajouté.';
             return view('compta.listFournisseur',['fournisseurs'=>Fournisseur::getAllFournisseur()]);
             
@@ -203,7 +225,10 @@ class ComptaController extends Controller
     // Supprime le fournisseur et update la vue
     public function deleteFournisseur($id)
     {
+        $fournisseur = Fournisseur::findOrFail($id);
         Fournisseur::destroy($id);
+        Trace::traceDelete('Fournisseur', $fournisseur);
+        \Session::flash('success', 'Le fournisseur a bien été supprimé!');
         return view('compta.listFournisseur',['fournisseurs'=>Fournisseur::getAllFournisseur()]);
     }
 
@@ -219,6 +244,8 @@ class ComptaController extends Controller
     public function storeTypeFournisseur(Request $request)
     {
         TypeFournisseur::create($request->except('_token'));
+        Trace::traceCreate('TypeFournisseur', $request);
+        \Session::flash('success', 'Le type de fournisseur a bien été ajouté!');
         return view('compta.manageTypeFournisseur',['typeFournisseurs'=>TypeFournisseur::getAllTypeFournisseur()]);
     }
     /* --------------------------------------------------- TYPE FOURNISSEUR --------------------------------------------------- */
@@ -240,7 +267,12 @@ class ComptaController extends Controller
             }
         }
         if($used == false){
+            $typeFournisseur = TypeFournisseur::find($id);
             TypeFournisseur::destroy($id);
+            if( TypeFournisseur::find($id) == NULL ){
+              Trace::traceDelete('TypeFournisseur', $typeFournisseur);
+              \Session::flash('success', 'Le type de fournisseur a bien été supprimé!');
+            }    
         }
         return view('compta.manageTypeFournisseur',['typeFournisseurs'=>TypeFournisseur::getAllTypeFournisseur()]);
     }

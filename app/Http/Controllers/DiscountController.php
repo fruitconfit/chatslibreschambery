@@ -7,6 +7,7 @@ use App\Http\Requests\DiscountFormRequest;
 use App\Http\Controllers\ComptaController;
 use App\Discount;
 use App\Liasse;
+use App\Trace;
 
 class DiscountController extends Controller
 {
@@ -22,21 +23,23 @@ class DiscountController extends Controller
     	$champs["city"]=$request->get("city");
     	$champs["postcode"]=$request->get("postcode");
     	$champs["dateDiscount"]=$request->get("dateDiscount");
-        $champs["typeDiscount"]=$request->get("typeDiscount");
-        if($request->get("recu") == 'Don'){
-            $champs["recu"]=$request->get("recu");
-        } else {
-            $champs["recu"]=NULL;
-        }
-        $champs["priceDiscount"]=str_replace(',', '.', $request->get("priceDiscount")); // change les nombres à virgule en nombre décimaux valides
+      $champs["typeDiscount"]=$request->get("typeDiscount");
+      if($request->get("recu") == 'Don'){
+          $champs["recu"]=$request->get("recu");
+      } else {
+          $champs["recu"]=NULL;
+      }
+      $champs["priceDiscount"]=str_replace(',', '.', $request->get("priceDiscount")); // change les nombres à virgule en nombre décimaux valides
     	$champs["recipeType"]=$request->get("recipeType");
     	$champs["nameBank"]=$request->get("nameBank");
     	$champs["edite"]=NULL;
     	$champs["cat"]=$request->get("cat");
     	$champs["description"]=$request->get("description");
-        $champs["id_liasse"]=$request->get("id_liasse");
+      $champs["id_liasse"]=$request->get("id_liasse");
 
     	Discount::create($request->except('_token'));
+      Trace::traceCreate('Discount', $request);
+      \Session::flash('success', 'La remise a bien été créée!');
 
     	return redirect()->route('discount.create', $request->get('id_liasse'));
     }
@@ -47,6 +50,7 @@ class DiscountController extends Controller
         $id_discount = $discount->id;
         $id_liasse = $discount->id_liasse;
     	
+        $befDiscount = clone $discount;
         $discount->nameSender = $request->get("nameSender");
         $discount->adress = $request->input('adress');
         $discount->city = $request->input('city');
@@ -65,6 +69,8 @@ class DiscountController extends Controller
         $discount->description = $request->get("description");
 
         $discount->save();
+        Trace::traceUpdate('Discount', $request, $befDiscount);
+        \Session::flash('success', 'La remise a bien été modifiée!');
 
         return view('discount.edit', [ 'discount'=>$discount]);
     }
@@ -76,7 +82,9 @@ class DiscountController extends Controller
         $discount = Discount::findOrFail($id);
         $id_liasse = $discount->id_liasse;
         Discount::destroy($id);
-    	return redirect()->route('modifyLiasse', $id_liasse);
+        Trace::traceDelete('Discount', $discount);
+        \Session::flash('success', 'La remise a bien été supprimée!');
+    	  return redirect()->route('modifyLiasse', $id_liasse);
     }
 
 }

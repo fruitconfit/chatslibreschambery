@@ -63,7 +63,13 @@ return [
 
         'errorlog' => [
             'driver' => 'errorlog',
-            'level' => 'debug',
+            'level' => 'debug',   
+        ],
+        
+        'trace' => [
+            'driver' => 'single',
+            'level' => 'info',
+            'path' => storage_path('logs/laravel_info.log'),
         ],
     ],
 

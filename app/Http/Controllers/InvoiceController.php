@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Invoice;
 use Illuminate\Http\Request;
 use App\Fournisseur;
+use App\Trace;
 
 class InvoiceController extends Controller
 {
@@ -46,6 +47,7 @@ class InvoiceController extends Controller
             'commentaire' => 'nullable'
         ]);
         Invoice::create($request->except('_token'));
+        Trace::traceCreate('Invoice', $request);
         \Session::flash('success', 'La facture a bien été créée!');
         return redirect()->route('invoices.index');
     }
@@ -90,6 +92,7 @@ class InvoiceController extends Controller
             'date_reglement' => 'nullable',
             'commentaire' => 'nullable'
         ]);
+        $befInvoice = clone $invoice;
         $invoice->date_ajout = $request->get('date_ajout');
         $invoice->fournisseur_id = $request->get('fournisseur_id');
         $invoice->numero_facture = $request->get('numero_facture');
@@ -98,6 +101,7 @@ class InvoiceController extends Controller
         $invoice->date_reglement = $request->get('date_reglement');
         $invoice->commentaire = $request->get('commentaire');
         $invoice->save();
+        Trace::traceUpdate('Invoice', $request, $befInvoice);
         \Session::flash('success', 'La facture a bien été modifiée!');
         return redirect()->route('invoices.index');
     }
@@ -111,6 +115,7 @@ class InvoiceController extends Controller
     public function destroy(Invoice $invoice)
     {
         $invoice->delete();
+        Trace::traceDelete('Invoice', $invoice);
         \Session::flash('success', 'La facture a bien été supprimée!');
         return redirect()->route('invoices.index');
     }

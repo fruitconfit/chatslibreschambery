@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccountController;
-
+use App\Trace;
 
 class AdminController extends Controller
 {
@@ -51,6 +51,7 @@ class AdminController extends Controller
                 }
             }
             $role = Role::create(['name' => $request->input('name')]);
+            Trace::traceCreate('Role', $request);
             $message = 'Le role a bien été ajouté';
         }
         return view('admin.addRole',['message'=>$message]);
@@ -58,7 +59,10 @@ class AdminController extends Controller
 
     public function deleteRole($id)
     {
+        $role = Role::find($id);
         Role::destroy($id);
+        Trace::traceDelete('Role', $role);
+        \Session::flash('success', 'Le role a bien été supprimé!');
         return view('admin.groups',['roles'=>$this->getAllRole()]);
     }
 
@@ -76,6 +80,7 @@ class AdminController extends Controller
             }
         }
         $role = Role::find($id);
+        $befRole = clone $role;
         $permissions = $role->permissions;
         $userHasGroup = array();
         $uriInGroup = $permissionGroup;
@@ -117,6 +122,7 @@ class AdminController extends Controller
                 }
             }
 
+            Trace::traceUpdate('Role', $request, $befRole);
             $message = "Modification réussie";
         }
         return view('admin.manageRole',['permissions'=>$userHasGroup,'permissionGroup'=>array_keys($permissionGroup),'roleId'=>$id,'message'=>$message]);

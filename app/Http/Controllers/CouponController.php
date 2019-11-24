@@ -9,6 +9,7 @@ use App\Liasse;
 use App\Discount;
 use App\Fournisseur;
 use App\Coupon;
+use App\Trace;
 
 class CouponController extends Controller
 {
@@ -46,30 +47,40 @@ class CouponController extends Controller
 
         // Modification du coupon
 
-        if ($coupon != NULL){
+        if ($coupon != NULL && $request != NULL){
+            $befCoupon = clone $coupon;
+            $couponModExists = false;
             if ( $request->input('referentName') != NULL){
                 $coupon->referentName = $request->input('referentName');
                 $coupon->commentaire = $request->input('commentaire');
+                $couponModExists = true;
                 $message = 'Le coupon a bien été modifié.';
             }
             if ($request->input('referentPhone') != NULL){
                 $coupon->referentPhone = $request->input('referentPhone');
+                $couponModExists = true;
                 $message = 'Le coupon a bien été modifié.';
             }
             if ($request->input('benevoleName') != NULL){
                 $coupon->benevoleName = $request->input('benevoleName');
+                $couponModExists = true;
                 $message = 'Le coupon a bien été modifié.';
             }
             if ($request->input('benevolePhone') != NULL){
                 $coupon->benevolePhone = $request->input('benevolePhone');
+                $couponModExists = true;
                 $message = 'Le coupon a bien été modifié.';
             }
             if ($request->input('dateExpiration') != NULL){
                 $coupon->dateExpiration = $request->input('dateExpiration');
+                $couponModExists = true;
                 $message = 'Le coupon a bien été modifié.';
             }
 
-            $coupon->save();
+            if( $couponModExists ){
+                $coupon->save();
+                Trace::traceUpdate('Coupon', $request, $befCoupon);
+            }            
             $coupon = Coupon::find($id);
 
         // Ajout du coupon
@@ -98,6 +109,7 @@ class CouponController extends Controller
             $coupon->refCoupon = date("y")."1".$id;
             $coupon->save();
             $coupon = Coupon::find($coupon->id);
+            Trace::traceCreate('Coupon', $request);
             $message = 'Le coupon a bien été ajouté.';
 
         // Affiche la page de création du coupon
@@ -121,7 +133,10 @@ class CouponController extends Controller
     // Supprime le coupon et update la vue
     public function deleteCoupon($id)
     {
+        $coupon = Coupon::findOrFail($id);
         Coupon::destroy($id);
+        Trace::traceDelete('Coupon', $coupon);
+        \Session::flash('success', 'Le coupon a bien été supprimé!');
         return view('compta.listCoupon',['coupons'=>Coupon::getAllCoupons()]);
     }
 }

@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Trace;
 
 class RegisterController extends Controller
 {
@@ -68,6 +69,7 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
         $user->assignRole('benevole');
+        Trace::traceCreateUser('User',$data);
         return $user;
     }
 }

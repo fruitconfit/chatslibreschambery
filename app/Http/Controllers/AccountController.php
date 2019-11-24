@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use App\Trace;
 
 class AccountController extends Controller
 {
@@ -37,6 +38,7 @@ class AccountController extends Controller
             $message = 'Vos informations ont bien été enregistrées.';
             $id = Auth::user()->id;
             $user = User::find($id);
+            $befUser = clone $user;
             $user->name = $request->input('name');
             $user->email = $request->input('email');
             if($request->input('password') != '')
@@ -44,6 +46,7 @@ class AccountController extends Controller
                 $user->password = bcrypt($request->input('password'));
             }
             $user->save();
+            Trace::traceUpdate('Account', $request, $befUser);
             Auth::login($user);
             $messageValida = 'Vos informations ont été modifiées';
         }
@@ -51,6 +54,7 @@ class AccountController extends Controller
     }
 
     public function logout(){
+        Trace::traceLogging('User LOGOUT');
         Auth::logout();
         return view('welcome');
     }
@@ -93,8 +97,10 @@ class AccountController extends Controller
             $result = mail($to, $subject, $message, $headers);
         }
         if($result == true){
+            $befUser = clone $user;
             $user->password = bcrypt($newPassword);
             $user->save();
+            Trace::traceUpdate('ChangePwd', $request, $befUser);
         }
         return view('welcome');
     }
@@ -118,15 +124,19 @@ class AccountController extends Controller
         if(null !== $request->input('name')){
             $message = 'Vos informations ont bien été enregistrées.';
             $user = User::find($userid);
+            $befUser = clone $user;
             $user->name = $request->input('name');
             $user->save();
+            Trace::traceUpdate('ChangePwd', $request, $befUser);
         }
         return view('admin.renameUser',['user'=>$user, 'message'=>$message]);
     }
 
     public function deleteUser($id)
     {
+        $user = User::findOrFail($id);
         User::destroy($id);
+        Trace::traceDelete('User',$user);
         return view('admin.users',['users'=>$this->getAllUser(), 'roles'=>AdminController::getAllRoleName()]);
     }
 
